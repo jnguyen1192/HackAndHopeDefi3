@@ -1,0 +1,3 @@
+title=DeviceAuthentification
+author=jnguyen1192
+orientation=portrait

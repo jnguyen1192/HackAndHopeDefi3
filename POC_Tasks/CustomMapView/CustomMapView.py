@@ -3,6 +3,7 @@ import kivy.garden.mapview as m # https://pypi.org/project/kivy-garden.mapview/
 from kivy.app import App
 from kivy.uix.button import Button
 
+
 class MapViewApp(App):
     def build(self):
         m1 = (43.3, 5.4)
