@@ -85,7 +85,7 @@ fullscreen = 0
 #android.presplash_color = #FFFFFF
 
 # (list) Permissions
-android.permissions = LOCATION_HARDWARE, ACCESS_FINE_LOCATION
+android.permissions = LOCATION_HARDWARE, ACCESS_FINE_LOCATION, READ_PHONE_STATE
 
 # (int) Target Android API, should be as high as possible.
 #android.api = 27
