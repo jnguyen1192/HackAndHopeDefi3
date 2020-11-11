@@ -33,7 +33,7 @@ class MainApp(App):
         request_permissions(['android.permisssion.LOCATION_HARDWARE',
                              'android.permisssion.ACCESS_FINE_LOCATION',
                              'android.permisssion.READ_PHONE_STATE'])
-        label = Label(text="hello world !",#str(plyer.uniqueid.id),
+        label = Label(text="hello world ! "+ str(plyer.uniqueid.id),
                       size_hint=(.5, .5),
                       pos_hint={'center_x': .5, 'center_y': .5})
 
