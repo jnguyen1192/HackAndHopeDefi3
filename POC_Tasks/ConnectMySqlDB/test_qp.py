@@ -1,5 +1,8 @@
 import unittest
+
 import mysql.connector
+import csv
+from tqdm import tqdm
 
 
 class MyTestCase(unittest.TestCase):
@@ -17,10 +20,19 @@ class MyTestCase(unittest.TestCase):
                                        db='proto_qp')
         cursor = mydb.cursor()
         point = 'POINT('+str(self.row[7].split(',')[1]) +' ' + str(self.row[7].split(',')[0]) + ')'
-        print(point)
+        t_row = self.row
+        t_row[7] = ""
+        print(t_row[7])
+        # case no point define
+        point = "ST_GeomFromText(%s, 4326)"
+        if t_row[7] == "":
+            process_point = 'POINT(0.0000 90.0000)'
+            print("Vide", point, process_point) # POINT(0.0000,90.0000) # https://stackoverflow.com/questions/30812963/how-do-i-enter-an-empty-point-geometry-value-into-a-mysql-field-of-type-poin
+        else:
+            process_point = 'POINT(' + str(t_row[7].split(',')[1]) + ' ' + str(t_row[7].split(',')[0]) + ')'
         cursor.execute("INSERT INTO `test_geom` (`test_point_col`) "
-                       "VALUES(ST_GeomFromText(%s, 4326))",
-                       (point, ))
+                       "VALUES(" + point + ")",
+                       (process_point, ))
 
         mydb.commit()
         cursor.execute("SELECT * FROM test_geom")
@@ -45,8 +57,9 @@ class MyTestCase(unittest.TestCase):
                                        db='proto_qp')
         cursor = mydb.cursor()
         geo_json = '{"type": "Polygon", "coordinates": [[[5.245708675, 46.2042779521], [5.2455553482, 46.2042190545], [5.2454229339, 46.2041873906], [5.245254299, 46.2041453075], [5.2450750673, 46.2040993687], [5.2449504192, 46.2040431037], [5.2448556263, 46.2040098586], [5.2446664763, 46.2039216851], [5.2444073781, 46.2037727662], [5.2441357364, 46.2036024577], [5.2438432048, 46.2034289665], [5.2437838414, 46.2034033343], [5.2436891924, 46.2033501676], [5.2435864473, 46.2032604764], [5.2447661496, 46.202874893], [5.2449096482, 46.2028307864], [5.2449427493, 46.2026907465], [5.244715452, 46.2025789982], [5.2440811192, 46.2023838519], [5.2440658393, 46.2024038389], [5.2438440349, 46.2022923263], [5.2429143325, 46.2020079923], [5.2421597833, 46.2017429792], [5.2419954831, 46.2017114647], [5.2417110617, 46.2018630103], [5.2411794548, 46.2022833797], [5.2406988988, 46.2026514029], [5.2403003895, 46.2029637349], [5.2401618228, 46.2030655619], [5.2400501964, 46.2031911646], [5.2397943346, 46.2034029873], [5.2403961401, 46.2042268356], [5.2410292553, 46.2040357906], [5.2420406827, 46.2037050634], [5.2425302619, 46.2035575729], [5.2428387816, 46.2041970212], [5.2428632321, 46.2044717006], [5.2428612827, 46.2047469008], [5.2428055298, 46.205003196], [5.242665993, 46.2053010766], [5.2424847183, 46.2055522965], [5.2421846472, 46.2058058643], [5.2419628369, 46.2059568942], [5.2417696469, 46.2060553031], [5.24152723, 46.2061555632], [5.2412930576, 46.2062358614], [5.2408616883, 46.2063794854], [5.2405301372, 46.2064896237], [5.2406770205, 46.2065912201], [5.2410299781, 46.2068054557], [5.2406608531, 46.20714751], [5.2402095956, 46.2075003536], [5.2397082656, 46.2078404258], [5.2394404475, 46.2079947403], [5.2391366983, 46.208158945], [5.2380046557, 46.2087401705], [5.2381349113, 46.2086991821], [5.2382595607, 46.2086783836], [5.2388285214, 46.2086190285], [5.2389963602, 46.2086042595], [5.2392858302, 46.2085756254], [5.2395332491, 46.2085684607], [5.2397846219, 46.2085772706], [5.2399932729, 46.2085915052], [5.2403084761, 46.2086265683], [5.2403816397, 46.2086388881], [5.2405957514, 46.2087057512], [5.240779765, 46.2083978572], [5.2407703865, 46.2082918594], [5.2412864268, 46.2075131302], [5.2414149887, 46.2075431669], [5.2416761878, 46.2071640134], [5.2426936086, 46.2074160198], [5.2419800097, 46.209038465], [5.243462673, 46.2087890937], [5.2439532557, 46.2087025529], [5.2438863138, 46.208326713], [5.2438764436, 46.208234335], [5.2438358739, 46.2079720866], [5.2438002954, 46.2077440782], [5.2437707831, 46.2075782868], [5.2432508216, 46.2074683537], [5.2426952064, 46.2073871468], [5.241733833, 46.20714604], [5.241240486, 46.2068812475], [5.2411773644, 46.206812696], [5.2412330715, 46.206699929], [5.2413425328, 46.2065907562], [5.2416668441, 46.2064913035], [5.2445484307, 46.2062304344], [5.2448049948, 46.2057587431], [5.2452763596, 46.2050110851], [5.245708675, 46.2042779521]]]}'
+        geo_json = '{"type": "Polygon", "coordinates": [[[0.0000, 90.0000], [0.0000, 90.1000], [0.1000, 90.1000], [0.0000, 90.0000]]]}'
 
-
+        # 0.0000 90.0000
         print(geo_json)
         cursor.execute("INSERT INTO `test_geojson_table` (`test_geojson_col`) VALUES(ST_GeomFromGeoJSON(%s))", (geo_json, ))
         mydb.commit()
@@ -80,15 +93,59 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(True, True)
 
     def test_insert_row_in_proto_qp_table(self): # to test visualisation https://geojson.io/
-        """
+        t_row = self.row
+        mydb = mysql.connector.connect(host='localhost',
+                                       port='3306',
+                                       user='root',
+                                       passwd='root',
+                                       db='proto_qp')
+        cursor = mydb.cursor()
         cursor.execute("INSERT INTO `qp` (`code_quartier`, `num_dept`, `nom_dept`,"
                        " `quartier_prioritaire`, `noms_des_communes_concernees`,"
                        " `nom_epci`, `nom_reg`, `geo_point_2d`, `commune_qp`,"
                        " `nom_qp`, `code_insee`, `geo_shape`, `nom_dep`)"
-                       " VALUES (%s, %s, %s, %s, %s, %s, %s, ST_GeomFromText(%s), %s, %s, %s, ST_GeomFromGeoJSON(%s), %s)",
-                       (t_row[0], t_row[1], t_row[2], t_row[3], t_row[4], t_row[5], t_row[6], point, t_row[8], t_row[9],
+                       " VALUES (%s, %s, %s, %s, %s, %s, %s, ST_GeomFromText(%s, 4326), %s, %s, %s, ST_GeomFromGeoJSON(%s), %s)",
+                       (t_row[0], t_row[1], t_row[2], t_row[3], t_row[4], t_row[5], t_row[6], 'POINT('+str(t_row[7].split(',')[1]) +' ' + str(t_row[7].split(',')[0]) + ')', t_row[8], t_row[9],
                         t_row[10], t_row[11], t_row[12]), )
-        """
+        mydb.commit()
+        cursor.close()
+        assert True
+
+    def test_insert_row_in_proto_qp_using_csv_table(self): # to test visualisation https://geojson.io/
+        #t_row = self.row
+        mydb = mysql.connector.connect(host='localhost',
+                                       port='3306',
+                                       user='root',
+                                       passwd='root',
+                                       db='proto_qp')
+        cursor = mydb.cursor()
+        with open('liste_quartiers_prioritairesville.csv', 'r') as file:
+            print("Priority Area List CSV opened")
+            reader = csv.reader(file, delimiter=';')
+            next(reader)
+            for t_row in tqdm(reader, ascii=True, desc ="Priority Area List CSV loading"):
+                #print(len(t_row), type(t_row), t_row)
+                point = "ST_GeomFromText(%s, 4326)"
+                geojson = "ST_GeomFromGeoJSON(%s)"
+                # case no point define
+                if t_row[7] == "":
+                    process_point = 'POINT(0.0000 90.0000)'
+                else:
+                    process_point = 'POINT('+str(t_row[7].split(',')[1]) + ' ' + str(t_row[7].split(',')[0]) + ')'
+                # case no polygon define
+                if t_row[11] == "":
+                    t_row[11] = '{"type": "Polygon", "coordinates": [[[0.0000, 90.0000], [0.0000, 90.1000], [0.1000, 90.1000], [0.0000, 90.0000]]]}'
+
+                cursor.execute("INSERT INTO `qp` (`code_quartier`, `num_dept`, `nom_dept`,"
+                               " `quartier_prioritaire`, `noms_des_communes_concernees`,"
+                               " `nom_epci`, `nom_reg`, `geo_point_2d`, `commune_qp`,"
+                               " `nom_qp`, `code_insee`, `geo_shape`, `nom_dep`)"
+                               " VALUES (%s, %s, %s, %s, %s, %s, %s, " + point + ", %s, %s, %s, " + geojson + ", %s)",
+                               (t_row[0], t_row[1], t_row[2], t_row[3], t_row[4], t_row[5], t_row[6], process_point,
+                                t_row[8], t_row[9], t_row[10], t_row[11], t_row[12]), )
+        mydb.commit()
+        cursor.close()
+        print("Priority Area List CSV loaded")
         assert True
 
 
