@@ -9,16 +9,16 @@ class protoLoadPriorityDistrictListCSVTest extends TestCase
 
     public function testget_path_csv()
     {
-        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv";
-        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv);
+        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv"; // initialize the path
+        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv); // create a proto using path
 
-        $this->assertTrue($lpdlCSV->get_path_csv() == $path_csv);
+        $this->assertTrue($lpdlCSV->get_path_csv() == $path_csv); // test if the path is correctly added into the proto
     }
 
     public function testLoad_priority_district_list_csv()
     {
-        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv";
-        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv);
+        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv"; // initialize the path
+        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv); // create a proto using path
 
         //echo var_dump($lpdlCSV->list_row);
         //echo var_dump($lpdlCSV->list_row[0][0]);
@@ -32,14 +32,13 @@ class protoLoadPriorityDistrictListCSVTest extends TestCase
     public function testinsert_into_db()
     {
 
-        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv";
+        $path_csv = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\ConnectMySqlDB\liste_quartiers_prioritairesville.csv"; // initialize the path
 
+        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv); // create a proto using the path
 
-        $lpdlCSV = new protoLoadPriorityDistrictListCSV($path_csv);
+        $res = $lpdlCSV->insert_into_db(); // insert list row into the database
 
-        $lpdlCSV->insert_into_db();
-
-        $this->assertTrue(0 == 0);
+        $this->assertTrue($res == 0);
     }
 
 }
