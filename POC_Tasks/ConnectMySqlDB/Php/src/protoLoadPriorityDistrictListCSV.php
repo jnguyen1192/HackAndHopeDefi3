@@ -12,6 +12,7 @@ class protoLoadPriorityDistrictListCSV
         $this->path_csv = $path_csv; // assign path on the object creation
         $this->load_priority_district_list_csv();
     }
+
     // Methods
     function set_path_csv($path_csv) { // change path
         $this->path_csv = $path_csv;
@@ -41,4 +42,24 @@ class protoLoadPriorityDistrictListCSV
             fclose($handle);
         }
     }
+
+
+    function insert_into_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="", $table="qp")
+    {
+        // Create connection
+        $conn = new mysqli($host, $username, $password, $db_name, $port);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully\n";
+        $conn->close();
+        if (!is_resource($conn)) {
+            echo "Disconnected successfully\n";
+        }
+    }
+
+
+
+
 }
