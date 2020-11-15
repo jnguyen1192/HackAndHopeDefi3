@@ -1,0 +1,25 @@
+Path between two points
+# Pedestrian usage with itiniraire from "ign"
+
+Request:
+http://wxs.ign.fr/[KEY]/itiniraire/rest/route.json?origin=[lat_start],[lon_start]&destination=[lat_end],[lon_end]&&method=DISTANCE&graphName=Pieton
+
+Example:
+We have:
+-lat_start=1.4296871423721542
+-lon_start=48.9491452350537
+-lat_end=1.8691402673721758
+-lon_end=48.80463579895799
+
+http://wxs.ign.fr/choisirgeoportail/itineraire/rest/route.json?origin=1.4296871423721542,48.9491452350537&destination=1.8691402673721758,48.80463579895799&&method=DISTANCE&graphName=Pieton
+# Bus usage with Chouette from "le-pilote"
+wget https://github.com/afimb/docker-chouette/archive/master.zip
+# optionnaly
+# sudo apt install unzip
+unzip master.zip
+cd docker-chouette-master/
+# sudo apt install docker-compose
+
+https://github.com/afimb/docker-chouette
+docker-compose pull
+docker-compose up -d
