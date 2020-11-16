@@ -9,13 +9,14 @@ $(function () { // Function to use php script without loading page
         url:'php/get_route.php', // use the script save.php when submitting the form
         type:'POST', // send data using POST request
         data:{ // the POST object
-            school:$("#origin").val(), // the data of school as "school"
-            city:$("#destination").val(), // the data of city as "city"
+            origin:$("#origin").val(), // the data of school as "school"
+            destination:$("#destination").val(), // the data of city as "city"
             /* TODO add other data form*/
         }
         ,
         success: function (data) {
-          $('#wktStringTextArea').html(data);
+          $('#wktStringTextArea').val(data);
+          plotWKT();
     }
     });
 
