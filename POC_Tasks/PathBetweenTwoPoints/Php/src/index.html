@@ -1,13 +1,210 @@
 <html>
   <head>
-    <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+    <script>
+      var raster;
+      var source;
+      var vector;
+      var map;
+      var typeSelect;
+      var draw;
+      var features = new ol.Collection();
+      var format = new ol.format.WKT();
+      var current_shape = "point";
+
+      var fill = new ol.style.Fill({
+        color: 'rgba(210, 122, 167,0.2)'
+      });
+      var stroke = new ol.style.Stroke({
+        color: '#B40404',
+        width: 2
+      });
+
+      var styles = [
+        new ol.style.Style({
+          image: new ol.style.Circle({
+            fill: fill,
+            stroke: stroke,
+            radius: 5
+          }),
+          fill: fill,
+          stroke: stroke
+        })
+      ];
+
+      function addInteraction(shape) {
+        draw = new ol.interaction.Draw({
+          features: features,
+          type: /** @type {ol.geom.GeometryType} */ shape
+        });
+        map.addInteraction(draw);
+      }
+
+      /**
+      * Let user change the geometry type.
+      * @param {Event} e Change event.
+      */
+      function createVector() {
+        vector = new ol.layer.Vector({
+          source: new ol.source.Vector({ features: features }),
+          style: styles
+        });
+      }
+
+      function toEPSG4326(element, index, array) {
+        element = element.getGeometry().transform('EPSG:3857', 'EPSG:4326');
+      }
+
+      function toEPSG3857(element, index, array) {
+        element = element.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+      }
+
+      function selectGeom(shape) {
+        current_shape = shape;
+        map.removeInteraction(draw);
+        addInteraction(shape);
+      }
+
+      function init() {
+        // document.getElementById("missing_wkt").style.display = "block";
+        createVector();
+        raster = new ol.layer.Tile({
+          source: new ol.source.OSM()
+        });
+
+        features.on("add", function (e) {
+          restoreDefaultColors();
+          features.forEach(toEPSG4326);
+          document.getElementById('wktStringTextArea').value = format.writeFeatures(features.getArray(), { rightHanded: true });
+          features.forEach(toEPSG3857);
+        });
+
+        map = new ol.Map({
+          layers: [raster, vector],
+          target: 'map',
+          view: new ol.View({
+            center: [-11000000, 4600000],
+            zoom: 4
+          })
+        });
+        plotWKT();
+        selectGeom('Point');
+      }
+
+      function restoreDefaultColors() {
+        document.getElementById("wktStringTextArea").style.borderColor = "";
+        document.getElementById("wktStringTextArea").style.backgroundColor = "";
+      };
+
+      // Plot wkt string on map
+      function plotWKT() {
+        var new_feature;
+
+        wkt_string = document.getElementById("wktStringTextArea").value;
+        if (wkt_string == "") {
+          document.getElementById("wktStringTextArea").style.borderColor = "red";
+          document.getElementById("wktStringTextArea").style.backgroundColor = "#F7E8F3";
+          return;
+        } else {
+          try {
+            new_feature = format.readFeature(wkt_string);
+          } catch (err) {
+          }
+        }
+
+        if (!new_feature) {
+          document.getElementById("wktStringTextArea").style.borderColor = "red";
+          document.getElementById("wktStringTextArea").style.backgroundColor = "#F7E8F3";
+          return;
+        } else {
+          map.removeLayer(vector);
+          features.clear();
+          new_feature.getGeometry().transform('EPSG:4326', 'EPSG:3857');
+          features.push(new_feature);
+        }
+        vector = new ol.layer.Vector({
+          source: new ol.source.Vector({ features: features }),
+          style: styles
+        });
+
+        selectGeom(current_shape);
+        map.addLayer(vector);
+        derived_feature = features.getArray()[0];
+        extent = derived_feature.getGeometry().getExtent();
+        minx = derived_feature.getGeometry().getExtent()[0];
+        miny = derived_feature.getGeometry().getExtent()[1];
+        maxx = derived_feature.getGeometry().getExtent()[2];
+        maxy = derived_feature.getGeometry().getExtent()[3];
+        centerx = (minx + maxx) / 2;
+        centery = (miny + maxy) / 2;
+        map.setView(new ol.View({
+          center: [centerx, centery],
+          zoom: 8
+        }));
+        map.getView().fit(extent, map.getSize());
+      }
+
+      function clearMap() {
+        map.removeLayer(vector);
+        features.clear();
+        vector = new ol.layer.Vector({
+          source: new ol.source.Vector({ features: features }),
+          style: styles
+        });
+        selectGeom(current_shape);
+        map.addLayer(vector);
+        document.getElementById("wktStringTextArea").value = "";
+        restoreDefaultColors();
+      }
+    </script>
     <script src="js/form_ajax.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
-  <body>
+  <body onload="init()">
     <form>
         Départ :<input type="text" id="origin" value="1.4296871423721542,48.9491452350537">
         Arrivée :<input type="text" id="destination" value="1.8691402673721758,48.80463579895799">
       <input name="submit" type="submit" value="Itinéraire Piéton">
     </form>
+    <div id="response"></div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 40px;line-height: 0.5">
+      <a class="navbar-brand" href="#">Route Pedestrian</a>
+    </nav>
+    <div class="container-fluid" style="padding: 0px; border:0px">
+      <div class="span12">
+        <div id="overlay" class="row align-items-center justify-content-center" style="background-color: transparent; z-index:1; position: absolute; top:280px; right:26px">
+          <div class="btn-group-vertical ">
+            <button type="button" class="btn btn-primary" onclick="selectGeom('Point')">Point</button>
+            <button type="button" class="btn btn-primary" onclick="selectGeom('LineString')">Line String</button>
+            <button type="button" class="btn btn-primary" onclick="selectGeom('Polygon')">Polygon</button>
+          </div>
+        </div>
+        <div id="map" class="map" style="height: 400px; z-index: 0"></div>
+      </div>
+      <div class="span12" style="padding: 10px; border:0px">
+        <textarea id="wktStringTextArea" class="form-control" rows="4" onclick="restoreDefaultColors()">
+          MULTIPOLYGON(((-108.72070312499997 34.99400375757577,-100.01953124999997 46.58906908309183,-90.79101562499996 34.92197103616377,-108.72070312499997
+          34.99400375757577),(-100.10742187499997 41.47566020027821,-102.91992187499996 37.61423141542416,-96.85546874999996
+          37.54457732085582,-100.10742187499997 41.47566020027821)),((-85.16601562499999 34.84987503195417,-80.771484375 28.497660832963476,-76.904296875
+          34.92197103616377,-85.16601562499999 34.84987503195417)))
+        </textarea>
+        <div class="btn-group btn-group-md" style="padding: 10px; position: absolute; right:0px">
+          <button type="button" class="btn btn-primary" onclick="clearMap()">Clear</button>
+          <button type="button" class="btn btn-primary" onclick="plotWKT()">Plot Shape</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

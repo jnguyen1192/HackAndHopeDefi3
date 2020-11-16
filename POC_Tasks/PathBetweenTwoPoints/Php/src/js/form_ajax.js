@@ -13,6 +13,10 @@ $(function () { // Function to use php script without loading page
             city:$("#destination").val(), // the data of city as "city"
             /* TODO add other data form*/
         }
+        ,
+        success: function (data) {
+          $('#wktStringTextArea').html(data);
+    }
     });
 
   });
