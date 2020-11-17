@@ -12,18 +12,13 @@ We have:
 -lon_end=48.80463579895799
 
 http://wxs.ign.fr/choisirgeoportail/itineraire/rest/route.json?origin=1.4296871423721542,48.9491452350537&destination=1.8691402673721758,48.80463579895799&&method=DISTANCE&graphName=Pieton
-# Bus usage with Chouette from "le-pilote"
-wget https://github.com/afimb/docker-chouette/archive/master.zip
-# optionnaly
-# sudo apt install unzip
-unzip master.zip
-cd docker-chouette-master/
-# sudo apt install docker-compose
+# Bus usage with widget Moovit
+https://moovit.com/developers/
 
-https://github.com/afimb/docker-chouette
-docker-compose pull
-docker-compose up -d
-
+https://public.opendatasoft.com/explore/dataset/lignes-de-bus-du-reseau-de-transport-de-marseille-provence-metropole/table/?flg=fr
+https://www.navitia.io/
+https://cloud.google.com/maps-platform/routes/?hl=fr&utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_351528542785-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20SKWS%20~%20Routes%20%7C%20BMM%20%7C%20Routes%20API-KWID_43700044583135816-kwd-751861923825-userloc_9055038&utm_term=KW_%2Bapi%20%2Bitin%C3%A9raire-ST_%2Bapi%20%2Bitin%C3%A9raire&gclid=Cj0KCQiA48j9BRC-ARIsAMQu3WR4FyGO6M7BaYG8tlEFquarRTy9quSYIyVO6ADxq1ZW_ucMnFs8TS8aAgRqEALw_wcB
+https://www.digital.sncf.com/startup/api
 
 # source
 https://github.com/clydedacruz/openstreetmap-wkt-playground

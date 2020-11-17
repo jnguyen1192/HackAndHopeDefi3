@@ -136,7 +136,8 @@ function plotWKT() {
     centery = (miny + maxy) / 2;
     map.setView(new ol.View({
         center: [centerx, centery],
-        zoom: 8
+        zoom: 8,
+        maxZoom:18 // TODO correct zoom
     }));
     map.getView().fit(extent, map.getSize());
 }

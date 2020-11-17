@@ -17,35 +17,63 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body onload="init()">
-    <form>
-        Départ :<input type="text" id="origin" value="1.4296871423721542,48.9491452350537">
-        Arrivée :<input type="text" id="destination" value="1.8691402673721758,48.80463579895799">
-      <input name="submit" type="submit" value="Itinéraire Piéton">
-    </form>
-    <div id="response"></div>
+    <div style="float:left; width: 50%">
+      <form>
+          Départ :<input type="text" id="origin" value="5.43325263261795,43.43280567233535">
+          Arrivée :<input type="text" id="destination" value="5.381992936134338,43.302845260046894">
+        <input name="submit" type="submit" value="Itinéraire Piéton">
+      </form>
+      <div id="response"></div>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 40px;line-height: 0.5">
-      <a class="navbar-brand" href="#">Route Pedestrian</a>
-    </nav>
-    <div class="container-fluid" style="padding: 0px; border:0px">
-      <div class="span12">
-        <div id="overlay" class="row align-items-center justify-content-center" style="background-color: transparent; z-index:1; position: absolute; top:280px; right:26px">
-          <div class="btn-group-vertical ">
-            <button type="button" class="btn btn-primary" onclick="selectGeom('Point')">Point</button>
-            <button type="button" class="btn btn-primary" onclick="selectGeom('LineString')">Line String</button>
-            <button type="button" class="btn btn-primary" onclick="selectGeom('Polygon')">Polygon</button>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 40px;line-height: 0.5">
+        <a class="navbar-brand" href="#">Route Pedestrian</a>
+      </nav>
+      <div class="container-fluid" style="padding: 0px; border:0px">
+        <div class="span12">
+          <!--
+          <div id="overlay" class="row align-items-center justify-content-center" style="background-color: transparent; z-index:1; position: absolute; top:280px; right:26px">
+            <div class="btn-group-vertical ">
+              <button type="button" class="btn btn-primary" onclick="selectGeom('Point')">Point</button>
+              <button type="button" class="btn btn-primary" onclick="selectGeom('LineString')">Line String</button>
+              <button type="button" class="btn btn-primary" onclick="selectGeom('Polygon')">Polygon</button>
+            </div>
           </div>
+          -->
+          <div id="map" class="map" style="height: 400px; z-index: 0"></div>
         </div>
-        <div id="map" class="map" style="height: 400px; z-index: 0"></div>
+        <div class="span12" style="padding: 10px; border:0px">
+
+          <textarea id="wktStringTextArea" class="form-control" rows="4" onclick="restoreDefaultColors()">
+            POINT(5.43325263261795 43.43280567233535)
+          </textarea>
+          <!--
+          <div class="btn-group btn-group-md" style="padding: 10px; position: absolute; right:0px">
+            <button type="button" class="btn btn-primary" onclick="clearMap()">Clear</button>
+            <button type="button" class="btn btn-primary" onclick="plotWKT()">Plot Shape</button>
+          </div>
+          -->
+        </div>
       </div>
-      <div class="span12" style="padding: 10px; border:0px">
-        <textarea id="wktStringTextArea" class="form-control" rows="4" onclick="restoreDefaultColors()">
-          POINT(1.4296871423721542 48.9491452350537)
-        </textarea>
-        <div class="btn-group btn-group-md" style="padding: 10px; position: absolute; right:0px">
-          <button type="button" class="btn btn-primary" onclick="clearMap()">Clear</button>
-          <button type="button" class="btn btn-primary" onclick="plotWKT()">Plot Shape</button>
-        </div>
+    </div>
+    <div >
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height: 40px;line-height: 0.5">
+        <a class="navbar-brand" href="#">Route Public Transport</a>
+      </nav>
+      <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          js = d.createElement(s); js.id = id;
+          js.src = "https://widgets.moovit.com/wtp/fr";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'moovit-jsw'));
+      </script>
+      <div class="mv-wtp"
+           style="height:600px;"
+           data-lang="fr"
+           data-from="Current Position"
+           data-from-lat-long="43.43280567233535_5.43325263261795"
+           data-to="CeM School"
+           data-to-lat-long="43.302845260046894_5.381992936134338">
       </div>
     </div>
   </body>
