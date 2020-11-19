@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
+
+    <title>OpenLayers example</title>
+    <link rel="stylesheet" type="text/css" href="css/popup.css"  />
+</head>
+
+<body>
+<div id="map" style="width: 600px; height: 400px;"></div>
+<div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="info"></div>
+    <div id="popup-content">
+    </div>
+</div>
+
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+<script>
+    var lon = 5.4;
+    var lat = 43.30;
+    var lon_1 = 5.39;
+    var lat_1 = 43.29;
+    var attribution = new ol.control.Attribution({
+        collapsible: false
+    });
+
+    var map = new ol.Map({
+        controls: ol.control.defaults({ attribution: false }).extend([attribution]),
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        target: 'map',
+        view: new ol.View({
+            center: ol.proj.fromLonLat([lon, lat]),
+            maxZoom: 18,
+            zoom: 12
+        })
+    });
+
+    var layer = new ol.layer.Vector({
+        // TODO https://stackoverflow.com/questions/10700522/reading-latitude-longitude-from-db-and-putting-markers-on-the-map/10701956
+        source: new ol.source.Vector({
+            features: [
+                new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
+                    title: 'Earthquakes',
+                }),
+                new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon_1, lat_1])),
+                    title: 'Other',
+                }),
+            ]
+        })
+    });
+    map.addLayer(layer);
+
+    var container = document.getElementById('popup');
+    var content = document.getElementById('popup-content');
+    var closer = document.getElementById('popup-closer');
+    var infoElement = document.getElementById('info');
+
+    var overlay = new ol.Overlay({
+        element: container,
+        autoPan: true,
+        autoPanAnimation: {
+            duration: 250
+        }
+    });
+    map.addOverlay(overlay);
+
+    closer.onclick = function () {
+        overlay.setPosition(undefined);
+        closer.blur();
+        return false;
+    };
+
+    map.on('singleclick', function (event) {
+        if (map.hasFeatureAtPixel(event.pixel) === true) {
+            var coordinate = event.coordinate;
+
+            content.innerHTML = '<b>Hello world!</b><br />I am a popup.';
+
+
+            var feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
+                return feature;
+            });
+            console.log(infoElement, feature, feature.get('title'));
+            infoElement.innerHTML = feature ? feature.get('title') : '';
+
+            overlay.setPosition(coordinate);
+        } else {
+            overlay.setPosition(undefined);
+            closer.blur();
+        }
+    });
+
+
+
+    //content.innerHTML = '<b>Hello world!</b><br />I am a popup.';
+    //overlay.setPosition(ol.proj.fromLonLat([4.35247, 50.84673]));
+
+</script>
+</body>
+
+</html>

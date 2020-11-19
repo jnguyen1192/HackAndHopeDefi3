@@ -16,7 +16,7 @@ class protoLoadMarseilleNurserySchoolDB
 
     // Methods
 
-    function select_from_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="", $table="qp") // insert into db using credentials
+    function select_from_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="root", $table="qp") // insert into db using credentials
     {
         // Create connection
         $conn = new mysqli($host, $username, $password, $db_name, $port); // use mysqsli function to connect into db
@@ -38,7 +38,7 @@ class protoLoadMarseilleNurserySchoolDB
                     //echo "nom_epci: " . $row["nom_epci"]. " - latitude longitude: " . $row["latitude"]. " " . $row["longitude"]. "<br>";
                     array_push($this->list_row, $cols);
                 }
-                echo "Select awesome !!!"; // show a successfull message
+                //echo "Select awesome !!!"; // show a successfull message
                 return 0; // return 0 in case it works
             } else {
                 // case it doesn't work

@@ -13,7 +13,7 @@ class protoLoadMarseilleNurserySchoolDBTest extends TestCase
         //$list_row = select_points_from_db();
         //print_r($test_array);
         //print_r($pmnsd->list_row[0]);
-        // TODO retrieve data from db and test it
-        self::assertTrue($pmnsd->list_row[0]==$test_array);
+
+        self::assertTrue($pmnsd->list_row[0]==$test_array); // retrieve data from db and test it
     }
 }

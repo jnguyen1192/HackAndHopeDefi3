@@ -16,7 +16,7 @@ class protoLoadPriorityDistrictListDB
 
     // Methods
 
-    function select_points_from_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="", $table="qp") // insert into db using credentials
+    function select_points_from_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="root", $table="qp") // insert into db using credentials
     {
         // Create connection
         $conn = new mysqli($host, $username, $password, $db_name, $port); // use mysqsli function to connect into db
