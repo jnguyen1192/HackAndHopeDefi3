@@ -25,9 +25,10 @@
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 
 <script>
-    var lon = 4.36;
-    var lat = 50.84673
-    var lat_1 = 50.840;
+    var lon = 5.4;
+    var lat = 43.30;
+    var lon_1 = 5.39;
+    var lat_1 = 43.29;
     var attribution = new ol.control.Attribution({
         collapsible: false
     });
@@ -36,11 +37,7 @@
         controls: ol.control.defaults({ attribution: false }).extend([attribution]),
         layers: [
             new ol.layer.Tile({
-                source: new ol.source.OSM({
-                    url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
-                    attributions: [ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>'],
-                    maxZoom: 18
-                })
+                source: new ol.source.OSM()
             })
         ],
         target: 'map',
@@ -60,7 +57,7 @@
                     title: 'Earthquakes',
                 }),
                 new ol.Feature({
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat_1])),
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon_1, lat_1])),
                     title: 'Other',
                 })
             ]
