@@ -8,3 +8,8 @@ https://openstreetmap.be/en/projects/howto/openlayers-demo.html
 https://stackoverflow.com/questions/10700522/reading-latitude-longitude-from-db-and-putting-markers-on-the-map/10701956
 https://wiki.openstreetmap.org/wiki/Marseille#.C3.89coles
 https://www.w3schools.com/xml/ajax_intro.asp
+
+# openstreetmap filtres
+http://openpoimap.org/
+map.getLayers().removeAt(1); // suppresion d'un marker
+// TODO il faudrait pouvoir ajouter un marker en temps réel et le tour est joué
