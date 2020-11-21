@@ -1,9 +1,9 @@
 <?php
 
 // import lib
-require "protoLoadMarseilleNurserySchoolDB.php";
+require "protoLoadMarseilleSchoolDB.php";
 // create object
-$pmnsd = new protoLoadMarseilleNurserySchoolDB();// create object
+$pmnsd = new protoLoadMarseilleSchoolDB();// create object
 // load from db
 //echo print_r($pmnsd->list_row[0]);
 // print in javascript
@@ -36,9 +36,11 @@ echo 'var layer = new ol.layer.Vector({
     source: new ol.source.Vector({
         features: [';
 foreach ($pmnsd->list_row as $row){
+    // TODO POPUP MARKER Add other information
     echo 'new ol.Feature({
                     geometry: new ol.geom.Point(ol.proj.fromLonLat(['. $row['longitude']  .', '. $row['latitude']  .'])),
                     title: \''. str_replace("'", "\'", $row['Nom du site'])  .'\',
+                    category: \'' . $row['Categorie'] . '\',
                     }),';
 }
 echo '     ]
@@ -71,7 +73,7 @@ echo '
     map.on(\'singleclick\', function (event) {
         if (map.hasFeatureAtPixel(event.pixel) === true) {
             var coordinate = event.coordinate;
-
+            // TODO POPUP MARKER CUSTOM DISPLAY
             content.innerHTML = \'<b>Les points proviennent d\\\'une BD Mysql!</b><br />Je rajouterai les effectifs\';
 
 

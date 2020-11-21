@@ -1,16 +1,17 @@
 <?php
 
 
-class protoLoadMarseilleNurserySchoolCSV
+class protoLoadMarseilleSchoolCSV
 {
     public $path_csv; // path as member
     public $list_row = array(); // list row as member
 
 
-    function __construct($path_csv='') // constructor
+    function __construct($path_csv='', $delimiter) // constructor
     {
         $this->path_csv = $path_csv; // assign path on the object creation
-        $this->load_marseille_nursery_school_csv(); // load csv file with priority district list
+        $this->delimiter = $delimiter;
+        $this->load_marseille_school_csv(); // load csv file with priority district list
     }
 
     // Methods
@@ -18,10 +19,10 @@ class protoLoadMarseilleNurserySchoolCSV
         return $this->path_csv; // use member to get path of csv file
     }
 
-    function load_marseille_nursery_school_csv() { // load priority district list from csv file
+    function load_marseille_school_csv() { // load priority district list from csv file
         $row = 1; // init variable $row with value 1
         if (($handle = fopen($this->path_csv, "r")) !== FALSE) { // open file using path csv
-            while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {  // split each row using ';'
+            while (($data = fgetcsv($handle, 0, $this->delimiter)) !== FALSE) {  // split each row using ';'
                 if ($row == 1) { // ignore header
                     $row++; // increment to the first row
                     continue; // ignore the rest of the loop one time
@@ -40,7 +41,7 @@ class protoLoadMarseilleNurserySchoolCSV
         }
     }
 
-    function insert_Nursery_School($conn, $row) // insert a row in PriorityDistrict
+    function insert_School($conn, $row) // insert a row in PriorityDistrict
     {
         for($i = 0; $i < count($row); ++$i) { // for each columns of a row replace ' by \' to eliminate "d'Oise" exception or others
             $row[$i] = str_replace("'","\'", $row[$i] ); // replace
@@ -81,7 +82,7 @@ class protoLoadMarseilleNurserySchoolCSV
         {
             foreach($this->list_row as $row) // for each row in the list
             {
-                $this->insert_Nursery_School($conn, $row); // insert into the database
+                $this->insert_School($conn, $row); // insert into the database
             }
             // SELECT ST_Within(point, geojson) FROM test_point, test_geojson !
             $conn->close(); // close the connexion

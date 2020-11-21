@@ -1,7 +1,7 @@
 <?php
 
 
-class protoLoadMarseilleNurserySchoolDB
+class protoLoadMarseilleSchoolDB
 {
     //public $path_csv; // path as member
     public $list_row = array(); // list row as member
