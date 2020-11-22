@@ -7,16 +7,16 @@ class protoLoadMarseilleSchoolDB
     public $list_row = array(); // list row as member
 
 
-    function __construct() // constructor
+    function __construct($category) // constructor
     {
         //$this->path_csv = $path_csv; // assign path on the object creation
         //$this->load_priority_district_list_db(); // load csv file with priority district list
-        $this->select_from_db();
+        $this->select_from_db($category);
     }
 
     // Methods
 
-    function select_from_db($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="root", $table="qp") // insert into db using credentials
+    function select_from_db($category, $host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="root", $table="qp") // insert into db using credentials
     {
         // Create connection
         $conn = new mysqli($host, $username, $password, $db_name, $port); // use mysqsli function to connect into db
@@ -29,7 +29,7 @@ class protoLoadMarseilleSchoolDB
         {
 
             //$this->insert_PriorityDistrict($conn, $row); // insert into the database
-            $sql = 'SELECT `Nom du site`,`Categorie`,`Adresse 1`,`Adresse 2`,`Code Postal`,`Ville`,`Numero de telephone`,`Email`, ST_X(`geo_point_2d`) as longitude, ST_Y(`geo_point_2d`) as latitude FROM `mns`'; // mysql query to select points from DB
+            $sql = 'SELECT `Nom du site`,`Categorie`,`Adresse 1`,`Adresse 2`,`Code Postal`,`Ville`,`Numero de telephone`,`Email`, ST_X(`geo_point_2d`) as longitude, ST_Y(`geo_point_2d`) as latitude FROM `mns` WHERE `Categorie` = \''. $category . '\''; // mysql query to select points from DB
             $res = $conn->query($sql);
             if ($res->num_rows > 0) {
                 // output data of each row

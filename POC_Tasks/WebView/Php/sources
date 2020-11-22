@@ -11,6 +11,6 @@ https://www.w3schools.com/xml/ajax_intro.asp
 
 # openstreetmap filtres
 http://openpoimap.org/
-map.getLayers().removeAt(1); // suppression d'un marker
-layer.values_.source.getFeatures()[0]; // affichage du premier marker
+map.getLayers().array_[1].setVisible(true);
+
 // TODO il faudrait pouvoir ajouter un marker en temps réel et le tour est joué
