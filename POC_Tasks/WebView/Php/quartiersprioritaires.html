@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select Features</title>
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+          type="text/css">
+    <style>
+        .map {
+            width: 100%;
+            height:400px;
+        }
+    </style>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+</head>
+<body>
+<div id="map" class="map"></div>
+<form class="form-inline">
+    <label>Action type &nbsp;</label>
+    <select id="type" class="form-control">
+        <option value="click" selected>Click</option>
+        <option value="singleclick">Single-click</option>
+        <option value="pointermove">Hover</option>
+        <option value="altclick">Alt+Click</option>
+        <option value="none">None</option>
+    </select>
+    <span id="status">&nbsp;0 selected features</span>
+</form>
+<script type="module" src="main.js"></script>
+</body>
+</html>
