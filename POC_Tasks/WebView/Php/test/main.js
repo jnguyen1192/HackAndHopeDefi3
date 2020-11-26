@@ -4,7 +4,7 @@ var raster = new ol.layer.Tile({
 
 var vector = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: 'data/geojson/countries.geojson',
+        url: 'https://github.com/jnguyen1192/HackAndHopeDefi3/blob/main/POC_Tasks/WebView/Php/data/geojson/liste_quartiers_prioritairesville.geojson',
         format: new ol.format.GeoJSON(),
     }),
 });

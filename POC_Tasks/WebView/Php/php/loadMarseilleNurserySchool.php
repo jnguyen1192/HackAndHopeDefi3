@@ -58,6 +58,15 @@ echo_markers("Ecoles elementaires");
 
 
 echo '
+    var vector = new ol.layer.Vector({
+        category: \'Quartiers prioritaires\',
+        source: new ol.source.Vector({
+            url: \'data/geojson/liste_quartiers_prioritairesville.geojson\',
+            format: new ol.format.GeoJSON(),
+        }),
+    });
+    map.addLayer(vector);
+
     var container = document.getElementById(\'popup\');
     var content = document.getElementById(\'popup-content\');
     var closer = document.getElementById(\'popup-closer\');
@@ -100,9 +109,10 @@ echo '
     function ShowHide(chkSchool) {
     for (var i = 0; i < map.getLayers().array_.length; i++) {
         var obj = map.getLayers().array_[i];
+        console.log(i + " " + obj.values_.category + " " + chkSchool.value);
         if (obj.values_.category == chkSchool.value) {
             chkSchool.checked ? map.getLayers().array_[i].setVisible(true):map.getLayers().array_[i].setVisible(false);
-            console.log(i);
+            console.log(i + " " + obj.values_.category + " " + chkSchool.value);
         }
     }
 }';
