@@ -51,10 +51,25 @@ function echo_markers($category)
     });
     map.addLayer(layer);';
 }
+
+function echo_areas($category)
+{
+    echo '
+    var layer = new ol.layer.Vector({
+        category: \''. $category .'\',
+        source: new ol.source.Vector({
+            url: \'data/geojson/liste_quartiers_prioritairesville.geojson\',
+            format: new ol.format.GeoJSON(),
+        }),
+    });
+    map.addLayer(layer);';
+}
+
 //$pmesd = new protoLoadMarseilleSchoolDB("Ecoles elementaires");// create object elementary
 //$category = "Ecoles maternelles";
 echo_markers("Ecoles maternelles");
 echo_markers("Ecoles elementaires");
+echo_areas("Quartiers prioritaires");
 
 
 echo '
