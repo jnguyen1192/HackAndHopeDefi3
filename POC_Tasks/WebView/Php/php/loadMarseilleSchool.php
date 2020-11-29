@@ -85,15 +85,6 @@ echo_markers("Ecoles elementaires");
 
 
 echo '
-    var vector = new ol.layer.Vector({
-        category: \'Quartiers prioritaires\',
-        source: new ol.source.Vector({
-            url: \'data/geojson/liste_quartiers_prioritairesville.geojson\',
-            format: new ol.format.GeoJSON(),
-        }),
-    });
-    map.addLayer(vector);
-
     var container = document.getElementById(\'popup\');
     var content = document.getElementById(\'popup-content\');
     var closer = document.getElementById(\'popup-closer\');
@@ -117,21 +108,34 @@ echo '
     map.on(\'singleclick\', function (event) {
         if (map.hasFeatureAtPixel(event.pixel) === true) {
             var coordinate = event.coordinate;
-            // TODO POPUP MARKER CUSTOM DISPLAY
-            content.innerHTML = \'<b>Les points proviennent d\\\'une BD Mysql!</b><br />Je rajouterai les effectifs\';
-
-
             var feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
-                return feature;
-            });
-            console.log(infoElement, feature, feature.get(\'title\'));
-            infoElement.innerHTML = feature ? feature.get(\'title\')
-              + "<br>" + feature.get(\'category\')
-              + "<br>" + feature.get(\'address\')
-               + "<br>" + feature.get(\'email\')
-                + "<br>" + feature.get(\'phone\'): \'\';
-
-            overlay.setPosition(coordinate);
+                    return feature;
+                });
+            if (feature.get(\'category\') == "Ecoles elementaires" || feature.get(\'category\') == "Ecoles maternelles") {
+                console.log(feature.get(\'category\'));
+                // TODO POPUP MARKER CUSTOM DISPLAY
+                content.innerHTML = \'<b>Les points proviennent d\\\'une BD Mysql!</b><br />Je rajouterai les effectifs\';
+    
+    
+                
+                console.log(infoElement, feature, feature.get(\'title\'));
+                
+                
+                infoElement.innerHTML = feature ? feature.get(\'title\')
+                  + "<br>" + feature.get(\'category\')
+                  + "<br>" + feature.get(\'address\')
+                   + "<br>" + feature.get(\'email\')
+                    + "<br>" + feature.get(\'phone\'): \'\';
+    
+                overlay.setPosition(coordinate);
+            }
+            else if (feature.get(\'category\') == undefined) {
+            // TODO add popup district priority information
+            }
+            else {
+                overlay.setPosition(undefined);
+                closer.blur();
+            }
         } else {
             overlay.setPosition(undefined);
             closer.blur();
