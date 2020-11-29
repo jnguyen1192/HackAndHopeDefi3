@@ -13,4 +13,10 @@ https://www.w3schools.com/xml/ajax_intro.asp
 http://openpoimap.org/
 map.getLayers().array_[1].setVisible(true);
 
+# chargement facile des data
+https://www.convertcsv.com/csv-to-geojson.htm
+https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/export/?disjunctive.nom_etablissement&disjunctive.type_etablissement&disjunctive.appartenance_education_prioritaire&disjunctive.type_contrat_prive&disjunctive.code_type_contrat_prive&disjunctive.pial&sort=statut_public_prive&q=ecole+maternelle+marseille
+
+# tile server
+https://wiki.openstreetmap.org/wiki/Tile_servers
 // TODO il faudrait pouvoir ajouter un marker en temps réel et le tour est joué

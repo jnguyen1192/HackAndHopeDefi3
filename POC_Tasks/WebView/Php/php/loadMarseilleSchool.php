@@ -20,7 +20,16 @@ echo 'var lon = 5.4;
         controls: ol.control.defaults({ attribution: false }).extend([attribution]),
         layers: [
             new ol.layer.Tile({
-                source: new ol.source.OSM()
+                source: new ol.source.XYZ({
+              attributions: [
+              ol.source.OSM.ATTRIBUTION,
+                \'Tiles courtesy of \' +
+                \'<a href="http://openstreetmap.org">\' +
+    \'OpenStreetMap\' +
+\'</a>\'
+              ],
+              url: \'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=u6e9tX5rOGAnnlVjt6l7\' // http://c.tile.stamen.com/watercolor/${z}/${x}/${y}.jpg
+            })
             })
         ],
         target: \'map\',
