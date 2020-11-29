@@ -40,6 +40,9 @@ function echo_markers($category)
                     geometry: new ol.geom.Point(ol.proj.fromLonLat(['. $row['longitude']  .', '. $row['latitude']  .'])),
                     title: \''. str_replace("'", "\'", $row['Nom du site'])  .'\',
                     category: \'' . $row['Categorie'] . '\',
+                    address: \'' . str_replace("'", "\'", $row['Adresse 1']) . '\',
+                    email: \'' . $row['Email'] . '\',
+                    phone: \'' . $row['Numero de telephone'] . '\',
                     }),';
     }
     echo '];
@@ -67,9 +70,9 @@ function echo_areas($category)
 
 //$pmesd = new protoLoadMarseilleSchoolDB("Ecoles elementaires");// create object elementary
 //$category = "Ecoles maternelles";
+echo_areas("Quartiers prioritaires");
 echo_markers("Ecoles maternelles");
 echo_markers("Ecoles elementaires");
-echo_areas("Quartiers prioritaires");
 
 
 echo '
@@ -113,7 +116,11 @@ echo '
                 return feature;
             });
             console.log(infoElement, feature, feature.get(\'title\'));
-            infoElement.innerHTML = feature ? feature.get(\'title\') : \'\';
+            infoElement.innerHTML = feature ? feature.get(\'title\')
+              + "<br>" + feature.get(\'category\')
+              + "<br>" + feature.get(\'address\')
+               + "<br>" + feature.get(\'email\')
+                + "<br>" + feature.get(\'phone\'): \'\';
 
             overlay.setPosition(coordinate);
         } else {
