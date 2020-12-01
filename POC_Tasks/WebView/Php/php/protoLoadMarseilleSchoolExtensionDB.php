@@ -12,7 +12,7 @@ class protoLoadMarseilleSchoolDB
         //$this->path_csv = $path_csv; // assign path on the object creation
         //$this->load_priority_district_list_db(); // load csv file with priority district list
         $this->select_from_db($category);
-        // TODO select effectif using key (email or phone
+        // TODO select effectif using key (email or phone)
     }
 
     // Methods
