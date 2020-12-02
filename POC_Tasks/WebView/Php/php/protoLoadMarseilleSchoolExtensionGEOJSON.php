@@ -1,7 +1,7 @@
 <?php
 
 
-class protoLoadMarseilleSchoolCSV
+class protoLoadMarseilleSchoolExtensionGEOJSON
 {
     public $path_csv; // path as member
     public $list_row = array(); // list row as member
@@ -14,6 +14,21 @@ class protoLoadMarseilleSchoolCSV
         $this->load_marseille_school_csv(); // load csv file with priority district list
         // TODO create table email or phone as primary key
         //      open csv or geojson
+        /*
+    $geojson = file_get_contents($filePath);
+    $json = json_decode($geojson, true);
+
+    // Check if GeoJSON is Feature or FeatureCollection
+    if ($json['type'] === 'FeatureCollection') {
+        foreach($json['features'] as $feature){
+            createInsert($mysqli, $feature);
+        }
+    } else if ($json['type'] === 'Feature') {
+        createInsert($mysqli, $json);
+    } else {
+        exit('Invalid GeoJSON');
+    }
+        */
 
     }
 
