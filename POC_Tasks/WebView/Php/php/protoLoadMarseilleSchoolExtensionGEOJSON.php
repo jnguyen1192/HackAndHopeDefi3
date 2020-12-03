@@ -24,11 +24,12 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
             createInsert($mysqli, $feature);
         }
     } else if ($json['type'] === 'Feature') {
-        createInsert($mysqli, $json);
+        createInsert($mysqli, $json);// TODO For each lines created add them into mysql table that you create before
     } else {
         exit('Invalid GeoJSON');
     }
         */
+
 
     }
 
