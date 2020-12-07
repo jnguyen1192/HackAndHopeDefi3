@@ -1,6 +1,6 @@
 <?php
 
-require("../php/protoLoadMarseilleSchoolCSV.php");
+require("../php/protoLoadMarseilleSchoolExtensionGEOJSON.php");
 
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +10,7 @@ class protoLoadMarseilleSchoolCSVTest extends TestCase
     public function testget_path_geojson()
     {
         // TODO
-        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\marseille_ecoles_maternelles_2018.csv"; // initialize the path
+        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\Php\data\geojson\fr-en-annuaire-education.geojson"; // initialize the path
         $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson); // create a proto using path
         echo $lmsGEOJSON->get_path_csv();
         $this->assertTrue($lmsGEOJSON->get_path_csv() == $path_geojson); // test if the path is correctly added into the proto
@@ -19,7 +19,7 @@ class protoLoadMarseilleSchoolCSVTest extends TestCase
     public function testLoad_marseille_annuaire_eduction_geojson()
     {
         // TODO
-        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\marseille_ecoles_maternelles_2018.csv"; // initialize the path
+        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\Php\data\geojson\fr-en-annuaire-education.geojson"; // initialize the path
         $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_csv); // create a proto using path
 
         //echo var_dump($lpdlCSV->list_row);
@@ -36,7 +36,7 @@ class protoLoadMarseilleSchoolCSVTest extends TestCase
     public function testinsert_annuaire_education_into_db()
     {
         // TODO
-        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\marseille_ecoles_maternelles_2018.csv"; // initialize the path
+        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\Php\data\geojson\fr-en-annuaire-education.geojson"; // initialize the path
 
         $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson, ","); // create a proto using the path
 
