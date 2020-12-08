@@ -4,7 +4,7 @@ require("../php/protoLoadMarseilleSchoolExtensionGEOJSON.php");
 
 use PHPUnit\Framework\TestCase;
 
-class protoLoadMarseilleSchoolCSVTest extends TestCase
+class protoLoadMarseilleSchoolExtensionGEOJSONTest extends TestCase
 {
 
     public function testget_path_geojson()
@@ -12,16 +12,16 @@ class protoLoadMarseilleSchoolCSVTest extends TestCase
         // TODO
         $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\Php\data\geojson\fr-en-annuaire-education.geojson"; // initialize the path
         $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson); // create a proto using path
-        echo $lmsGEOJSON->get_path_csv();
-        $this->assertTrue($lmsGEOJSON->get_path_csv() == $path_geojson); // test if the path is correctly added into the proto
+        echo $lmsGEOJSON->get_path_geojson();
+        $this->assertTrue($lmsGEOJSON->get_path_geojson() == $path_geojson); // test if the path is correctly added into the proto
     }
 
     public function testLoad_marseille_annuaire_eduction_geojson()
     {
         // TODO
-        $path_geojson = "C:\Users\johdu\PhpstormProjects\HackAndHopeDefi3\POC_Tasks\WebView\Php\data\geojson\fr-en-annuaire-education.geojson"; // initialize the path
-        $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_csv); // create a proto using path
-
+        $path_geojson = "C:/Users/johdu/PhpstormProjects/HackAndHopeDefi3/POC_Tasks/WebView/Php/data/geojson/fr-en-annuaire-education.geojson"; // initialize the path
+        $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson); // create a proto using path
+        echo var_dump($lmsGEOJSON->list_row[20]); # TODO use phone number to join (without space) with mns table number student
         //echo var_dump($lpdlCSV->list_row);
         //echo var_dump($lmnsCSV->list_row[0][0]);
         //echo var_dump($lmnsCSV->list_row[0][7]);

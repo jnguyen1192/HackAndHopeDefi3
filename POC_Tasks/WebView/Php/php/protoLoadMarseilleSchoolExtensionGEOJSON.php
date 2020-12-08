@@ -3,15 +3,14 @@
 
 class protoLoadMarseilleSchoolExtensionGEOJSON
 {
-    public $path_csv; // path as member
+    public $path_geojson; // path as member
     public $list_row = array(); // list row as member
 
 
-    function __construct($path_csv='', $delimiter) // constructor
+    function __construct($path_geojson='') // constructor
     {
-        $this->path_csv = $path_csv; // assign path on the object creation
-        $this->delimiter = $delimiter;
-        $this->load_marseille_school_csv(); // load csv file with priority district list
+        $this->path_geojson = $path_geojson; // assign path on the object creation
+        $this->load_marseille_school_geojson(); // load csv file with priority district list
         // TODO create table email or phone as primary key
         //      open csv or geojson
         /*
@@ -34,30 +33,25 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
     }
 
     // Methods
-    function get_path_csv() { // get path
-        return $this->path_csv; // use member to get path of csv file
+    function get_path_geojson() { // get path
+        return $this->path_geojson; // use member to get path of csv file
     }
 
-    function load_marseille_school_csv() { // load priority district list from csv file
-        $row = 1; // init variable $row with value 1
-        if (($handle = fopen($this->path_csv, "r")) !== FALSE) { // open file using path csv
-            while (($data = fgetcsv($handle, 0, $this->delimiter)) !== FALSE) {  // split each row using ';'
-                if ($row == 1) { // ignore header
-                    $row++; // increment to the first row
-                    continue; // ignore the rest of the loop one time
-                }
-                $num = count($data); // count the number of columns
-                //echo "<p> $num champs à la ligne $row: <br /></p>\n";
-                $row++; // increment the number of row
-                $cols = array(); // prepare an array
-                for ($c=0; $c < $num; $c++) { // loop in each columns of the row
-                    array_push($cols, $data[$c]); // add each columns on array
-                    //echo $data[$c] . "<br />\n";
-                }
-                array_push($this->list_row, $cols); // add each row on the list row
+    function load_marseille_school_geojson() { // load priority district list from csv file
+        $geojson = file_get_contents($this->path_geojson);
+        $json = json_decode($geojson, true);
+        if ($json['type'] === 'FeatureCollection') {
+            foreach($json['features'] as $feature){
+                echo "FeatureCollection";
+                array_push($this->list_row, $feature);
             }
-            fclose($handle); // close the file
+        } else if ($json['type'] === 'Feature') {
+            echo "Feature";
+            array_push($this->list_row, $json);;// TODO For each lines created add them into mysql table that you create before
+        } else {
+            exit('Invalid GeoJSON');
         }
+        return "";
     }
 
     function insert_School($conn, $row) // insert a row in PriorityDistrict
