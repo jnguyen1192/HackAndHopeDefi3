@@ -40,6 +40,8 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
     function load_marseille_school_geojson() { // load priority district list from csv file
         $geojson = file_get_contents($this->path_geojson);
         $json = json_decode($geojson, true);
+        $this->list_row = $json;
+        /*
         if ($json['type'] === 'FeatureCollection') {
             foreach($json['features'] as $feature){
                 echo "FeatureCollection";
@@ -50,7 +52,7 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
             array_push($this->list_row, $json);;// TODO For each lines created add them into mysql table that you create before
         } else {
             exit('Invalid GeoJSON');
-        }
+        }*/
         return "";
     }
 

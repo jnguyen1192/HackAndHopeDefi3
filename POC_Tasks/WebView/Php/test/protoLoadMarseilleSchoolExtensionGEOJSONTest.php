@@ -21,7 +21,8 @@ class protoLoadMarseilleSchoolExtensionGEOJSONTest extends TestCase
         // TODO
         $path_geojson = "C:/Users/johdu/PhpstormProjects/HackAndHopeDefi3/POC_Tasks/WebView/Php/data/geojson/fr-en-annuaire-education.geojson"; // initialize the path
         $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson); // create a proto using path
-        echo var_dump($lmsGEOJSON->list_row[20]); # TODO use phone number to join (without space) with mns table number student
+        echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"]); # TODO use phone number to join (without space) with mns table number student
+        echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"]);
         //echo var_dump($lpdlCSV->list_row);
         //echo var_dump($lmnsCSV->list_row[0][0]);
         //echo var_dump($lmnsCSV->list_row[0][7]);
