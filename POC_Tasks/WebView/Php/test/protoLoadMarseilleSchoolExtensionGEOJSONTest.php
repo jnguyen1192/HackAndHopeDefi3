@@ -28,6 +28,19 @@ class protoLoadMarseilleSchoolExtensionGEOJSONTest extends TestCase
         $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"] == "0491496079"); // check phone
         $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"] == 96); // check number
     }
+    public function test_count_update_marseille_annuaire_eduction_geojson()
+    {
+        // TODO get phone number from database
+        //  For each features count if the phone number exist on database
+        $path_geojson = "C:/Users/johdu/PhpstormProjects/HackAndHopeDefi3/POC_Tasks/WebView/Php/data/geojson/fr-en-annuaire-education.geojson"; // initialize the path
+        $lmsGEOJSON = new protoLoadMarseilleSchoolExtensionGEOJSON($path_geojson); // create a proto using path
+        //echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"]); # TODO use phone number to join (without space) with mns table number student
+        //echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"]);
+
+
+        $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"] == "0491496079"); // check phone
+        $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"] == 96); // check number
+    }
 
     public function testinsert_annuaire_education_into_db()
     {
