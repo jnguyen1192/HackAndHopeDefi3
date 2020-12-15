@@ -35,9 +35,26 @@ class protoLoadMarseilleSchoolExtensionGEOJSONTest extends TestCase
 
         // get phone number from database
         $phone_numbers = $lmsGEOJSON->get_phone_numbers_from_database();
-        echo count($phone_numbers);
+        echo count($phone_numbers) . " dans le geojson";
+        // replace  " " by "" in phone numbers
+
+        for($i=0; $i < count($phone_numbers); $i++) {
+            $phone_numbers[$i] = str_replace(" ", "", $phone_numbers[$i]["Numero_avec_espaces"]);
+        }
+        //echo var_dump($phone_numbers);
         $count = 0;
-        // TODO for each phone in features
+        // for each phone in features
+        $features = $lmsGEOJSON->list_row['features'];
+        for($i=0; $i < count($features); $i++) {
+            //print(var_dump($features[$i]));
+            if (array_key_exists("telephone", $features[$i]["properties"])) {
+                if(in_array ($features[$i]["properties"]["telephone"], $phone_numbers)) {
+                    $count++;
+                }
+            }
+        }
+        echo "\n".$count. " numéros qui matchent";
+
         //      Test if it exists on db #str_replace("%body%", "black", "<body text='%body%'>")
         //      Case it works increment count
 
