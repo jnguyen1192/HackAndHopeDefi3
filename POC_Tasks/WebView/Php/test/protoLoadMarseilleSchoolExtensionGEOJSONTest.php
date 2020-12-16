@@ -55,13 +55,7 @@ class protoLoadMarseilleSchoolExtensionGEOJSONTest extends TestCase
         }
         echo "\n".$count. " numéros qui matchent";
 
-        //      Test if it exists on db #str_replace("%body%", "black", "<body text='%body%'>")
-        //      Case it works increment count
-
-        //  For each features count if the phone number exist on database
-        //echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"]); # TODO use phone number to join (without space) with mns table number student
-        //echo var_dump($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"]);
-
+        // TODO create a function that merge data using a field in a class
 
         $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["telephone"] == "0491496079"); // check phone
         $this->assertTrue($lmsGEOJSON->list_row['features'][20]["properties"]["nombre_d_eleves"] == 96); // check number
