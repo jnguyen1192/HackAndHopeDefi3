@@ -78,6 +78,10 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
         }
     }
 
+    function merge_using_phone_number() {
+        // TODO complete this function using correct parameters
+    }
+
     function load_marseille_school_geojson() { // load priority district list from csv file
         $geojson = file_get_contents($this->path_geojson);
         $json = json_decode($geojson, true);
