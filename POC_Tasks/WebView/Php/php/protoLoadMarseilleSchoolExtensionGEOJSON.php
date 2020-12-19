@@ -80,6 +80,42 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
 
     function merge_using_phone_number() {
         // TODO complete this function using correct parameters
+        /* 1)
+            ALTER TABLE YourTable
+            ADD YourNewColumn INT NULL;
+
+            2)
+            UPDATE YourTable SET YourNewColumn = 10; -- Or some more complex expression
+                 "date_ouverture":"2016-11-02",
+                 "restauration":0,
+                 "nombre_d_eleves":26,
+        */
+        /**
+        This class will be used to merge a geojson into a mysql database
+        For example:
+         *   - we have table:
+         *      mns(Nom du site,"Categorie","Adresse 1","Adresse 2","Code Postal","Ville","Numero de telephone","Email","geo_point_2d")
+         *   - we have geojson:
+        {
+        "type":"FeatureCollection",
+        "features":[
+        {
+            "type":"Feature",
+            "geometry":{
+            "type":,
+            "coordinates":[]
+        },
+            "properties":{
+                 date_ouverture":"2016-11-02",
+                 [ ... ]
+                 "telephone":"0950896922",
+                 "restauration":0,
+                 "nombre_d_eleves":26,
+                 [ ... ]}}
+         *  ]}
+         *
+         *  We can use the phone numbers to add new properties like "date_ouverture", "restauration" and "nombre_d_eleves"
+         */
     }
 
     function load_marseille_school_geojson() { // load priority district list from csv file

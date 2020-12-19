@@ -30,6 +30,7 @@ class protoLoadMarseilleSchoolDB
         {
 
             //$this->insert_PriorityDistrict($conn, $row); // insert into the database
+            // TODO POPUP MARKER Add other information
             $sql = 'SELECT `Nom du site`,`Categorie`,`Adresse 1`,`Adresse 2`,`Code Postal`,`Ville`,`Numero de telephone`,`Email`, ST_X(`geo_point_2d`) as longitude, ST_Y(`geo_point_2d`) as latitude FROM `mns` WHERE `Categorie` = \''. $category . '\''; // mysql query to select points from DB
             $res = $conn->query($sql);
             if ($res->num_rows > 0) {

@@ -44,7 +44,7 @@ function echo_markers($category)
     $pmsd = new protoLoadMarseilleSchoolDB($category);// create object nursery
     echo 'var markers = [';
     foreach ($pmsd->list_row as $row){
-        // TODO POPUP MARKER Add other information
+
         echo 'new ol.Feature({
                     geometry: new ol.geom.Point(ol.proj.fromLonLat(['. $row['longitude']  .', '. $row['latitude']  .'])),
                     title: \''. str_replace("'", "\'", $row['Nom du site'])  .'\',
@@ -52,7 +52,7 @@ function echo_markers($category)
                     address: \'' . str_replace("'", "\'", $row['Adresse 1']) . '\',
                     email: \'' . $row['Email'] . '\',
                     phone: \'' . $row['Numero de telephone'] . '\',
-                    }),';
+                    }),'; //  TODO POPUP MARKER Add other information
     }
     echo '];
     var layer = new ol.layer.Vector({
