@@ -78,8 +78,14 @@ class protoLoadMarseilleSchoolExtensionGEOJSON
         }
     }
 
-    function merge_using_phone_number() {
+    function merge_using_phone_number($host="localhost", $port=3306, $db_name="proto_qp", $username="root", $password="root") {
         // TODO complete this function using correct parameters
+        // Create connection
+        $conn = new mysqli($host, $username, $password, $db_name, $port); // use mysqsli function to connect into db
+        // Check connection
+        if ($conn->connect_error) { // check connexion
+            die("Connection failed: " . $conn->connect_error); // show an error message
+        }
         /* 1)
             ALTER TABLE YourTable
             ADD YourNewColumn INT NULL;
