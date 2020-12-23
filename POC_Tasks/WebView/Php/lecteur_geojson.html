@@ -7,21 +7,30 @@
 </head>
 
 <body>
-<div>Hello world</div>
-<label for="geojson">Choose a geojson file:</label>
+<input type="file" id="files" />
 
-<input type="file"
-       id="geojson" name="geojson"
-       accept="application/GEOJSON">
+<script>
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
 
-<!-- Le type d'encodage des données, enctype, DOIT être spécifié comme ce qui suit -->
-<form enctype="multipart/form-data" action="analyseGeojson.php" method="post">
-    <!-- MAX_FILE_SIZE doit précéder le champ input de type file -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-    Envoyez ce fichier : <input name="userfile" type="file" />
-    <input type="submit" value="Envoyer le fichier" />
-</form>
+        for (var i = 0, f; f = files[i]; i++) {
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    document.getElementById('txtHint').innerText = e.target.result;
+                };
+            })(f);
+
+            reader.readAsDataURL(f);
+        }
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+<p>Suggestions: <span id="txtHint"></span></p>
 </body>
 
 </html>
