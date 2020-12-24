@@ -23,8 +23,9 @@
                     document.getElementById('txtHint').innerText = e.target.result;
                 };
             })(f);
+            reader.readAsText(f);
 
-            reader.readAsDataURL(f);
+            //reader.readAsDataURL(f);
         }
     }
 
