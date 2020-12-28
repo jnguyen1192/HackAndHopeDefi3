@@ -10,29 +10,37 @@
 <input type="file" id="files" />
 
 <script>
-    Object.flatten = function(data) {
-        var result = {};
-        function recurse (cur, prop) {
-            if (Object(cur) !== cur) {
-                result[prop] = cur;
-            } else if (Array.isArray(cur)) {
-                for(var i=0, l=cur.length; i<l; i++)
-                    recurse(cur[i], prop + "[" + i + "]");
-                if (l == 0)
-                    result[prop] = [];
-            } else {
-                var isEmpty = true;
-                for (var p in cur) {
-                    isEmpty = false;
-                    recurse(cur[p], prop ? prop+"."+p : p);
+    function flattenObject(ob) {
+        let toReturn = {};
+        let flatObject;
+        for (let i in ob) {
+            //console.log(i+ ' ' + typeof(ob[i]));
+            if (!ob.hasOwnProperty(i)) {
+                continue;
+            }
+            //Exclude arrays from the final result
+            //Check this http://stackoverflow.com/questions/4775722/check-if-object-is-array
+            if(ob[i] && Array === ob[i].constructor){
+                continue;
+            }
+            if ((typeof ob[i]) === 'object') {
+                flatObject = flattenObject(ob[i]);
+                for (let x in flatObject) {
+                    if (!flatObject.hasOwnProperty(x)) {
+                        continue;
+                    }
+                    //Exclude arrays from the final result
+                    if(flatObject[x] && Array === flatObject.constructor){
+                        continue;
+                    }
+                    toReturn[i + (!!isNaN(x) ? '.' + x : '')] = flatObject[x];
                 }
-                if (isEmpty && prop)
-                    result[prop] = {};
+            } else {
+                toReturn[i] = ob[i];
             }
         }
-        recurse(data, "");
-        return result;
-    }
+        return toReturn;
+    };
 
     function handleFileSelect(evt) {
         var files = evt.target.files; // FileList object
@@ -44,10 +52,13 @@
             // Closure to capture the file information.
             reader.onload = (function(theFile) {
                 return function(e) {
-                    document.getElementById('txtHint').innerText = e.target.result;
+                    document.getElementById('txtHintBrut').innerText = e.target.result;
+                    var as = JSON.parse(e.target.result);
+                    document.getElementById('txtHintTransform').innerText = JSON.stringify(flattenObject(as));
+                    console.log(as);
                 };
             })(f);
-            reader.readAsText(f.flatten); // https://stackoverflow.com/questions/19098797/fastest-way-to-flatten-un-flatten-nested-json-objects
+            reader.readAsText(f);
 
             //reader.readAsDataURL(f);
         }
@@ -55,7 +66,8 @@
     // TODO show geojson data into a table
     document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
-<p>Suggestions: <span id="txtHint"></span></p>
+<p>Brut: <span id="txtHintBrut"></span></p>
+<p>Transform: <span id="txtHintTransform"></span></p>
 </body>
 
 </html>
