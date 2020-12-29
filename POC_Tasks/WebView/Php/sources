@@ -23,6 +23,9 @@ https://github.com/CivilServiceUSA/geojson-to-mysql/blob/master/import.php
 # read file javascript
 http://jsfiddle.net/Zq3at/
 
+# flatten geojson javascript
+http://jsfiddle.net/WSzec/1/
+
 # tile server
 https://wiki.openstreetmap.org/wiki/Tile_servers
 // TODO il faudrait pouvoir ajouter un marker en temps réel et le tour est joué
