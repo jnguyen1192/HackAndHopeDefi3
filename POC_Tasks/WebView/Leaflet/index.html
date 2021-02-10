@@ -23,7 +23,8 @@
 <div id="mapid" style="width: 600px; height: 400px;"></div>
 <script>
 
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    var mymap = L.map('mapid').setView([43.32417965, 5.37450052
+    ], 13);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
@@ -34,8 +35,8 @@
         zoomOffset: -1
     }).addTo(mymap);
 
-    L.marker([51.5, -0.09]).addTo(mymap)
-        .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+    L.marker([43.32417965, 5.37450052]).addTo(mymap)
+        .bindPopup("<b>0130698N\n</b><br />Ecole élémentaire Canet Barbès\n13014\n4\tFAVORABLE\t100-200\n").openPopup();
 
     L.circle([51.508, -0.11], 500, {
         color: 'red',
