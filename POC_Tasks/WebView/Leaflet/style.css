@@ -1,0 +1,45 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    background-color: #FFFFFF;
+    padding: 1% 0;
+    font-size: 12px;
+}
+
+.navbar-brand {
+    min-height: 60px;
+    padding: 0 20px 5px;
+    font-size: 16px
+}
+
+#logo {
+    height: 55px;
+    width: 55px;
+    margin: 10px 20px 10px 20px;
+    display: inline-block;
+}
+
+.navbar-default .navbar-nav li a {
+    color: #707b7c;
+}
+
+#navbar-collapse-main {
+    margin-right: 30px
+}
+
+#map-container {
+    padding-top: 120px;
+    padding-left: 10px;
+}
+
+#mapid {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 400px;
+    width: 100%;
+}
