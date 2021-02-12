@@ -9,6 +9,8 @@
 });*/
 
 
+
+/*
 var mymap = L.map('mapid').setView([43.32417965, 5.37450052
 ], 13);
 
@@ -47,7 +49,7 @@ function onMapClick(e) {
 }
 
 mymap.on('click', onMapClick);
-
+*/
 function readCsvIntoTable(filename, id_div) {
     $(document).ready(function(){
         $.ajax({
@@ -83,3 +85,72 @@ function readCsvIntoTable(filename, id_div) {
 }
 readCsvIntoTable("fonctionnalites.csv", '#funct_tables');
 readCsvIntoTable("sources", '#source_tables');
+
+Handlebars.registerHelper('kebabCase', function(name) {
+    return _.kebabCase(name)
+});
+
+var obj = {
+    title: "Indofood Indomie",
+    address: "Jalan Jend. Sudirman Kav 76-78, Setiabudi, RT.3/RW.3, Setia Budi, Kota Jakarta Selatan, DKI Jakarta 12910, Indonesia",
+    phone: "+62 21 57958822",
+    website: "http://indofood.com",
+    location: {
+        lat: -6.2081512,
+        lng: 106.8203208
+    },
+    data: {
+        "Value (USD)": {
+            "2012": "182532.060",
+            "2013": "154801.300",
+            "2014": "248883.830",
+            "2015": "194945.410",
+            "2016": "137778.190"
+        },
+        Commodities: {
+            "2012": "50",
+            "2013": "43",
+            "2014": "74",
+            "2015": "41",
+            "2016": "34"
+        },
+        Exporters: {
+            "2012": "4",
+            "2013": "4",
+            "2014": "7",
+            "2015": "7",
+            "2016": "3"
+        },
+        Importers: {
+            "2012": "2",
+            "2013": "4",
+            "2014": "6",
+            "2015": "6",
+            "2016": "2"
+        }
+    }
+};
+
+var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
+// console.log(popupTemplateVertical);
+var popupContent = popupTemplatePanel(obj);
+var map = L.map("mapid").setView([obj.location.lat, obj.location.lng], 17);
+
+L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([obj.location.lat, obj.location.lng])
+    .addTo(map)
+    .bindPopup(popupContent, {
+        minWidth: 500,
+        data: obj
+    });
+
+map.on('popupopen', function(e) {
+    var firstTabId = _.kebabCase(_.keys(e.popup.options.data.data)[0]);
+    if (document.location.hash != '' || document.location.hash != '#'){
+        document.location.hash = '#tab-';
+    }
+    document.location.hash = '#tab-'+firstTabId;
+});

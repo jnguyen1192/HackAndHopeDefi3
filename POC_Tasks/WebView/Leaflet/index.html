@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/css/tabby.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--
@@ -19,6 +22,9 @@
  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/js/tabby.min.js"></script>
     <!--
     <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -72,6 +78,40 @@
                 <!--p>Lorem ipsum dolor sit amet, qui ea delenit qualisque, ne duo tollit dolore hendrerit. Exerci postulant eos at, has causae electram id. Legimus contentiones eum te, eos eligendi vituperata ad, no ferri offendit referrentur vis. Homero virtute habemus ad sed, nec ferri viris in. Te labore adolescens ius, his consulatu eloquentiam ea, mea nulla appareat dignissim an. Ei his magna expetenda, nihil copiosae quo ut, percipit insolens mea an.
                 </p-->
                 <div id="mapid" ></div>
+
+                <script id="template-popup" type="text/x-handlebars-template">
+                    <div class="columns">
+                        <div class="column is-8">
+                            <div class="tab-container">
+                                {{#each data}}
+                                <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
+                                    <h4 class="title is-4">{{@key}}</h4>
+                                    <hr/>
+                                    <table class="table">
+                                        <tr>
+                                            <td>Year</td>
+                                            <th>Value</th>
+                                        </tr>
+                                        {{#each this}}
+                                        <tr>
+                                            <td>{{@key}}</td>
+                                            <td>{{this}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </table>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <nav class="panel">
+                                {{#each data}}
+                                <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
+                                {{/each}}
+                            </nav>
+                        </div>
+                    </div>
+                </script>
 
             </div>
 

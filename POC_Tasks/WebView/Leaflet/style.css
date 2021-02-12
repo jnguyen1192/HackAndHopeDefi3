@@ -43,3 +43,31 @@ body {
     height: 400px;
     width: 100%;
 }
+
+
+.leaflet-popup .title {
+    margin-bottom: 5px;
+}
+
+.leaflet-popup hr {
+    margin: 10px 0;
+}
+
+.tab-container {
+    position: relative;
+    height: 100%;
+}
+.tab {
+    float:left;
+    background: white;
+    width: 100%;
+}
+
+.tab:not(:target),
+.tab:first-child:not(:target){
+    display:none;
+}
+.tab:target,
+.tab:first-child {
+    display: block;
+}
