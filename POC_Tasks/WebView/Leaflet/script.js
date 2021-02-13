@@ -91,42 +91,38 @@ Handlebars.registerHelper('kebabCase', function(name) {
 });
 
 var obj = {
-    title: "Indofood Indomie",
-    address: "Jalan Jend. Sudirman Kav 76-78, Setiabudi, RT.3/RW.3, Setia Budi, Kota Jakarta Selatan, DKI Jakarta 12910, Indonesia",
-    phone: "+62 21 57958822",
-    website: "http://indofood.com",
     location: {
-        lat: -6.2081512,
-        lng: 106.8203208
+        lat: 43.32417965,
+        lng: 5.37450052
     },
     data: {
-        "Value (USD)": {
-            "2012": "182532.060",
-            "2013": "154801.300",
-            "2014": "248883.830",
-            "2015": "194945.410",
-            "2016": "137778.190"
+        "Généralités": {
+            "Adresse, Code Postal, Ville": "13014",
+            "Téléphone": "",
+            "Effectif": "",
+            "OCCE ?": "",
+            "Quartier": "1"
         },
-        Commodities: {
-            "2012": "50",
-            "2013": "43",
-            "2014": "74",
-            "2015": "41",
-            "2016": "34"
+        "Parents d'élèves": {
+            "APE / Représentants": "",
+            "Affiliation": "",
+            "Contact": ""
         },
-        Exporters: {
-            "2012": "4",
-            "2013": "4",
-            "2014": "7",
-            "2015": "7",
-            "2016": "3"
+        "Elu Secteur": {
+            "Ecoles": "",
+            "Bâtis": "",
+            "Quartier": ""
         },
-        Importers: {
-            "2012": "2",
-            "2013": "4",
-            "2014": "6",
-            "2015": "6",
-            "2016": "2"
+        "Elu Municipal": {
+            "Ecoles": "",
+            "Périscolaire": "",
+            "Bâti": ""
+        },
+        "Informations complémentaires": {
+            "Circonscription": "",
+            "IEN": "",
+            "DASEN": "",
+            "DDEN": ""
         }
     }
 };
@@ -134,7 +130,7 @@ var obj = {
 var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
 // console.log(popupTemplateVertical);
 var popupContent = popupTemplatePanel(obj);
-var map = L.map("mapid").setView([obj.location.lat, obj.location.lng], 17);
+var map = L.map("mapid").setView([obj.location.lat, obj.location.lng], 10);
 
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
