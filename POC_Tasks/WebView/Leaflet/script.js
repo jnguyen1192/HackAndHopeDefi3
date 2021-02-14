@@ -90,58 +90,92 @@ Handlebars.registerHelper('kebabCase', function(name) {
     return _.kebabCase(name)
 });
 
-var obj = {
-    location: {
-        lat: 43.32417965,
-        lng: 5.37450052
-    },
-    data: {
-        "Généralités": {
-            "Adresse, Code Postal, Ville": "13014",
-            "Téléphone": "",
-            "Effectif": "",
-            "OCCE ?": "",
-            "Quartier": "1"
-        },
-        "Parents d'élèves": {
-            "APE / Représentants": "",
-            "Affiliation": "",
-            "Contact": ""
-        },
-        "Elu Secteur": {
-            "Ecoles": "",
-            "Bâtis": "",
-            "Quartier": ""
-        },
-        "Elu Municipal": {
-            "Ecoles": "",
-            "Périscolaire": "",
-            "Bâti": ""
-        },
-        "Informations complémentaires": {
-            "Circonscription": "",
-            "IEN": "",
-            "DASEN": "",
-            "DDEN": ""
-        }
-    }
-};
 
-var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
-// console.log(popupTemplateVertical);
-var popupContent = popupTemplatePanel(obj);
-var map = L.map("mapid").setView([obj.location.lat, obj.location.lng], 10);
+
+
+var map = L.map("mapid").setView([43.32417965, 5.37450052], 10);
 
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([obj.location.lat, obj.location.lng])
-    .addTo(map)
-    .bindPopup(popupContent, {
-        minWidth: 500,
-        data: obj
-    });
+
+
+let xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = () => {
+    // La transaction est terminée ?
+    if(xmlhttp.readyState == 4){
+        // Si la transaction est un succès
+        if(xmlhttp.status == 200){
+            // On traite les données reçues
+            let donnees = JSON.parse(xmlhttp.responseText)
+
+            // On boucle sur les données (ES8)
+            Object.entries(donnees.points).forEach(point => {
+                // Ici j'ai une seule agence
+                // On crée un marqueur pour l'agence
+                //let marker = L.marker([, ]).addTo(carte)
+                //marker.bindPopup()
+
+                var obj = {
+                    location: {
+                        lat: point[1].ecole_lat,
+                        lng: point[1].ecole_long
+                    },
+                    data: {
+                        "Généralités": {
+                            "Adresse, Code Postal, Ville": point[1].ecole_appellation,
+                            "Téléphone": "",
+                            "Effectif": "",
+                            "OCCE ?": "",
+                            "Quartier": "1"
+                        },
+                        "Parents d'élèves": {
+                            "APE / Représentants": "",
+                            "Affiliation": "",
+                            "Contact": ""
+                        },
+                        "Elu Secteur": {
+                            "Ecoles": "",
+                            "Bâtis": "",
+                            "Quartier": ""
+                        },
+                        "Elu Municipal": {
+                            "Ecoles": "",
+                            "Périscolaire": "",
+                            "Bâti": ""
+                        },
+                        "Informations complémentaires": {
+                            "Circonscription": "",
+                            "IEN": "",
+                            "DASEN": "",
+                            "DDEN": ""
+                        }
+                    }
+                };
+                var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
+                // console.log(popupTemplateVertical);
+                var popupContent = popupTemplatePanel(obj);
+                L.marker([obj.location.lat, obj.location.lng])
+                    .addTo(map)
+                    .bindPopup(popupContent, {
+                        minWidth: 500,
+                        data: obj
+                    });
+            })
+        }else{
+            console.log(xmlhttp.statusText);
+        }
+    }
+}
+
+xmlhttp.open("GET", "./acces.php");
+
+xmlhttp.send(null);
+
+
+
 
 map.on('popupopen', function(e) {
     var firstTabId = _.kebabCase(_.keys(e.popup.options.data.data)[0]);

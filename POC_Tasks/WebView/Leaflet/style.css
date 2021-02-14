@@ -36,12 +36,16 @@ body {
     padding-left: 10px;
 }
 
-#mapid {
+#mapid, #funct_tables, #source_tables {
     position: relative;
     border: 1px solid black;
     border-radius: 8px;
     height: 400px;
-    width: 100%;
+    /*width: 100%;*/
+}
+
+#funct_tables, #source_tables {
+    overflow: auto;
 }
 
 
@@ -60,7 +64,7 @@ body {
 .tab {
     float:left;
     background: white;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .tab:not(:target),
