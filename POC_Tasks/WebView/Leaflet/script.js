@@ -90,6 +90,24 @@ Handlebars.registerHelper('kebabCase', function(name) {
     return _.kebabCase(name)
 });
 
+var IconDEFAVORABLE = L.AwesomeMarkers.icon({
+    icon: 'exclamation-circle',
+    markerColor: 'red',
+    prefix: 'fa',
+    spin: true
+});
+
+var IconINCONNU = L.AwesomeMarkers.icon({
+    icon: 'question',
+    markerColor: 'orange',
+    prefix: 'fa'
+});
+
+var IconFAVORABLE = L.AwesomeMarkers.icon({
+    icon: 'check',
+    markerColor: 'green',
+    prefix: 'fa'
+});
 
 
 
@@ -117,6 +135,21 @@ xmlhttp.onreadystatechange = () => {
                 // On crée un marqueur pour l'agence
                 //let marker = L.marker([, ]).addTo(carte)
                 //marker.bindPopup()
+                var config = {
+                    icon: IconINCONNU
+                }
+
+                if (point[1].CRITERE4 == 'FAVORABLE') {
+                    var config = {
+                        icon: IconFAVORABLE
+                    }
+                }
+
+                if (point[1].CRITERE4 == 'DEFAVORABLE') {
+                    var config = {
+                        icon: IconDEFAVORABLE
+                    }
+                }
 
                 var obj = {
                     location: {
@@ -157,7 +190,7 @@ xmlhttp.onreadystatechange = () => {
                 var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
                 // console.log(popupTemplateVertical);
                 var popupContent = popupTemplatePanel(obj);
-                L.marker([obj.location.lat, obj.location.lng])
+                L.marker([obj.location.lat, obj.location.lng], config)
                     .addTo(map)
                     .bindPopup(popupContent, {
                         minWidth: 500,
@@ -178,9 +211,11 @@ xmlhttp.send(null);
 
 
 map.on('popupopen', function(e) {
+    map.invalidateSize();
     var firstTabId = _.kebabCase(_.keys(e.popup.options.data.data)[0]);
     if (document.location.hash != '' || document.location.hash != '#'){
         document.location.hash = '#tab-';
     }
     document.location.hash = '#tab-'+firstTabId;
 });
+
