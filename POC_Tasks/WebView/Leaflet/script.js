@@ -193,7 +193,10 @@ xmlhttp.onreadystatechange = () => {
                 L.marker([obj.location.lat, obj.location.lng], config)
                     .addTo(map)
                     .bindPopup(popupContent, {
-                        minWidth: 500,
+                        minWidth:450,
+                        /*maxWidth: 300,
+                        maxHeight: 300,*/
+                        keepInView: true,
                         data: obj
                     });
             })
