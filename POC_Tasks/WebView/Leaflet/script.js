@@ -128,7 +128,7 @@ xmlhttp.onreadystatechange = () => {
         if(xmlhttp.status == 200){
             // On traite les données reçues
             let donnees = JSON.parse(xmlhttp.responseText)
-
+            var i = 0;
             // On boucle sur les données (ES8)
             Object.entries(donnees.points).forEach(point => {
                 // Ici j'ai une seule agence
@@ -138,7 +138,10 @@ xmlhttp.onreadystatechange = () => {
                 var config = {
                     icon: IconINCONNU
                 }
-
+                if(i == 0) {
+                    console.log(point[1]);
+                }
+                i = i + 1;
                 if (point[1].CRITERE4 == 'FAVORABLE') {
                     var config = {
                         icon: IconFAVORABLE
@@ -158,11 +161,11 @@ xmlhttp.onreadystatechange = () => {
                     },
                     data: {
                         "Généralités": {
-                            "Adresse, Code Postal, Ville": point[1].ecole_appellation,
+                            "Adresse, Code Postal, Ville": point[1].ecole_appellation + ", " + point[1].CRITERE2,
                             "Téléphone": "",
-                            "Effectif": "",
+                            "Effectif": point[1].CRITERE5,
                             "OCCE ?": "",
-                            "Quartier": "1"
+                            "Quartier": point[1].CRITERE3
                         },
                         "Parents d'élèves": {
                             "APE / Représentants": "",
@@ -198,7 +201,8 @@ xmlhttp.onreadystatechange = () => {
                         maxHeight: 300,*/
                         keepInView: true,
                         data: obj
-                    });
+                    }).bindTooltip("my tooltip text");
+
             })
         }else{
             console.log(xmlhttp.statusText);
