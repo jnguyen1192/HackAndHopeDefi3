@@ -1,5 +1,7 @@
 Date;Fonctionnalité
-17/02/2020;Bulle d'information ajouté
+18/02/2020;Auto-scroll de la page désactivé après avoir cliqué sur un marqueur
+18/02/2020;Bulle d'information connectée à la base de données
+17/02/2020;Bulle d'information ajoutée
 17/02/2020;Champs de la popup mis à jour
 16/02/2020;Dimension Popup adaptée à la taille de la carte
 15/02/2020;Icônes des marqueurs en fonction d'un paramètre

@@ -111,7 +111,7 @@ var IconFAVORABLE = L.AwesomeMarkers.icon({
 
 
 
-var map = L.map("mapid").setView([43.32417965, 5.37450052], 10);
+var map = L.map("mapid").setView([43.32417965, 5.37450052], 14);
 
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -201,7 +201,7 @@ xmlhttp.onreadystatechange = () => {
                         maxHeight: 300,*/
                         keepInView: true,
                         data: obj
-                    }).bindTooltip("my tooltip text");
+                    }).bindTooltip(point[1].ecole_appellation);
 
             })
         }else{
@@ -224,5 +224,12 @@ map.on('popupopen', function(e) {
         document.location.hash = '#tab-';
     }
     document.location.hash = '#tab-'+firstTabId;
+
+    var container = $("html,body");
+    container.animate({
+        scrollTop: 400
+    });
+
+    //return false; // Auto-scroll désactivé après un clique sur le marqueur
 });
 
