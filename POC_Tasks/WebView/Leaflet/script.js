@@ -230,6 +230,10 @@ map.on('popupopen', function(e) {
         scrollTop: 400
     });
 
-    //return false; // Auto-scroll désactivé après un clique sur le marqueur
+    $("a.panel-block").click(function(e) {
+        e.preventDefault(); // desactive la fonction precedente
+        $('.' + $($(this).attr('href')).attr('class').replace(" ", ".")).hide(); // cache toutes les tabs
+        $($(this).attr('href')).show(); // montre la tab courante
+    });// Auto-scroll désactivé après un clique sur le marqueur
 });
 
