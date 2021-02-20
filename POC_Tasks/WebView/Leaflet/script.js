@@ -117,7 +117,14 @@ L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-
+var markersLayer = new L.LayerGroup();
+map.addLayer(markersLayer);
+map.addControl( new L.Control.Search({
+    container: 'findbox',
+    layer: markersLayer,
+    initial: false,
+    collapsed: false
+}) );
 
 let xmlhttp = new XMLHttpRequest();
 
@@ -190,11 +197,11 @@ xmlhttp.onreadystatechange = () => {
                         }
                     }
                 };
+
                 var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
                 // console.log(popupTemplateVertical);
                 var popupContent = popupTemplatePanel(obj);
-                L.marker([obj.location.lat, obj.location.lng], config)
-                    .addTo(map)
+                var marker = L.marker([obj.location.lat, obj.location.lng], config)
                     .bindPopup(popupContent, {
                         minWidth:450,
                         /*maxWidth: 300,
@@ -202,6 +209,7 @@ xmlhttp.onreadystatechange = () => {
                         keepInView: true,
                         data: obj
                     }).bindTooltip(point[1].ecole_appellation);
+                markersLayer.addLayer(marker)
 
             })
         }else{
