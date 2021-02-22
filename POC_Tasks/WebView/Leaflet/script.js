@@ -143,6 +143,7 @@ xmlhttp.onreadystatechange = () => {
                 //let marker = L.marker([, ]).addTo(carte)
                 //marker.bindPopup()
                 var config = {
+                    title: point[1].ecole_appellation,
                     icon: IconINCONNU
                 }
                 if(i == 0) {
@@ -151,12 +152,14 @@ xmlhttp.onreadystatechange = () => {
                 i = i + 1;
                 if (point[1].CRITERE4 == 'FAVORABLE') {
                     var config = {
+                        title: point[1].ecole_appellation,
                         icon: IconFAVORABLE
                     }
                 }
 
                 if (point[1].CRITERE4 == 'DEFAVORABLE') {
                     var config = {
+                        title: point[1].ecole_appellation,
                         icon: IconDEFAVORABLE
                     }
                 }
@@ -201,7 +204,7 @@ xmlhttp.onreadystatechange = () => {
                 var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
                 // console.log(popupTemplateVertical);
                 var popupContent = popupTemplatePanel(obj);
-                var marker = L.marker([obj.location.lat, obj.location.lng], config)
+                var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
                     .bindPopup(popupContent, {
                         minWidth:450,
                         /*maxWidth: 300,
@@ -209,7 +212,7 @@ xmlhttp.onreadystatechange = () => {
                         keepInView: true,
                         data: obj
                     }).bindTooltip(point[1].ecole_appellation);
-                markersLayer.addLayer(marker)
+                markersLayer.addLayer(marker);
 
             })
         }else{
