@@ -38,7 +38,7 @@ body {
     height: 90%;
 }
 
-#mapid, #funct_tables, #source_tables {
+#school_map, #funct_tables, #source_tables {
     position: relative;
     border: 1px solid black;
     border-radius: 8px;
@@ -80,9 +80,15 @@ body {
     display: block;
 }
 
+/* Map */
+#mapid {
+    height: 90%;
+    width: 100%;
+}
+
 /* Search */
 #findbox {
-    height: 40px;
+    height: 10%;
     float:left;
     width: 100%;
 }
@@ -93,7 +99,9 @@ body {
     box-shadow: 0 0 8px #999;
     margin-bottom: 10%;
     padding: 2px 0;
-    width: 100%;
+    width: -webkit-calc(100% - 34px);
+    width:    -moz-calc(100% - 34px);
+    width:         calc(100% - 34px);
     max-width: 100% !important;
     height: 26px;
 }

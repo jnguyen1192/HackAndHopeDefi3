@@ -81,43 +81,44 @@
 
                 <!--p>Lorem ipsum dolor sit amet, qui ea delenit qualisque, ne duo tollit dolore hendrerit. Exerci postulant eos at, has causae electram id. Legimus contentiones eum te, eos eligendi vituperata ad, no ferri offendit referrentur vis. Homero virtute habemus ad sed, nec ferri viris in. Te labore adolescens ius, his consulatu eloquentiam ea, mea nulla appareat dignissim an. Ei his magna expetenda, nihil copiosae quo ut, percipit insolens mea an.
                 </p-->
-                <div id="findbox"></div>
-                <div id="mapid" ></div>
+                <div id="school_map">
+                    <div id="findbox"></div>
+                    <div id="mapid" ></div>
 
-                <script id="template-popup" type="text/x-handlebars-template">
-                    <div class="columns">
-                        <div class="column is-8">
-                            <div class="tab-container">
-                                {{#each data}}
-                                <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
-                                    <h4 class="title is-4">{{@key}}</h4>
-                                    <hr/>
-                                    <table class="table">
-                                        <tr>
-                                            <td>Year</td>
-                                            <th>Value</th>
-                                        </tr>
-                                        {{#each this}}
-                                        <tr>
-                                            <td>{{@key}}</td>
-                                            <td>{{this}}</td>
-                                        </tr>
-                                        {{/each}}
-                                    </table>
+                    <script id="template-popup" type="text/x-handlebars-template">
+                        <div class="columns">
+                            <div class="column is-8">
+                                <div class="tab-container">
+                                    {{#each data}}
+                                    <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
+                                        <h4 class="title is-4">{{@key}}</h4>
+                                        <hr/>
+                                        <table class="table">
+                                            <tr>
+                                                <td>Year</td>
+                                                <th>Value</th>
+                                            </tr>
+                                            {{#each this}}
+                                            <tr>
+                                                <td>{{@key}}</td>
+                                                <td>{{this}}</td>
+                                            </tr>
+                                            {{/each}}
+                                        </table>
+                                    </div>
+                                    {{/each}}
                                 </div>
-                                {{/each}}
+                            </div>
+                            <div class="column is-4">
+                                <nav class="panel">
+                                    {{#each data}}
+                                    <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
+                                    {{/each}}
+                                </nav>
                             </div>
                         </div>
-                        <div class="column is-4">
-                            <nav class="panel">
-                                {{#each data}}
-                                <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
-                                {{/each}}
-                            </nav>
-                        </div>
-                    </div>
-                </script>
-
+                    </script>
+                </div>
             </div>
 
             <div class="col-md-4" style='border: 1px solid deepskyblue'>
