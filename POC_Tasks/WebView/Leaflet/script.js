@@ -71,7 +71,9 @@ function readCsvIntoTable(filename, id_div) {
                         }
                         else
                         {
-                            table_data += '<td>'+cell_data[cell_count]+'</td>';
+                            if(cell_data[cell_count] !== "<a target=\"_blank\" href=\"\"></a>") {
+                                table_data += '<td>'+cell_data[cell_count]+'</td>';
+                            }
                         }
                     }
                     table_data += '</tr>';
