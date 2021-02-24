@@ -25,5 +25,11 @@ function processData(allText) {
         }
     }
     // alert(lines);
-    console.log(lines)
+    for (var i=1; i<lines.length; i++) {
+        var test = lines[i][11];
+        console.log(typeof(test));
+        newTemp = test.replace(/""/g, '"');
+        console.log(newTemp);
+
+    }
 }
