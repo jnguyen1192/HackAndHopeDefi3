@@ -28,8 +28,12 @@ function processData(allText) {
     for (var i=1; i<lines.length; i++) {
         var test = lines[i][11];
         console.log(typeof(test));
-        newTemp = test.replace(/""/g, '"');
-        console.log(newTemp);
-
+        console.log(lines[i]);
+        if(test !== "") {
+            newTemp = test.replace(/""/g, '"');
+            var json_string = newTemp.slice(1, newTemp.length - 1)
+            console.log(json_string);
+            console.log(JSON.parse(json_string));
+        }
     }
 }
