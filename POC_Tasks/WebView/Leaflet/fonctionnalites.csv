@@ -1,4 +1,5 @@
 Date;Fonctionnalité
+27/02/2020;Read csv into json using ajax
 26/02/2020;Convert csv json to javascript object
 25/02/2020;Convert csv json column to javascript object
 24/02/2020;Regex used to correct csv file reader
