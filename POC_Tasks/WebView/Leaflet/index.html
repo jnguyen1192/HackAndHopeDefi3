@@ -7,7 +7,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.9/src/leaflet-search.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,100 +36,43 @@
 
 </head>
 <body>
-<nav class ="navbar navbar-default navbar-fixed-top" role ="navigation">
 
-    <div class ="container-fluid">
-        <div class ="navbar-header">
-            <button type="button" class ="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                <span class="sr-only">Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<div id="findbox"></div>
+<div id="mapid" ></div>
 
-
-
-        </div>
-
-        <div class ="collapse navbar-collapse" id ="navbar-collapse-main">
-            <ul class ="nav navbar-nav navbar-right">
-                <li><a class="active" href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-
-            </ul>
-
-        </div>
-
-    </div>
-</nav>
-
-<div class="padding" id ="map-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4" style='border: 1px solid green'>
-
-                <div id="funct_tables"></div>
-
-
-            </div>
-
-            <div class="col-md-4" style='border: 1px solid red '>
-
-                <!--p>Lorem ipsum dolor sit amet, qui ea delenit qualisque, ne duo tollit dolore hendrerit. Exerci postulant eos at, has causae electram id. Legimus contentiones eum te, eos eligendi vituperata ad, no ferri offendit referrentur vis. Homero virtute habemus ad sed, nec ferri viris in. Te labore adolescens ius, his consulatu eloquentiam ea, mea nulla appareat dignissim an. Ei his magna expetenda, nihil copiosae quo ut, percipit insolens mea an.
-                </p-->
-                <div id="school_map">
-                    <div id="findbox"></div>
-                    <div id="mapid" ></div>
-
-                    <script id="template-popup" type="text/x-handlebars-template">
-                        <div class="columns">
-                            <div class="column is-8">
-                                <div class="tab-container">
-                                    {{#each data}}
-                                    <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
-                                        <h4 class="title is-4">{{@key}}</h4>
-                                        <hr/>
-                                        <table class="table">
-                                            <tr>
-                                                <td>Year</td>
-                                                <th>Value</th>
-                                            </tr>
-                                            {{#each this}}
-                                            <tr>
-                                                <td>{{@key}}</td>
-                                                <td>{{this}}</td>
-                                            </tr>
-                                            {{/each}}
-                                        </table>
-                                    </div>
-                                    {{/each}}
-                                </div>
-                            </div>
-                            <div class="column is-4">
-                                <nav class="panel">
-                                    {{#each data}}
-                                    <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
-                                    {{/each}}
-                                </nav>
-                            </div>
-                        </div>
-                    </script>
+<script id="template-popup" type="text/x-handlebars-template">
+    <div class="columns">
+        <div class="column is-8">
+            <div class="tab-container">
+                {{#each data}}
+                <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
+                    <h4 class="title is-4">{{@key}}</h4>
+                    <hr/>
+                    <table class="table">
+                        <tr>
+                            <td>Year</td>
+                            <th>Value</th>
+                        </tr>
+                        {{#each this}}
+                        <tr>
+                            <td>{{@key}}</td>
+                            <td>{{this}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
                 </div>
+                {{/each}}
             </div>
-
-            <div class="col-md-4" style='border: 1px solid deepskyblue'>
-
-                <div id="source_tables"></div>
-
-
-            </div>
-
         </div>
-
+        <div class="column is-4">
+            <nav class="panel">
+                {{#each data}}
+                <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
+                {{/each}}
+            </nav>
+        </div>
     </div>
-</div>
+</script>
 
 
 </body>
