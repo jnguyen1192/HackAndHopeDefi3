@@ -115,6 +115,9 @@ var IconFAVORABLE = L.AwesomeMarkers.icon({
 
 var map = L.map("mapid").setView([43.32417965, 5.37450052], 14);
 
+var controlLoading = L.Control.loading();
+map.addControl(controlLoading);
+controlLoading._showIndicator();
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -127,6 +130,7 @@ map.addControl( new L.Control.Search({
     initial: false,
     collapsed: false
 }) );
+
 
 let xmlhttp = new XMLHttpRequest();
 

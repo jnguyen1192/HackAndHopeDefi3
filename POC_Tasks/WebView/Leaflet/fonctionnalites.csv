@@ -1,4 +1,5 @@
 Date;Fonctionnalité
+03/03/2020;Control loading added
 27/02/2020;Read csv into json using ajax
 26/02/2020;Convert csv json to javascript object
 25/02/2020;Convert csv json column to javascript object
