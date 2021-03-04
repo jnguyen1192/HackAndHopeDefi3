@@ -40,7 +40,8 @@ function processData(allText) {
             newTemp = test.replace(/""/g, '"');
             var json_string = newTemp.slice(1, newTemp.length - 1)
             //console.log(json_string);
-            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][5] +'","density":94.65},"geometry":' + json_string + '},'
+            console.log(lines[i][9]);
+            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][9] +'","density":94.65},"geometry":' + json_string + '},'
             //console.log();
             //console.log(JSON.parse(json_string));
 
@@ -74,9 +75,9 @@ function processData(allText) {
     };
 
     info.update = function (props) {
-        this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-            : 'Hover over a state');
+        this._div.innerHTML = '<h4>Quartier prioritaire</h4>' +  (props ?
+            '<b>' + props.name + '</b><br />'
+            : 'Sélectionner un quartier prioritaire');
     };
 
     info.addTo(map);
@@ -171,7 +172,7 @@ function processData(allText) {
         return div;
     };
 
-    legend.addTo(map);
+    //legend.addTo(map);
 }
 
 $.ajax({
