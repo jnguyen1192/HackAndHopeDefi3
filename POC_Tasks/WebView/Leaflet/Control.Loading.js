@@ -55,8 +55,8 @@
                         this.zoomControl = map.zoomsliderControl;
                     }
                 }
-                console.log(this.options.separate);
-                console.log(this.zoomControl);
+                //console.log(this.options.separate);
+                //console.log(this.zoomControl);
 
                 // Create the loading indicator
                 var classes = 'leaflet-control-loading';

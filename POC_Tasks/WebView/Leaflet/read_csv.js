@@ -1,11 +1,3 @@
-
-
-/*
-$(document).ready(function() {
-
-});*/
-
-
 function processData(allText) {
 
     function pad(num, size) {
@@ -40,7 +32,8 @@ function processData(allText) {
             newTemp = test.replace(/""/g, '"');
             var json_string = newTemp.slice(1, newTemp.length - 1)
             //console.log(json_string);
-            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][5] +'","density":94.65},"geometry":' + json_string + '},'
+            //console.log(lines[i][9]);
+            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][9] +'","density":94.65},"geometry":' + json_string + '},'
             //console.log();
             //console.log(JSON.parse(json_string));
 
@@ -50,19 +43,11 @@ function processData(allText) {
     statesDataString += ']}';
     //console.log(statesDataString);
     //console.log(statesData);
-    console.log("Process file OK");
+    //console.log("Process file OK");
     var statesData = JSON.parse(statesDataString);
-    var map = L.map('map').setView([43.32417965, 5.37450052], 14);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/light-v9',
-        tileSize: 512,
-        zoomOffset: -1
-    }).addTo(map);
-
+    // TODO BEGIN select the right map
+    // TODO END
 
     // control that shows state info on hover
     var info = L.control();
@@ -74,9 +59,9 @@ function processData(allText) {
     };
 
     info.update = function (props) {
-        this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-            : 'Hover over a state');
+        this._div.innerHTML = '<h4>Quartier prioritaire</h4>' +  (props ?
+            '<b>' + props.name + '</b><br />'
+            : 'Sélectionner un quartier prioritaire');
     };
 
     info.addTo(map);
@@ -171,7 +156,7 @@ function processData(allText) {
         return div;
     };
 
-    legend.addTo(map);
+    //legend.addTo(map);
 }
 
 $.ajax({

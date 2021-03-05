@@ -1,11 +1,3 @@
-
-
-/*
-$(document).ready(function() {
-
-});*/
-
-
 function processData(allText) {
 
     function pad(num, size) {
@@ -53,8 +45,9 @@ function processData(allText) {
     //console.log(statesData);
     console.log("Process file OK");
     var statesData = JSON.parse(statesDataString);
-    var map = L.map('map').setView([43.32417965, 5.37450052], 14);
 
+    // TODO BEGIN select the right map
+    var map = L.map('map').setView([43.32417965, 5.37450052], 14);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -63,7 +56,7 @@ function processData(allText) {
         tileSize: 512,
         zoomOffset: -1
     }).addTo(map);
-
+    // TODO END
 
     // control that shows state info on hover
     var info = L.control();

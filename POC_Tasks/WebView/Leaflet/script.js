@@ -153,7 +153,7 @@ xmlhttp.onreadystatechange = () => {
                     icon: IconINCONNU
                 }
                 if(i == 0) {
-                    console.log(point[1]);
+                    //console.log(point[1]);
                 }
                 i = i + 1;
                 if (point[1].CRITERE4 == 'FAVORABLE') {
