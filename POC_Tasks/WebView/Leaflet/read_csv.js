@@ -33,7 +33,7 @@ function processData(allText) {
             var json_string = newTemp.slice(1, newTemp.length - 1)
             //console.log(json_string);
             //console.log(lines[i][9]);
-            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][9] +'","density":94.65},"geometry":' + json_string + '},'
+            statesDataString += '{"type":"Feature","id":"'+ pad(i, 6) +'","properties":{"name":"'+ lines[i][9] +'","density":'+ lines[i][13] +'},"geometry":' + json_string + '},'
             //console.log();
             //console.log(JSON.parse(json_string));
 
@@ -60,7 +60,7 @@ function processData(allText) {
 
     info.update = function (props) {
         this._div.innerHTML = '<h4>Quartier prioritaire</h4>' +  (props ?
-            '<b>' + props.name + '</b><br />'
+            '<b>' + props.name + '</b><br />' + '<b>' + props.density + '</b><br />'
             : 'Sélectionner un quartier prioritaire');
     };
 
@@ -161,7 +161,7 @@ function processData(allText) {
 
 $.ajax({
     type: "GET",
-    url: "liste_quartiers_prioritairesville.csv",
+    url: "quartiers_prioritaires_ecoles.csv", // "liste_quartiers_prioritairesville.csv",
     dataType: "text",
     success: function(data) {statesData = processData(data);}
 });
