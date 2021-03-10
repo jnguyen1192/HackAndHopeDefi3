@@ -25,6 +25,12 @@
 	</style>
 
 	<style>#map { width: 100%; height: 100%; }
+	.districtLabel{
+		background: rgba(255, 255, 255, 0);
+		border:0;
+		border-radius:0px;
+		box-shadow: 0 0px 0px;
+	}
 .info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
 .legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
 </head>
@@ -38,13 +44,11 @@
 
 	var map = L.map('map').setView([43.28817965, 5.40450052], 11);
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/light-v9',
-		tileSize: 512,
-		zoomOffset: -1
+
 	}).addTo(map);
 
 
@@ -124,6 +128,13 @@
 			mouseout: resetHighlight,
 			click: zoomToFeature
 		});
+		layer.bindTooltip(
+				feature.properties.NOM_QUA,
+				{
+					permanent:true,
+					direction:'center',
+					className: 'districtLabel'
+				});
 	}
 
 	geojson = L.geoJson(statesData, {
@@ -133,6 +144,40 @@
 
 	map.attributionControl.addAttribution('Marseille Sector data &copy; <a href="http://data.gouv.fr/">Data France</a>');
 
+	/* Zoom show by level*/
+	map.eachLayer(function(l) {
+		if (l.getTooltip) {
+			var toolTip = l.getTooltip();
+			if (toolTip) {
+				this.map.closeTooltip(toolTip);
+			}
+		}
+	});
+	var lastZoom;
+	var zoomLevel = 13 ;
+	map.on('zoomend', function() {
+		var zoom = map.getZoom();
+		if (zoom < zoomLevel && (!lastZoom || lastZoom >= zoomLevel)) {
+			map.eachLayer(function(l) {
+				if (l.getTooltip) {
+					var toolTip = l.getTooltip();
+					if (toolTip) {
+						this.map.closeTooltip(toolTip);
+					}
+				}
+			});
+		} else if (zoom >= zoomLevel && (!lastZoom || lastZoom < zoomLevel)) {
+			map.eachLayer(function(l) {
+				if (l.getTooltip) {
+					var toolTip = l.getTooltip();
+					if (toolTip) {
+						this.map.addLayer(toolTip);
+					}
+				}
+			});
+		}
+		lastZoom = zoom;
+	})
 
 	var legend = L.control({position: 'bottomright'});
 
