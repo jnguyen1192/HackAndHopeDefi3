@@ -19,9 +19,9 @@ info.onAdd = function (map) {
 };
 
 info.update = function (props) {
-    this._div.innerHTML = '<h4>Marseille Sector</h4>' +  (props ?
+    this._div.innerHTML = '<h4>Secteur</h4>' +  (props ?
         '<b>' + props.NOM_QUA + '</b><br />'
-        : 'Hover over a sector');
+        : 'Sélectionner un secteur');
 };
 
 info.addTo(map);
@@ -62,7 +62,7 @@ function highlightFeature(e) {
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
+        //layer.bringToFront();
     }
 
     info.update(layer.feature.properties);
@@ -72,6 +72,8 @@ var geojson;
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
+    e.target.bringToBack();
+    console.log('Bring to back');
     info.update();
 }
 
