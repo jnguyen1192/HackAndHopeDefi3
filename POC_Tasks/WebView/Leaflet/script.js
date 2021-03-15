@@ -113,7 +113,7 @@ var IconFAVORABLE = L.AwesomeMarkers.icon({
 
 
 
-var map = L.map("mapid").setView([43.32417965, 5.37450052], 14);
+var map = L.map("mapid").setView([43.28817965, 5.40450052], 11);//[43.32417965, 5.37450052], 14);
 
 var controlLoading = L.Control.loading();
 map.addControl(controlLoading);

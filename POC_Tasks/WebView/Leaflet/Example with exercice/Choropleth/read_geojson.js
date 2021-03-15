@@ -125,6 +125,7 @@ map.on('zoomend', function() {
         });
     } else if (zoom >= zoomLevel && (!lastZoom || lastZoom < zoomLevel)) {
         map.eachLayer(function(l) {
+            console.log(l);
             if (l.getTooltip) {
                 var toolTip = l.getTooltip();
                 if (toolTip) {

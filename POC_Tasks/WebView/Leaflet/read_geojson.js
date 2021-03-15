@@ -101,7 +101,7 @@ geojson = L.geoJson(sectorsData, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
-map.attributionControl.addAttribution('Marseille Sector data &copy; <a href="http://data.gouv.fr/">Data France</a>');
+//map.attributionControl.addAttribution('Marseille Sector data &copy; <a href="http://data.gouv.fr/">Data France</a>');
 
 /* Zoom show by level*/
 map.eachLayer(function(l) {
@@ -111,13 +111,14 @@ map.eachLayer(function(l) {
             this.map.closeTooltip(toolTip);
         }
     }
-});
-var lastZoom;
+});/*
+var lastZoom = map.getZoom();
 var zoomLevel = 13 ;
 map.on('zoomend', function() {
     var zoom = map.getZoom();
     if (zoom < zoomLevel && (!lastZoom || lastZoom >= zoomLevel)) {
         map.eachLayer(function(l) {
+            console.log(l);
             if (l.getTooltip) {
                 var toolTip = l.getTooltip();
                 if (toolTip) {
@@ -136,7 +137,7 @@ map.on('zoomend', function() {
         });
     }
     lastZoom = zoom;
-})
+})*/
 
 var legend = L.control({position: 'bottomright'});
 
