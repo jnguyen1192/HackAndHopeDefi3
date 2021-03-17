@@ -46,9 +46,6 @@ function processData(allText) {
     //console.log("Process file OK");
     var statesData = JSON.parse(statesDataString);
 
-    // TODO BEGIN select the right map
-    // TODO END
-
     // control that shows state info on hover
     var info = L.control();
 
@@ -158,10 +155,3 @@ function processData(allText) {
 
     //legend.addTo(map);
 }
-
-$.ajax({
-    type: "GET",
-    url: "quartiers_prioritaires_ecoles.csv", // "liste_quartiers_prioritairesville.csv",
-    dataType: "text",
-    success: function(data) {statesData = processData(data);}
-});
