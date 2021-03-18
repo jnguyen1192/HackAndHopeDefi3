@@ -1,6 +1,8 @@
 Date;Fonctionnalité
-?/?/?;Légende à améliorer
-17/03/2021;Code refactor part 1
+?/?/?;Convert csv to js using python to speedup loading
+?/?/?;Update marker loading
+18/03/2021;Convert database to js using php to speedup loading
+17/03/2021;Code refactor
 16/03/2021;Markers legend
 10/03/2020;Display with zoom corrected on current map
 10/03/2020;Hover Sector corrected on current map
