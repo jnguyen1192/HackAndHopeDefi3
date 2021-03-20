@@ -1,5 +1,29 @@
 function processJsonData(jsonData) {
+/*
+    Handlebars.registerHelper('kebabCase', function(name) {
+        return _.kebabCase(name)
+    });*/
+
+    var IconDEFAVORABLE = L.AwesomeMarkers.icon({
+        icon: 'exclamation-circle',
+        markerColor: 'red',
+        prefix: 'fa',
+        spin: true
+    });
+
+    var IconINCONNU = L.AwesomeMarkers.icon({
+        icon: 'question',
+        markerColor: 'orange',
+        prefix: 'fa'
+    });
+
+    var IconFAVORABLE = L.AwesomeMarkers.icon({
+        icon: 'check',
+        markerColor: 'green',
+        prefix: 'fa'
+    });
     // On boucle sur les données (ES8)
+
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
@@ -60,22 +84,21 @@ function processJsonData(jsonData) {
             }
         };
 
-        var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
+        /*var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
         // console.log(popupTemplateVertical);
-        var popupContent = popupTemplatePanel(obj);
+        var popupContent = popupTemplatePanel(obj);*/
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
-            .bindPopup(popupContent, {
+            .bindTooltip(point[1].ecole_appellation);
+            /*.bindPopup(popupContent, {
                 minWidth:450,
-                /*maxWidth: 300,
-                maxHeight: 300,*/
                 keepInView: true,
                 data: obj
-            }).bindTooltip(point[1].ecole_appellation);
+            });*/
         markersLayer.addLayer(marker);
 
-    })
+    });
 
-
+/*
     map.on('popupopen', function(e) {
         map.invalidateSize();
         var firstTabId = _.kebabCase(_.keys(e.popup.options.data.data)[0]);
@@ -94,5 +117,5 @@ function processJsonData(jsonData) {
             $('.' + $($(this).attr('href')).attr('class').replace(" ", ".")).hide(); // cache toutes les tabs
             $($(this).attr('href')).show(); // montre la tab courante
         });// Auto-scroll désactivé après un clique sur le marqueur
-    });
+    });*/
 }

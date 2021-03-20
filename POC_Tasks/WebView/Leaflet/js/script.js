@@ -88,28 +88,6 @@ function readCsvIntoTable(filename, id_div) {
 readCsvIntoTable("data/fonctionnalites.csv", '#funct_tables');
 readCsvIntoTable("data/sources", '#source_tables');
 
-Handlebars.registerHelper('kebabCase', function(name) {
-    return _.kebabCase(name)
-});
-
-var IconDEFAVORABLE = L.AwesomeMarkers.icon({
-    icon: 'exclamation-circle',
-    markerColor: 'red',
-    prefix: 'fa',
-    spin: true
-});
-
-var IconINCONNU = L.AwesomeMarkers.icon({
-    icon: 'question',
-    markerColor: 'orange',
-    prefix: 'fa'
-});
-
-var IconFAVORABLE = L.AwesomeMarkers.icon({
-    icon: 'check',
-    markerColor: 'green',
-    prefix: 'fa'
-});
 
 
 
@@ -117,19 +95,20 @@ var map = L.map("mapid").setView([43.28817965, 5.40450052], 11);//[43.32417965, 
 
 var controlLoading = L.Control.loading();
 map.addControl(controlLoading);
-controlLoading._showIndicator();
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
+
 map.addControl( new L.Control.Search({
     container: 'findbox',
     layer: markersLayer,
     initial: false,
     collapsed: false
 }) );
+//controlLoading._showIndicator();
 
 
 // Quartiers prioritaires
@@ -148,7 +127,6 @@ if (typeof sectorsData !== 'undefined') {
     delete sectorsData;
 }
 
-controlLoading._showIndicator();
 // Ecoles Marseille
 processJsonData(donnees);
 delete donnees;
