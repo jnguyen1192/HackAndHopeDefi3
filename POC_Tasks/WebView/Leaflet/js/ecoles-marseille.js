@@ -83,12 +83,42 @@ function processJsonData(jsonData) {
                 }
             }
         };
+        //console.log(obj);
+        var content = '<div class="tabs">' +
 
+            '<div class="tab" id="tab-1">' +
+            '<div class="content">' +
+            '<b>'+ Object.keys(obj.data) +'</b>' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="tab" id="tab-2">' +
+            '<div class="content">' +
+            '<b>Tab 2 content</b>' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="tab" id="tab-3">' +
+            '<div class="content">' +
+            '<b>Tab 3 content</b>' +
+            '</div>' +
+            '</div>' +
+        '<ul class="tabs-link">';
+        var num_tab = 1;
+        console.log(Object.keys(obj.data));
+        for(var tab_title_index in Object.keys(obj.data)) {
+            content += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            num_tab += 1;
+        }
+
+        content += '</ul>' +
+            '</div>';
         /*var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
         // console.log(popupTemplateVertical);
         var popupContent = popupTemplatePanel(obj);*/
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
-            .bindTooltip(point[1].ecole_appellation);
+            .bindTooltip(point[1].ecole_appellation)
+            .bindPopup(content);
             /*.bindPopup(popupContent, {
                 minWidth:450,
                 keepInView: true,
