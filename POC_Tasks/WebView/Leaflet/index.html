@@ -40,39 +40,6 @@
 <div id="findbox"></div>
 <div id="mapid" ></div>
 
-<script id="template-popup" type="text/x-handlebars-template">
-    <div class="columns">
-        <div class="column is-8">
-            <div class="tab-container">
-                {{#each data}}
-                <div id="tab-{{kebabCase @key}}" class="tab tabs-pane">
-                    <h4 class="title is-4">{{@key}}</h4>
-                    <hr/>
-                    <table class="table">
-                        <tr>
-                            <td>Year</td>
-                            <th>Value</th>
-                        </tr>
-                        {{#each this}}
-                        <tr>
-                            <td>{{@key}}</td>
-                            <td>{{this}}</td>
-                        </tr>
-                        {{/each}}
-                    </table>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-        <div class="column is-4">
-            <nav class="panel">
-                {{#each data}}
-                <a class="panel-block is-{{@index}}" href="#tab-{{kebabCase @key}}">{{@key}}</a>
-                {{/each}}
-            </nav>
-        </div>
-    </div>
-</script>
 
 
 </body>

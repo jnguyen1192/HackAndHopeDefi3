@@ -52,15 +52,90 @@ body {
 }
 
 /* Popup */
+.info {
+    background:#fff;
+    position:absolute;
+    width:260px;
+    top:10px;
+    right:10px;
+    border-radius:2px;
+}
+.info .item {
+    display:block;
+    border-bottom:1px solid #eee;
+    padding:10px;
+    text-decoration:none;
+}
+.info .item small { color:#888; }
+.info .item:hover,
+.info .item.active { background:#f8f8f8; }
+.info .item:last-child { border-bottom:none; }
+
+.leaflet-popup-content {
+    width:300px;
+    height:300px;
+}
+
+.
+/*
 .leaflet-popup .title {
     margin-bottom: 5px;
 }
 
 .leaflet-popup hr {
     margin: 10px 0;
-}
+}*/
+
 
 /* Tab */
+tabs {
+    position:relative;
+    min-height:200px;
+    clear:both;
+    margin:25px 0;
+}
+.tab {
+    float:left;
+    display: none;
+}
+.tab:first-of-type {
+    display: inline-block;
+}
+.tabs-link {
+    position: relative;
+    top: -14px;
+    height: 20px;
+    left: -40px;
+}
+.tab-link {
+    background:#eee;
+    display: inline-block;
+    padding:10px;
+    border:1px solid #ccc;
+    margin-left:-1px;
+    position:relative;
+    list-style-type: none;
+    left:1px;
+    top:1px;
+    cursor:pointer;
+}
+.tab-link {
+    background:#f8f8f8;
+}
+.content {
+    background:white;
+    position:absolute;
+    top:28px;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:20px;
+    border:1px solid #ccc;
+}
+.tab:target {
+    display: block;
+}
+/*
 .tab-container {
     position: relative;
     height: 100%;
@@ -68,7 +143,7 @@ body {
 .tab {
     float:left;
     background: white;
-    /*width: 100%;*/
+
 }
 
 .tab:not(:target),
@@ -79,7 +154,7 @@ body {
 .tab:first-child {
     display: block;
 }
-
+*/
 /* Map */
 #mapid {
     height: 90%;

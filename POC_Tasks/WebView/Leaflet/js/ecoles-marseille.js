@@ -105,7 +105,7 @@ function processJsonData(jsonData) {
             '</div>' +
         '<ul class="tabs-link">';
         var num_tab = 1;
-        console.log(Object.keys(obj.data));
+        //console.log(Object.keys(obj.data));
         for(var tab_title_index in Object.keys(obj.data)) {
             content += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             num_tab += 1;

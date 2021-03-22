@@ -1,6 +1,7 @@
 Date;Fonctionnalité
 ?/?/?;Convert csv to js using python to speedup loading
 ?/?/?;District data csv to js
+22/03/2021;Size popup updated
 21/03/2021;Activate bindTooltip and popup with only headers of each tabs
 20/03/2021;Update marker loading with desactivate bindTooltip and popup
 18/03/2021;Convert database to js using php to speedup loading
