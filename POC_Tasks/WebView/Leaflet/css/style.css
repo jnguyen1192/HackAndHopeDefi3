@@ -76,21 +76,22 @@ body {
     height:300px;
 }
 
-.
-/*
+
+
 .leaflet-popup .title {
     margin-bottom: 5px;
 }
 
 .leaflet-popup hr {
     margin: 10px 0;
-}*/
+}
 
 
 /* Tab */
-tabs {
+.tabs {
     position:relative;
-    min-height:200px;
+    height:100%;
+    width:100%;
     clear:both;
     margin:25px 0;
 }
@@ -98,14 +99,18 @@ tabs {
     float:left;
     display: none;
 }
+/*
 .tab:first-of-type {
     display: inline-block;
-}
+}*/
+
 .tabs-link {
+    /*
     position: relative;
     top: -14px;
-    height: 20px;
-    left: -40px;
+    height: 90px;
+    left: -40px;*/
+    align-items: unset !important;
 }
 .tab-link {
     background:#eee;
@@ -122,20 +127,16 @@ tabs {
 .tab-link {
     background:#f8f8f8;
 }
+
 .content {
-    background:white;
-    position:absolute;
-    top:28px;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:20px;
-    border:1px solid #ccc;
-}
-.tab:target {
+    position: relative;
+    height: 100%;
+}/*
+.tab:target,
+.tab:first-child {
     display: block;
-}
-/*
+}*/
+
 .tab-container {
     position: relative;
     height: 100%;
@@ -143,7 +144,6 @@ tabs {
 .tab {
     float:left;
     background: white;
-
 }
 
 .tab:not(:target),
@@ -154,7 +154,7 @@ tabs {
 .tab:first-child {
     display: block;
 }
-*/
+
 /* Map */
 #mapid {
     height: 90%;
