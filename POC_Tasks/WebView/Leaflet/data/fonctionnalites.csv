@@ -1,6 +1,7 @@
 Date;Fonctionnalité
 ?/?/?;Convert csv to js using python to speedup loading
 ?/?/?;District data csv to js
+24/03/2021;Popup content updated
 23/03/2021;Popup link updated
 22/03/2021;Size popup updated
 21/03/2021;Activate bindTooltip and popup with only headers of each tabs

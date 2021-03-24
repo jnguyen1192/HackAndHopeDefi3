@@ -84,8 +84,8 @@ function processJsonData(jsonData) {
             }
         };
         //console.log(obj);
-        var content = '<div class="tabs">' +
-
+        var tabs = '<div class="tabs">';
+/*
             '<div class="tab" id="tab-1">' +
             '<div class="content">' +
             '<b>'+ Object.keys(obj.data) +'</b>' +
@@ -102,23 +102,35 @@ function processJsonData(jsonData) {
             '<div class="content">' +
             '<b>Tab 3 content</b>' +
             '</div>' +
-            '</div>' +
-        '<ul class="tabs-link">';
+            '</div>';*/
+        var ul = '<ul class="tabs-link">';
         var num_tab = 1;
-        //console.log(Object.keys(obj.data));
+        var num_link_content;
+        var link_content;
+        console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
         for(var tab_title_index in Object.keys(obj.data)) {
-            content += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
+                '<div class="content">';
+            link_content = "";
+            num_link_content = 1;
+            for(var link_content_index in Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])) {
+                link_content +=    '<p>'+ Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1] + ':'  + obj.data[Object.keys(obj.data)[num_tab-1]][Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1]] + '</p>'; // TODO add content
+                num_link_content += 1;
+            }
+            tabs += link_content + '</div>' +
+                '</div>';
+            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             num_tab += 1;
         }
-
-        content += '</ul>' +
-            '</div>';
+        var popup = tabs;
+        ul += '</ul>';
+        popup +=  ul + '</div>';
         /*var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
         // console.log(popupTemplateVertical);
         var popupContent = popupTemplatePanel(obj);*/
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
             .bindTooltip(point[1].ecole_appellation)
-            .bindPopup(content);
+            .bindPopup(popup);
             /*.bindPopup(popupContent, {
                 minWidth:450,
                 keepInView: true,
