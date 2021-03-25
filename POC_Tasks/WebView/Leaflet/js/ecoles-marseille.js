@@ -122,9 +122,10 @@ function processJsonData(jsonData) {
             ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             num_tab += 1;
         }
-        var popup = tabs;
-        ul += '</ul>';
-        popup +=  ul + '</div>';
+        //var popup = tabs;
+        //ul += ;
+        var popup =  ul + '</ul>';
+        popup += tabs + '</div>';
         /*var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
         // console.log(popupTemplateVertical);
         var popupContent = popupTemplatePanel(obj);*/
