@@ -85,8 +85,10 @@ function readCsvIntoTable(filename, id_div) {
 
     });
 }
-readCsvIntoTable("data/fonctionnalites.csv", '#funct_tables');
-readCsvIntoTable("data/sources", '#source_tables');
+if(page !== "index.html") {
+    readCsvIntoTable("data/fonctionnalites.csv", '#funct_tables');
+    readCsvIntoTable("data/sources", '#source_tables');
+}
 
 
 
@@ -110,8 +112,13 @@ map.addControl( new L.Control.Search({
 }) );
 //controlLoading._showIndicator();
 
+// Secteurs Marseille
+if (typeof sectorsData !== 'undefined') {
+    processGeojsonData(sectorsData);
+    delete sectorsData;
+}
 
-// Quartiers prioritaires
+/*
 $.ajax({
     type: "GET",
     url: "data/quartiers_prioritaires_ecoles.csv", // "liste_quartiers_prioritairesville.csv",
@@ -119,17 +126,18 @@ $.ajax({
     success: function(data) {
         statesData = processData(data);
     }
-});
-
-// Secteurs Marseille
-if (typeof sectorsData !== 'undefined') {
-    processGeojsonData(sectorsData);
-    delete sectorsData;
-}
-
+});*/
+/*
+*/
 // Ecoles Marseille
 processJsonData(donnees);
 delete donnees;
+
 /*
 
  */
+
+// Quartiers prioritaires
+
+processData(districtPriorityData);
+delete districtPriorityData;

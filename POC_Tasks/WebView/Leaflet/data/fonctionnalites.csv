@@ -1,6 +1,9 @@
 Date;Fonctionnalité
 ?/?/?;Convert csv to js using python to speedup loading
-?/?/?;District data csv to js
+?/?/?;Test leaflet.edgebuffer.js
+26/03/2021;District data csv to js (5.5 seconds loading page)
+25/03/2021;Popup html added to speedup tests
+24/03/2021;tabs updated
 24/03/2021;Popup content updated
 23/03/2021;Popup link updated
 22/03/2021;Size popup updated

@@ -107,7 +107,7 @@ function processJsonData(jsonData) {
         var num_tab = 1;
         var num_link_content;
         var link_content;
-        console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
+        //console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
         for(var tab_title_index in Object.keys(obj.data)) {
             tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
                 '<div class="content">';

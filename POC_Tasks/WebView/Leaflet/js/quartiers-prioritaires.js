@@ -1,5 +1,5 @@
-function processData(allText) {
-
+function processData(districtPriorityData) {
+    /*
     function pad(num, size) {
         num = num.toString();
         while (num.length < size) num = "0" + num;
@@ -7,7 +7,7 @@ function processData(allText) {
     }
 
     //var file = loadFile("liste_quartiers_prioritairesville.csv");
-    var allTextLines = allText.split(/\r\n|\n/);
+    var allTextLines = districtPriorityData.split(/\r\n|\n/);
     var headers = allTextLines[0].split(';');
     var lines = [];
     var statesDataString = '{"type":"FeatureCollection","features":[';
@@ -28,7 +28,7 @@ function processData(allText) {
         var test = lines[i][11];
         //console.log(typeof(test));
         //console.log(lines[i]);
-        if(test !== "") {
+        if(test !== "" && lines[i][2] === 'Bouches-du-Rhone') {
             newTemp = test.replace(/""/g, '"');
             var json_string = newTemp.slice(1, newTemp.length - 1)
             //console.log(json_string);
@@ -41,10 +41,11 @@ function processData(allText) {
     }
     statesDataString = statesDataString.slice(0, -1);
     statesDataString += ']}';
-    //console.log(statesDataString);
+    console.log(statesDataString);
     //console.log(statesData);
     //console.log("Process file OK");
-    var statesData = JSON.parse(statesDataString);
+
+    var statesData = JSON.parse(statesDataString);*/
 
     // control that shows state info on hover
     var info = L.control();
@@ -123,7 +124,7 @@ function processData(allText) {
         });
     }
 
-    geojson = L.geoJson(statesData, {
+    geojson = L.geoJson(districtPriorityData, {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
