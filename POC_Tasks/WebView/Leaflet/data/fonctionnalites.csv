@@ -1,6 +1,11 @@
 Date;Fonctionnalité
 ?/?/?;Convert csv to js using python to speedup loading
-?/?/?;Test leaflet.edgebuffer.js
+?/?/?;Analyse downloaded files (auto or manual)
+?/?/?;Convert downloaded files
+?/?/?;Download marseille audit ecole second half
+27/03/2021;Popup tab updated
+27/03/2021;Test leaflet.edgebuffer.js less than 5 seconds
+26/03/2021;Download marseille audit ecole first half
 26/03/2021;District data csv to js (5.5 seconds loading page)
 25/03/2021;Popup html added to speedup tests
 24/03/2021;tabs updated

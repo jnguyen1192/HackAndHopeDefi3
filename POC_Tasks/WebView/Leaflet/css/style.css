@@ -108,21 +108,30 @@ body {
     height: 20px;
     left: -40px;
 }
+/*
+.tab-link a:focus {
+    background:#000 !important;
+}*/
+
+.tab-link:hover {
+    background:#f8f8f8 !important;
+}
+.tab-link a:link {
+    text-decoration:none;
+}
 .tab-link {
-    background:#eee;
+    background:#fff;
     display: inline-block;
     padding:10px;
-    border:1px solid #ccc;
+    /*border:1px solid #ccc;*/
     margin-left:-1px;
     position:relative;
     list-style-type: none;
     left:1px;
     top:1px;
-    cursor:pointer;
+    /*cursor:pointer;*/
 }
-.tab-link {
-    background:#f8f8f8;
-}
+
 .content {
     background:white;
     position:absolute;
@@ -131,7 +140,7 @@ body {
     right:0;
     bottom:0;
     /*padding:20px;*/
-    border:1px solid #ccc;
+    /*border:1px solid #ccc;*/
 }
 .tab:target {
     display: block;
