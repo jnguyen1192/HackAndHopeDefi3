@@ -15,7 +15,7 @@ def get_links_from_csv_file(file_name):
                         num_link = index
                         break
                 beg = False
-            links.append(row[num_link])
+            links.append((row[num_link], row[num_link-2]))
         return links
 
 
@@ -40,15 +40,22 @@ print(len(links))
 # TODO 3 Read document and synthetize
 dir = "marseille_audit/"
 i = 0
-for link in links:
+for link, filename in links:
     try:
         file = link.split("/")[-1]
-        if os.path.exists(os.path.join(dir, file)):
-            print(file, "already downloaded")
+        path_file = os.path.join(dir, file)
+        if os.path.exists(path_file):
+            # print(file, "already downloaded")
+            try:
+                os.rename(path_file, os.path.join(dir, filename))
+                print("Rename file process")
+                print(path_file, os.path.join(dir, filename))
+            except:
+                print(link, "\"" + filename + "\"")
         else:
             i += 1
             #print("Need to download")
-            wget.download(link, bar=bar_progress, out=dir)
+            #wget.download(link, bar=bar_progress, out=dir)
     except:
         print("\n" +link + "not downloaded")
 #print("Il reste " + str(i) + " téléchargements")

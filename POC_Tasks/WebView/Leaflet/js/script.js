@@ -98,7 +98,8 @@ var map = L.map("mapid").setView([43.28817965, 5.40450052], 11);//[43.32417965, 
 var controlLoading = L.Control.loading();
 map.addControl(controlLoading);
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    edgeBufferTiles: 1
 }).addTo(map);
 
 var markersLayer = new L.LayerGroup();
