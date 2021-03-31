@@ -75,6 +75,9 @@ function processJsonData(jsonData) {
                     "Périscolaire": "",
                     "Bâti": ""
                 },
+                "Audit": {
+                    "Liens": point[1].LIENS
+                },
                 "Informations complémentaires": {
                     "Circonscription": "",
                     "IEN": "",

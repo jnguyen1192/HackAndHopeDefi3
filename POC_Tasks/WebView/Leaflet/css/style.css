@@ -73,7 +73,7 @@ body {
 .info .item:last-child { border-bottom:none; }
 */
 .leaflet-popup-content {
-    width:589px !important;
+    width:630px !important;
     height:250px;
 }
 
@@ -229,4 +229,9 @@ body {
     border:0;
     border-radius:0px;
     box-shadow: 0 0px 0px;
+}
+
+/* Audit */
+.link_audit {
+    display:block;
 }

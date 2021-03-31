@@ -1,8 +1,11 @@
 Date;Fonctionnalité
-?/?/?;Convert csv to js using python to speedup loading
 ?/?/?;Analyse downloaded files (auto or manual)
-?/?/?;Convert downloaded files
-?/?/?;Download marseille audit ecole second half
+?/?/?;Auto refresh data files
+?/?/?;Convert csv to js using python to speedup loading
+31/03/2021:Audit tab added on popup
+30/03/2021:File instruction for audit feature
+29/03/2021;Convert downloaded files
+28/03/2021;Download marseille audit ecole second half
 27/03/2021;Popup tab updated
 27/03/2021;Test leaflet.edgebuffer.js less than 5 seconds
 26/03/2021;Download marseille audit ecole first half
