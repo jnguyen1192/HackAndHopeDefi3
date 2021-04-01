@@ -87,31 +87,18 @@ function processJsonData(jsonData) {
             }
         };
         //console.log(obj);
+        // Creation des onglets
         var tabs = '<div class="tabs">';
-/*
-            '<div class="tab" id="tab-1">' +
-            '<div class="content">' +
-            '<b>'+ Object.keys(obj.data) +'</b>' +
-            '</div>' +
-            '</div>' +
-
-            '<div class="tab" id="tab-2">' +
-            '<div class="content">' +
-            '<b>Tab 2 content</b>' +
-            '</div>' +
-            '</div>' +
-
-            '<div class="tab" id="tab-3">' +
-            '<div class="content">' +
-            '<b>Tab 3 content</b>' +
-            '</div>' +
-            '</div>';*/
         var ul = '<ul class="tabs-link">';
         var num_tab = 1;
         var num_link_content;
         var link_content;
         //console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
+        // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
+            // Ajout d'un onglet
+            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            // Ajout du contenu de l'onglet
             tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
                 '<div class="content">';
             link_content = "";
@@ -122,46 +109,15 @@ function processJsonData(jsonData) {
             }
             tabs += link_content + '</div>' +
                 '</div>';
-            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             num_tab += 1;
         }
-        //var popup = tabs;
-        //ul += ;
+        // Ajout des onglets dans la fenêtre contextuelle
         var popup =  ul + '</ul>';
+        // Ajout du contenu des onglets dans la fenêtre contextuelle
         popup += tabs + '</div>';
-        /*var popupTemplatePanel = Handlebars.compile(document.getElementById('template-popup').innerHTML);
-        // console.log(popupTemplateVertical);
-        var popupContent = popupTemplatePanel(obj);*/
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
-            .bindTooltip(point[1].ecole_appellation)
-            .bindPopup(popup);
-            /*.bindPopup(popupContent, {
-                minWidth:450,
-                keepInView: true,
-                data: obj
-            });*/
-        markersLayer.addLayer(marker);
-
+            .bindTooltip(point[1].ecole_appellation) // Ajout d'une infobulle au marqueur
+            .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
+        markersLayer.addLayer(marker); // Ajout du marqueur dans la couche possédant les marqueurs
     });
-
-/*
-    map.on('popupopen', function(e) {
-        map.invalidateSize();
-        var firstTabId = _.kebabCase(_.keys(e.popup.options.data.data)[0]);
-        if (document.location.hash != '' || document.location.hash != '#'){
-            document.location.hash = '#tab-';
-        }
-        document.location.hash = '#tab-'+firstTabId;
-
-        var container = $("html,body");
-        container.animate({
-            scrollTop: 400
-        });
-
-        $("a.panel-block").click(function(e) {
-            e.preventDefault(); // desactive la fonction precedente
-            $('.' + $($(this).attr('href')).attr('class').replace(" ", ".")).hide(); // cache toutes les tabs
-            $($(this).attr('href')).show(); // montre la tab courante
-        });// Auto-scroll désactivé après un clique sur le marqueur
-    });*/
 }

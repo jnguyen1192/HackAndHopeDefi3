@@ -2,6 +2,10 @@ Date;Fonctionnalité
 ?/?/?;Analyse downloaded files (auto or manual)
 ?/?/?;Auto refresh data files
 ?/?/?;Convert csv to js using python to speedup loading
+?/?/?;Add button to call
+?/?/?;Add button to have more information
+?/?/?;Convert csv to js using python to speedup loading
+01/04/2021;First part comments added on ecole-marseille.js
 31/03/2021:Audit tab added on popup
 30/03/2021:File instruction for audit feature
 29/03/2021;Convert downloaded files
