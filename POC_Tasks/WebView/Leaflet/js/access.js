@@ -6,7 +6,7 @@ xmlhttp.onreadystatechange = () => {
         // Si la transaction est un succès
         if(xmlhttp.status == 200){
             // On traite les données reçues
-            //let donnees = JSON.parse(xmlhttp.responseText)
+            let donnees = JSON.parse(xmlhttp.responseText)
             var i = 0;
             // On boucle sur les données (ES8)
             Object.entries(donnees.points).forEach(point => {
@@ -91,6 +91,6 @@ xmlhttp.onreadystatechange = () => {
     }
 }
 
-xmlhttp.open("GET", "php/acces.php");
+xmlhttp.open("GET", "../php/acces.php");
 
 xmlhttp.send(null);

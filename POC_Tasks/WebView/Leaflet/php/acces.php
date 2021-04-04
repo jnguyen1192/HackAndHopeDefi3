@@ -37,8 +37,10 @@ while($row = $query->fetch(PDO::FETCH_ASSOC)){
     $tableauPoints['points'][] = $point;
 }
 
+/*
+// Pour travailler en local
 $fp = fopen('results.json', 'w');
 fwrite($fp, json_encode($tableauPoints));
-fclose($fp);
+fclose($fp);*/
 // On encode en json et on envoie
 echo json_encode($tableauPoints);

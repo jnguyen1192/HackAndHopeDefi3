@@ -5,6 +5,13 @@ Date;Fonctionnalité
 ?/?/?;Add button to call
 ?/?/?;Add button to have more information
 ?/?/?;Convert csv to js using python to speedup loading
+?/?/?;Readme for developer
+?/?/?;Readme for end user
+?/?/?;Add over-flow on popup
+?/?/?;Refactor mapBuilder class part 2
+04/04/2021;Synchronous db data getter
+03/04/2021;Test promises
+02/04/2021;Refactor mapBuilder class part 1
 01/04/2021;First part comments added on ecole-marseille.js
 31/03/2021:Audit tab added on popup
 30/03/2021:File instruction for audit feature

@@ -1,4 +1,4 @@
-function processJsonData(jsonData) {
+function processJsonData(jsonData, markersLayer) {
 /*
     Handlebars.registerHelper('kebabCase', function(name) {
         return _.kebabCase(name)
@@ -118,6 +118,28 @@ function processJsonData(jsonData) {
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
             .bindTooltip(point[1].ecole_appellation) // Ajout d'une infobulle au marqueur
             .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
+        //console.log(markersLayer);
         markersLayer.addLayer(marker); // Ajout du marqueur dans la couche possédant les marqueurs
     });
+}
+
+function getJsonFromDB() {
+    var donnees;
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+        // La transaction est terminée ?
+        if(xmlhttp.readyState == 4){
+            // Si la transaction est un succès
+            if(xmlhttp.status == 200){
+                // On traite les données reçues
+                donnees = JSON.parse(xmlhttp.responseText)
+                //console.log("In function");
+                //console.log(donnees);
+            }
+        }
+    }
+    xmlhttp.open("GET", "php/acces.php", false); // False pour avoir un comportement synchrone
+    xmlhttp.send(null);
+
+    return donnees;
 }
