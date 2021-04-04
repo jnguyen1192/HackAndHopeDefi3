@@ -54,6 +54,11 @@ function processJsonData(jsonData, markersLayer) {
             },
             data: {
                 "Généralités": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/Document.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/Document.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/Document.php?operation=insert",
+                    "Téléphone": "",
+                    "Téléphone": "",
                     "Adresse, Code Postal, Ville": point[1].ecole_appellation + ", " + point[1].CRITERE2,
                     "Téléphone": "",
                     "Effectif": point[1].CRITERE5,
@@ -93,6 +98,8 @@ function processJsonData(jsonData, markersLayer) {
         var num_tab = 1;
         var num_link_content;
         var link_content;
+        var _key;
+        var _value;
         //console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
         // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
@@ -104,7 +111,17 @@ function processJsonData(jsonData, markersLayer) {
             link_content = "";
             num_link_content = 1;
             for(var link_content_index in Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])) {
-                link_content +=    '<p>'+ Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1] + ':'  + obj.data[Object.keys(obj.data)[num_tab-1]][Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1]] + '</p>'; // TODO add content
+                _key = Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1];
+                _value = obj.data[Object.keys(obj.data)[num_tab-1]][Object.keys(obj.data[Object.keys(obj.data)[num_tab-1]])[num_link_content-1]];
+                // case new button b with link
+                if(_key.split(" ")[0] == "${button}") {
+                    _key = _key.replace("${button} ", ""); // remove magic word from key
+                    link_content +=    '<button type="button" onClick="javascript:window.open(\''+ _value + '\', \'_blank\');" formtarget="_blank">' + _key + '</button>';
+                }
+                else { // case new information p
+                    link_content +=    '<p>'+ _key + ':'  + _value + '</p>'; // add content
+                }
+
                 num_link_content += 1;
             }
             tabs += link_content + '</div>' +

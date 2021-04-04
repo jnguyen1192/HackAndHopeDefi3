@@ -72,9 +72,13 @@ body {
 .info .item.active { background:#f8f8f8; }
 .info .item:last-child { border-bottom:none; }
 */
+.leaflet-popup-content-wrapper {
+    overflow-y: auto;
+}
+
 .leaflet-popup-content {
-    width:630px !important;
-    height:250px;
+    width:650px !important;
+    height:280px;
 }
 
 

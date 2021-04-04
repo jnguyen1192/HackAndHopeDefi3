@@ -9,6 +9,8 @@ Date;Fonctionnalité
 ?/?/?;Readme for end user
 ?/?/?;Add over-flow on popup
 ?/?/?;Refactor mapBuilder class part 2
+04/04/2021;Button added on first tab
+04/04/2021;Button added on popup
 04/04/2021;Synchronous db data getter
 03/04/2021;Test promises
 02/04/2021;Refactor mapBuilder class part 1
