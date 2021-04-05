@@ -73,12 +73,11 @@ body {
 .info .item:last-child { border-bottom:none; }
 */
 .leaflet-popup-content-wrapper {
-    overflow-y: auto;
 }
 
 .leaflet-popup-content {
     width:650px !important;
-    height:280px;
+    height:300px;
 }
 
 
@@ -95,9 +94,10 @@ body {
 /* Tab */
 .tabs {
     position:relative;
-    min-height:200px;
+    overflow-y: overlay;
+    height:280px; /* 300 - 20 = 280*/
     clear:both;
-    margin:25px 0;
+    /*margin:25px 0;*/
 }
 .tab {
     float:left;

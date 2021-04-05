@@ -63,7 +63,13 @@ function processJsonData(jsonData, markersLayer) {
                     "Téléphone": "",
                     "Effectif": point[1].CRITERE5,
                     "OCCE ?": "",
-                    "Quartier": point[1].CRITERE3
+                    "Quartier": point[1].CRITERE3,
+                    "Quartier1": point[1].CRITERE3,
+                    "Quartier2": point[1].CRITERE3,
+                    "Quartier3": point[1].CRITERE3,
+                    "Quartier4": point[1].CRITERE3,
+                    "Quartier5": point[1].CRITERE3,
+                    "Quartier6": point[1].CRITERE3
                 },
                 "Parents d'élèves": {
                     "APE / Représentants": "",
@@ -104,7 +110,7 @@ function processJsonData(jsonData, markersLayer) {
         // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
             // Ajout d'un onglet
-            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + '"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + ' " ><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             // Ajout du contenu de l'onglet
             tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
                 '<div class="content">';
