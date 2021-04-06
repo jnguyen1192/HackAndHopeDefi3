@@ -76,7 +76,7 @@ body {
 }
 
 .leaflet-popup-content {
-    width:650px !important;
+    width:450px !important;
     height:300px;
 }
 
@@ -94,8 +94,8 @@ body {
 /* Tab */
 .tabs {
     position:relative;
-    overflow-y: overlay;
-    height:280px; /* 300 - 20 = 280*/
+    overflow-y: auto;
+    height:calc(100% - 80px); /* 300 - 20 = 280*/
     clear:both;
     /*margin:25px 0;*/
 }
@@ -107,10 +107,16 @@ body {
     display: inline-block;
 }
 .tabs-link {
+    overflow-y: hidden;
+    width: 100%;
+    overflow-x: auto;
+    padding-inline-start: 0px;
+    display: -webkit-inline-box;
+    white-space: nowrap;
     position: relative;
-    top: -14px;
+    /*top: -14px;
     height: 20px;
-    left: -40px;
+    left: -40px;*/
 }
 /*
 .tab-link a:focus {
@@ -146,18 +152,11 @@ body {
     /*padding:20px;*/
     /*border:1px solid #ccc;*/
 }
-.tab:target {
-    display: block;
-}
 
 .content {
     position: relative;
     height: 100%;
-}/*
-.tab:target,
-.tab:first-child {
-    display: block;
-}*/
+}
 
 .tab-container {
     position: relative;
@@ -168,15 +167,18 @@ body {
     background: white;
 }
 
-.tab:not(:target),
-.tab:first-child:not(:target){
-    display:none;
-}
 .tab:target,
 .tab:first-child {
     display: block;
 }
 
+.tab:target {
+    display: block;
+}
+
+.tab:not(:target){
+    display:none;
+}
 /* Map */
 #mapid {
     height: 90%;

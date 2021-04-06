@@ -110,7 +110,7 @@ function processJsonData(jsonData, markersLayer) {
         // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
             // Ajout d'un onglet
-            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + ' " ><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + ' " onclick="console.log(\'.\' + $(this).attr(\'href\').slice(1,4));$(\'.\' + $(this).attr(\'href\').slice(1,4)).hide();$($(this).attr(\'href\')).show();"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             // Ajout du contenu de l'onglet
             tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
                 '<div class="content">';
@@ -138,14 +138,16 @@ function processJsonData(jsonData, markersLayer) {
         var popup =  ul + '</ul>';
         // Ajout du contenu des onglets dans la fenêtre contextuelle
         popup += tabs + '</div>';
+
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
             .bindTooltip(point[1].ecole_appellation) // Ajout d'une infobulle au marqueur
             .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
         //console.log(markersLayer);
         markersLayer.addLayer(marker); // Ajout du marqueur dans la couche possédant les marqueurs
     });
-}
 
+
+}
 function getJsonFromDB() {
     var donnees;
     let xmlhttp = new XMLHttpRequest();
