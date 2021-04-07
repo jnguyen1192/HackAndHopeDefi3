@@ -8,6 +8,10 @@ Date;Fonctionnalité
 ?/?/?;Readme for developer
 ?/?/?;Readme for end user
 ?/?/?;Refactor mapBuilder class part 2
+?/04/2021;Refactor button
+?/04/2021;Button with arguments added
+?/04/2021;Button added on each tab
+07/04/2021;Cookie added on page loading
 06/04/2021;Tab on firefox added
 05/04/2021;Add overflow-y and height on link popup
 05/04/2021;Add overflow-y and height on tab popup
