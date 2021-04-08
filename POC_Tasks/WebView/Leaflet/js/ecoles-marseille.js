@@ -54,42 +54,51 @@ function processJsonData(jsonData, markersLayer) {
             },
             data: {
                 "Généralités": {
-                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/Document.php?operation=select",
-                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/Document.php?operation=insert",
-                    "${button} Contacter": "https://dev.nos-ecoles.fr/Document.php?operation=insert",
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/generalite.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/generalite.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/generalite.php?operation=insert",
                     "Téléphone": "",
                     "Téléphone": "",
                     "Adresse, Code Postal, Ville": point[1].ecole_appellation + ", " + point[1].CRITERE2,
                     "Téléphone": "",
                     "Effectif": point[1].CRITERE5,
                     "OCCE ?": "",
-                    "Quartier": point[1].CRITERE3,
-                    "Quartier1": point[1].CRITERE3,
-                    "Quartier2": point[1].CRITERE3,
-                    "Quartier3": point[1].CRITERE3,
-                    "Quartier4": point[1].CRITERE3,
-                    "Quartier5": point[1].CRITERE3,
-                    "Quartier6": point[1].CRITERE3
+                    "Quartier": point[1].CRITERE3
                 },
                 "Parents d'élèves": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/parent.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/parent.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/parent.php?operation=insert",
                     "APE / Représentants": "",
                     "Affiliation": "",
                     "Contact": ""
                 },
                 "Elu Secteur": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/elusecteur.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/elusecteur.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/elusecteur.php?operation=insert",
                     "Ecoles": "",
                     "Bâtis": "",
                     "Quartier": ""
                 },
                 "Elu Municipal": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/elumunicipale.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/elumunicipale.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/elumunicipale.php?operation=insert",
                     "Ecoles": "",
                     "Périscolaire": "",
                     "Bâti": ""
                 },
                 "Audit": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/audit.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/audit.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/audit.php?operation=insert",
                     "Liens": point[1].LIENS
                 },
                 "Informations complémentaires": {
+                    "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/infocompl.php?operation=select",
+                    "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/infocompl.php?operation=insert",
+                    "${button} Contacter": "https://dev.nos-ecoles.fr/infocompl.php?operation=insert",
                     "Circonscription": "",
                     "IEN": "",
                     "DASEN": "",
@@ -110,7 +119,7 @@ function processJsonData(jsonData, markersLayer) {
         // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
             // Ajout d'un onglet
-            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + ' " onclick="console.log(\'.\' + $(this).attr(\'href\').slice(1,4));$(\'.\' + $(this).attr(\'href\').slice(1,4)).hide();$($(this).attr(\'href\')).show();"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
+            ul += '<li class="tab-link"> <a href="#tab-'+ num_tab.toString() + ' " onclick="$(\'.\' + $(this).attr(\'href\').slice(1,4)).hide();$($(this).attr(\'href\')).show();"><span>'+ Object.keys(obj.data)[tab_title_index] + '</span></a></li>';
             // Ajout du contenu de l'onglet
             tabs += '<div class="tab" id="tab-' + num_tab.toString() + '">' +
                 '<div class="content">';
@@ -122,7 +131,7 @@ function processJsonData(jsonData, markersLayer) {
                 // case new button b with link
                 if(_key.split(" ")[0] == "${button}") {
                     _key = _key.replace("${button} ", ""); // remove magic word from key
-                    link_content +=    '<button type="button" onClick="javascript:window.open(\''+ _value + '\', \'_blank\');" formtarget="_blank">' + _key + '</button>';
+                    link_content +=    '<button type="button" onClick="javascript:window.open(\''+ _value + '&username=' + getCookie("username") + '\', \'_blank\');" formtarget="_blank">' + _key + '</button>';
                 }
                 else { // case new information p
                     link_content +=    '<p>'+ _key + ':'  + _value + '</p>'; // add content
