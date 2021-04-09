@@ -82,7 +82,7 @@ oline = src.readlines()
 oline.insert(0, fline) #Here, we prepend the string we want at the begining
 src.close()
 print(oline)
-file_name = '../js/ecoles-marseille-audit.json.js'
+file_name = '../js/data/ecoles-marseille-audit.json.js'
 src = open(file_name, "w") #We again open the file in WRITE mode
 src.writelines(oline)
 src.close()

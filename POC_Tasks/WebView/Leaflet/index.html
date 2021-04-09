@@ -3,33 +3,24 @@
 <html>
 <head>
 
-    <title>Quick Start - Leaflet</title>
+    <title>Nos écoles - Carte des écoles</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/css/tabby.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0leaflet-search.css">
-    -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/js/tabby.min.js"></script>
-    -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.9/dist/leaflet-search.src.min.js"></script>
 
-    <!--
-    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    -->
+
+
     <link type="text/css" rel="stylesheet" href="./css/style.css" />
     <link type="text/css" rel="stylesheet" href="./css/Control.Loading.css" />
 
@@ -46,16 +37,19 @@
 <script>var page = "index.html";
 var db = false;</script>
 
-<script type="text/javascript" src="./js/Control.Loading.js"></script>
-<script type="text/javascript" src="./js/leaflet.edgebuffer.js"></script>
+<script type="text/javascript" src="./js/lib/Control.Loading.js"></script>
+<script type="text/javascript" src="./js/lib/leaflet.edgebuffer.js"></script>
+
 <script type="text/javascript" src="./js/quartiers-prioritaires.js"></script>
-<script type="text/javascript" src="./js/quartiers-prioritaires.csv.js"></script>
-<script type="text/javascript" src="./js/quartiers-marseille.geojson.js"></script>
 <script type="text/javascript" src="./js/quartiers-marseille.js"></script>
-<script type="text/javascript" src="./js/ecoles-marseille-audit.json.js"></script>
 <script type="text/javascript" src="./js/ecoles-marseille.js"></script>
 <script type="text/javascript" src="./js/cookie.js"></script>
 
-<script type="text/javascript" src="./js/mapBuilder.js"></script>
-<script type="text/javascript" src="./js/script.js"></script>
+<script type="text/javascript" src="./js/data/quartiers-prioritaires.csv.js"></script>
+<script type="text/javascript" src="./js/data/quartiers-marseille.geojson.js"></script>
+<script type="text/javascript" src="./js/data/ecoles-marseille-audit.json.js"></script>
+
+<script type="text/javascript" src="./js/class/mapBuilder.js"></script>
+
+<script type="text/javascript" src="./js/main.js"></script>
 </html>

@@ -1,9 +1,11 @@
 function processJsonData(jsonData, markersLayer) {
-/*
-    Handlebars.registerHelper('kebabCase', function(name) {
-        return _.kebabCase(name)
-    });*/
-
+    /*  1) Icone declaration
+        2) Data form creation
+        3) Html content popup creation
+        4) Marker with popup added on map
+    */
+    /* 1) Icone declaration */
+    // On definie les icones
     var IconDEFAVORABLE = L.AwesomeMarkers.icon({
         icon: 'exclamation-circle',
         markerColor: 'red',
@@ -22,13 +24,11 @@ function processJsonData(jsonData, markersLayer) {
         markerColor: 'green',
         prefix: 'fa'
     });
+    /* 2) Data form creation */
     // On boucle sur les données (ES8)
-
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
-        //let marker = L.marker([, ]).addTo(carte)
-        //marker.bindPopup()
         var config = {
             title: point[1].ecole_appellation,
             icon: IconINCONNU
@@ -52,7 +52,7 @@ function processJsonData(jsonData, markersLayer) {
                 lat: point[1].ecole_lat,
                 lng: point[1].ecole_long
             },
-            data: {
+            data: {// Onglets et contenus
                 "Généralités": {
                     "${button} Obtenir plus d'informations": "https://dev.nos-ecoles.fr/generalite.php?operation=select",
                     "${button} Ajouter des informations": "https://dev.nos-ecoles.fr/generalite.php?operation=insert",
@@ -106,7 +106,8 @@ function processJsonData(jsonData, markersLayer) {
                 }
             }
         };
-        //console.log(obj);
+
+        /* 3) Html content popup creation */
         // Creation des onglets
         var tabs = '<div class="tabs">';
         var ul = '<ul class="tabs-link">';
@@ -115,7 +116,6 @@ function processJsonData(jsonData, markersLayer) {
         var link_content;
         var _key;
         var _value;
-        //console.log(obj.data[Object.keys(obj.data)[num_tab-1]]);
         // Pour chaque mot clefs, nous ajoutons un onglet
         for(var tab_title_index in Object.keys(obj.data)) {
             // Ajout d'un onglet
@@ -148,6 +148,7 @@ function processJsonData(jsonData, markersLayer) {
         // Ajout du contenu des onglets dans la fenêtre contextuelle
         popup += tabs + '</div>';
 
+        /* 4) Marker with popup added on map */
         var marker = L.marker(new L.latLng([obj.location.lat, obj.location.lng]), config)
             .bindTooltip(point[1].ecole_appellation) // Ajout d'une infobulle au marqueur
             .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
@@ -167,8 +168,6 @@ function getJsonFromDB() {
             if(xmlhttp.status == 200){
                 // On traite les données reçues
                 donnees = JSON.parse(xmlhttp.responseText)
-                //console.log("In function");
-                //console.log(donnees);
             }
         }
     }

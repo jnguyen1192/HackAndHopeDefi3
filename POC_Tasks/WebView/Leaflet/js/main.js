@@ -20,7 +20,8 @@ delete donnees;
 processData(districtPriorityData);
 delete districtPriorityData;
 
-/*
+/* // Recuperer les quartiers prioritaires a partir du csv
+var statesData;
 $.ajax({
     type: "GET",
     url: "data/quartiers_prioritaires_ecoles.csv", // "liste_quartiers_prioritairesville.csv",
@@ -29,5 +30,3 @@ $.ajax({
         statesData = processData(data);
     }
 });*/
-/*
-*/
