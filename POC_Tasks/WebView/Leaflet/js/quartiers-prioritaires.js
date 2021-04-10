@@ -1,4 +1,4 @@
-function processData(districtPriorityData) {
+function processData(districtPriorityData, map) {
     /*
     function pad(num, size) {
         num = num.toString();

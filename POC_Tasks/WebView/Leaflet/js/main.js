@@ -3,12 +3,12 @@ checkCookie();
 console.log(getCookie("username"));
 
 // Creation de la carte
-let mp = new MapBuilder("mapid", "findbox");
-var map = mp.create();
+let mp = new MapBuilder("mapid", "findbox"); // mapid and findbox are the id of map div and searchbox div
+//var map = mp.create();
 
 // Secteurs Marseille
 if (typeof sectorsData !== 'undefined') {
-    processGeojsonData(sectorsData);
+    processGeojsonData(sectorsData, mp.map); // mp.map est la carte où ajouter les secteurs
     delete sectorsData;
 }
 
@@ -17,7 +17,7 @@ processJsonData(donnees, mp.markersLayer); // mp.markersLayer est la couche où 
 delete donnees;
 
 // Quartiers prioritaires
-processData(districtPriorityData);
+processData(districtPriorityData, mp.map); // mp.map est la carte où ajouter les quartiers prioritaires
 delete districtPriorityData;
 
 /* // Recuperer les quartiers prioritaires a partir du csv

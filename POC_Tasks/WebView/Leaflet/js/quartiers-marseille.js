@@ -1,5 +1,5 @@
 // control that shows state info on hover
-function processGeojsonData(geojsonData) {
+function processGeojsonData(geojsonData, map) {
     var info = L.control();
 
     info.onAdd = function (map) {
@@ -97,7 +97,7 @@ function processGeojsonData(geojsonData) {
         if (l.getTooltip) {
             var toolTip = l.getTooltip();
             if (toolTip) {
-                this.map.closeTooltip(toolTip);
+                map.closeTooltip(toolTip);
             }
         }
     });
