@@ -107,9 +107,12 @@ function processGeojsonData(geojsonData, map) {
 
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend');
-        div.innerHTML += '<img src="assets/img/markerRed.png">' + '     Défavorable' + '<br>'
-        div.innerHTML += '<img src="assets/img/markerOrange.png">' + '     Non connu' + '<br>'
-        div.innerHTML += '<img src="assets/img/markerGreen.png">' + '     Favorable'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/child-solid.svg">' + '     Ecole maternelle' + '<br>'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/cubes-solid.svg">' + '     Ecole élémentaire' + '<br>'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/linode-brands.svg">' + '     Ecole primaire' + '<br>'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/markerRed.png">' + '     Défavorable' + '<br>'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/markerOrange.png">' + '     Non connu' + '<br>'
+        div.innerHTML += '<img class="imgLegend" src="assets/img/markerGreen.png">' + '     Favorable'
 
         return div;/*
         var div = L.DomUtil.create('div', 'info legend'),

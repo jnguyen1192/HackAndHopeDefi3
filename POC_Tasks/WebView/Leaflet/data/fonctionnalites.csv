@@ -9,8 +9,9 @@ Date;Fonctionnalité
 ?/04/2021;Refactor button
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
-?/?/?;Legend for each school type
-?/?/?;Icons for each school type
+?/04/2021;Dynamic legend display
+11/04/2021;Legend for each school type
+11/04/2021;Icons for each school type
 10/04/2021;Refactor mapBuilder class part 2
 09/04/2021;Javascript directory refactor part 1
 08/04/2021;Button added on each tab

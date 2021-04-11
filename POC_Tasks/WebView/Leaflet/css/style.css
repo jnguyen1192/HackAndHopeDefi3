@@ -227,8 +227,18 @@ body {
     margin: 0 0 5px;
     color: #777;
 }
-.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
 
+/* Legend */
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+.imgLegend {
+    width: 30px;
+}
+.info.legend.leaflet-control:hover + .imgLegend {
+    display:block;
+}
+.imgLegend {
+    display:none;
+}
 /* Sector */
 .sectorLabel{
     background: rgba(255, 255, 255, 0);

@@ -6,6 +6,7 @@ function processJsonData(jsonData, markersLayer) {
     */
     /* 1) Icone declaration */
     // On definie les icones
+    /*
     var IconDEFAVORABLE = L.AwesomeMarkers.icon({
         icon: 'exclamation-circle',
         markerColor: 'red',
@@ -18,35 +19,65 @@ function processJsonData(jsonData, markersLayer) {
         markerColor: 'orange',
         prefix: 'fa'
     });
-
     var IconFAVORABLE = L.AwesomeMarkers.icon({
-        icon: 'check',
+        icon: 'linode',
         markerColor: 'green',
         prefix: 'fa'
-    });
+    });*/
+    /* https://fontawesome.com/ */
+    // 'cubes' maternelle
+    // 'linode' elementaire
+    // 'child' primaire
+    function createAwesomeIcon(icon_, color_) {
+        return L.AwesomeMarkers.icon({
+            icon: icon_,
+            markerColor: color_,
+            prefix: 'fa'
+        });
+    }
+    var aiColor;
+    var aiIcon;
     /* 2) Data form creation */
     // On boucle sur les données (ES8)
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
+        /*
         var config = {
             title: point[1].ecole_appellation,
             icon: IconINCONNU
+        }*/
+        aiColor = 'orange';
+        aiIcon = 'question'
+        /* Icons */
+        if(point[1].CRITERE1.indexOf('ELEMENTAIRE') >= 0 || point[1].CRITERE1.indexOf('ÉLÉMENTAIRE') >= 0) {
+            aiIcon = 'linode';
         }
+        if(point[1].CRITERE1.indexOf('MATERNELLE') >= 0) {
+            aiIcon = 'cubes';
+        }
+        if(point[1].CRITERE1.indexOf('PRIMAIRE') >= 0) {
+            aiIcon = 'child';
+        }
+        /* Colors */
         if (point[1].CRITERE4 == 'FAVORABLE') {
-            var config = {
-                title: point[1].ecole_appellation,
-                icon: IconFAVORABLE
-            }
+            aiColor = 'green';
+
         }
 
         if (point[1].CRITERE4 == 'DEFAVORABLE') {
+            aiColor = 'red';
+            /*
             var config = {
                 title: point[1].ecole_appellation,
                 icon: IconDEFAVORABLE
-            }
+            }*/
         }
 
+        var config = {
+            title: point[1].ecole_appellation,
+            icon: createAwesomeIcon(aiIcon, aiColor)
+        }
         var obj = {
             location: {
                 lat: point[1].ecole_lat,
@@ -154,6 +185,9 @@ function processJsonData(jsonData, markersLayer) {
             .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
         //console.log(markersLayer);
         markersLayer.addLayer(marker); // Ajout du marqueur dans la couche possédant les marqueurs
+        // TODO Test
+        var test_type = point[1].CRITERE1;
+        console.log(test_type);
     });
 
 
