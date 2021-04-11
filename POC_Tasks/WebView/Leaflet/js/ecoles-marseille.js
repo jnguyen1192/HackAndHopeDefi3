@@ -185,9 +185,6 @@ function processJsonData(jsonData, markersLayer) {
             .bindPopup(popup); // Ajout de la fenêtre contextuelle du marqueur
         //console.log(markersLayer);
         markersLayer.addLayer(marker); // Ajout du marqueur dans la couche possédant les marqueurs
-        // TODO Test
-        var test_type = point[1].CRITERE1;
-        console.log(test_type);
     });
 
 

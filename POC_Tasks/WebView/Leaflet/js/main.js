@@ -6,6 +6,9 @@ console.log(getCookie("username"));
 let mp = new MapBuilder("mapid", "findbox"); // mapid and findbox are the id of map div and searchbox div
 //var map = mp.create();
 
+// Legendes
+createLegend(mp.map);
+
 // Secteurs Marseille
 if (typeof sectorsData !== 'undefined') {
     processGeojsonData(sectorsData, mp.map); // mp.map est la carte où ajouter les secteurs
@@ -19,6 +22,7 @@ delete donnees;
 // Quartiers prioritaires
 processData(districtPriorityData, mp.map); // mp.map est la carte où ajouter les quartiers prioritaires
 delete districtPriorityData;
+
 
 /* // Recuperer les quartiers prioritaires a partir du csv
 var statesData;
