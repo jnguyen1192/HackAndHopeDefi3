@@ -187,30 +187,46 @@ body {
 
 /* Search */
 #findbox {
-    height: 10%;
+    z-index:5000;
+    height: 35px;
     float:left;
     width: 100%;
 }
 #findbox .search-input {
+    max-width: 100% !important;
     background: #eee;
     border-radius:.125em;
     border:2px solid #1978cf;
     box-shadow: 0 0 8px #999;
-    margin-bottom: 10%;
-    padding: 2px 0;
-    width: -webkit-calc(100% - 34px);
-    width:    -moz-calc(100% - 34px);
-    width:         calc(100% - 34px);
-    max-width: 100% !important;
-    height: 26px;
+    /*padding: 2px 0;*/
+    width: -webkit-calc(100% - 64px);
+    width:    -moz-calc(100% - 64px);
+    width:         calc(100% - 64px);
+    /*height: 26px;*/
 }
-.search-tooltip {
-    /*width: 200px;*/
+.leaflet-control-search.search-exp {
+    all: initial;
+    * {
+        all: unset;
+    }
 }
+
+
 .leaflet-control-search .search-cancel {
     position: static;
     float: left;
     margin-left: -22px;
+}
+.leaflet-control-search ul {
+	font-size:.85em;
+	margin:0;
+	padding:0;
+	list-style: none;
+	max-height: 100px;
+    overflow-y: auto;
+}
+.leaflet-control-search li {
+	margin:0 0 2px 18px;
 }
 
 /* District priority */
@@ -252,6 +268,7 @@ body {
 .info.legend.leaflet-control:target > .lineLegend {
     display:block;
 }
+
 .lineLegend {
     display:none;
 }

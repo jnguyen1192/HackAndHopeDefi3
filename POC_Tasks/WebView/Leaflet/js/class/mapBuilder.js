@@ -23,7 +23,9 @@ class MapBuilder {
         container: this.searchbox,
         layer: this.markersLayer,
         initial: false,
-        collapsed: false
+        collapsed: false,
+        zoom: 14
+        //tooltipLimit:-1
     }) ); // Ajout de la boîte de recherche
 
     return map;

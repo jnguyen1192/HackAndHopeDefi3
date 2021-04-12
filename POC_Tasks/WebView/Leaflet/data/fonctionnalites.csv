@@ -9,6 +9,8 @@ Date;Fonctionnalité
 ?/04/2021;Refactor button
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
+?/04/2021;Auto school selection using cookie or gps location
+12/04/2021;School search tool corrected
 11/04/2021;Legend display corrected
 11/04/2021;Dynamic legend display
 11/04/2021;Legend html added to speedup tests
