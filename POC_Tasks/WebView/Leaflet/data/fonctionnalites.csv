@@ -6,10 +6,12 @@ Date;Fonctionnalité
 ?/?/?;Add button to have more information
 ?/?/?;Readme for developer
 ?/?/?;Readme for end user
+?/?/?;Max/Min zoom
 ?/04/2021;Refactor button
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
-?/04/2021;Auto school selection using cookie or gps location
+14/04/2021;Auto school selection using cookie on last search
+13/04/2021;School search tool moved on map
 12/04/2021;School search tool corrected
 11/04/2021;Legend display corrected
 11/04/2021;Dynamic legend display

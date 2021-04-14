@@ -186,6 +186,8 @@ body {
 }
 
 /* Search */
+
+/*
 #findbox {
     z-index:5000;
     height: 35px;
@@ -198,11 +200,9 @@ body {
     border-radius:.125em;
     border:2px solid #1978cf;
     box-shadow: 0 0 8px #999;
-    /*padding: 2px 0;*/
     width: -webkit-calc(100% - 64px);
     width:    -moz-calc(100% - 64px);
     width:         calc(100% - 64px);
-    /*height: 26px;*/
 }
 .leaflet-control-search.search-exp {
     all: initial;
