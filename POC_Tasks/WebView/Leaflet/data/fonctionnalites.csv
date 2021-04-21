@@ -10,6 +10,8 @@ Date;Fonctionnalité
 ?/04/2021;Refactor button
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
+?/04/2021;Replace phpgenerator font by local image
+21/04/2021;Tab behavior in iframe corrected
 20/04/2021;Select div in iframe using xpath in Php
 19/04/2021;Cookie consentement test html
 18/04/2021;Url changed for iframe
