@@ -16,7 +16,33 @@ foreach ( $elements as $domElement ) {
 }
 
 //$form_div = explode("\n", trim(document.querySelector("#pgui-view-grid > div:nth-child(2)")))[0];
-
+echo '<link href="../css/test_iframe.css" rel="stylesheet" type="text/css">';
 echo $domElemsToRemove;
+echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+console.log($(".row"));
+$(".row").contents().find("li a").each(function() {
+            $(this).on("click", function() {
+                $(".row").contents().find("li a").each(function() {
+                    $(this).parent().attr("class","");
+                });
+                $(this).parent().attr("class","active");
+                $(".row").contents().find(".tab-pane").each(function() {
+                    $(this).attr("class","tab-pane");
+                });
+                //console.log($(this).attr("href"));
+                var id = $(this).attr("href");
+                $(".row").contents().find(".tab-pane").each(function() {
+                    //console.log($(this).attr("id"));
+                    if(id == "#" + $(this).attr("id")) {
+                        $(this).attr("class","tab-pane active in");
+                    }
+                });
+                //$("div"+$(this).attr("href")).setAttribute("class", "tab-pane active in");
+
+
+            });
+
+        });</script>'
 
  ?>

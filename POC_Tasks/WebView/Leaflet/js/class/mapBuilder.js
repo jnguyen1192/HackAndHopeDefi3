@@ -40,6 +40,7 @@ class MapBuilder {
 		setCookie("location", object_cookie, 30);// enregistrement de la position dans les cookie
 	}).addTo(map); // Ajout de la boîte de recherche
 
+
     return map;
   }
 }

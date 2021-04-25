@@ -19,6 +19,34 @@ if (typeof sectorsData !== 'undefined') {
 processJsonData(donnees, mp.markersLayer); // mp.markersLayer est la couche où ajouter les marqueurs
 delete donnees;
 
+// Iframe
+/*
+mp.map.on('popupopen', function() {
+        $("#inlineFrameExample0").contents().find("li a").each(function() {
+            $(this).on('click', function() {
+                $("#inlineFrameExample0").contents().find("li a").each(function() {
+                    $(this).parent().attr("class","");
+                });
+                $(this).parent().attr("class","active");
+                $("#inlineFrameExample0").contents().find(".tab-pane").each(function() {
+                    $(this).attr("class","tab-pane");
+                });
+                //console.log($(this).attr("href"));
+                var id = $(this).attr("href");
+                $("#inlineFrameExample0").contents().find(".tab-pane").each(function() {
+                    //console.log($(this).attr("id"));
+                    if(id == "#" + $(this).attr("id")) {
+                        $(this).attr("class","tab-pane active in");
+                    }
+                });
+                //$("div"+$(this).attr("href")).setAttribute("class", "tab-pane active in");
+
+
+            });
+
+        });
+    });
+*/
 // Quartiers prioritaires
 processData(districtPriorityData, mp.map); // mp.map est la carte où ajouter les quartiers prioritaires
 delete districtPriorityData;

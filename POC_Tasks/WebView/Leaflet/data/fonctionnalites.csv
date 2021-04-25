@@ -11,6 +11,12 @@ Date;Fonctionnalité
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
 ?/04/2021;Replace phpgenerator font by local image
+?/04/2021;audit file link behavior corrected on iframe on map
+25/04/2021;tab link behavior corrected on iframe on map
+25/04/2021;iframe css added on map
+24/04/2021;html iframe added on map
+23/04/2021;Get ecole.php data as json with ecoles-audit-marseille.json
+22/04/2021;Get ecole.php data as csv
 21/04/2021;Tab behavior in iframe corrected
 20/04/2021;Select div in iframe using xpath in Php
 19/04/2021;Cookie consentement test html

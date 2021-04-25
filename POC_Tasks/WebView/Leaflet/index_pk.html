@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 
     <link type="text/css" rel="stylesheet" href="./css/style.css" />
-    <link type="text/css" rel="stylesheet" href="./css/test_iframe.css" />
     <link type="text/css" rel="stylesheet" href="./css/Control.Loading.css" />
 
 
@@ -24,22 +23,10 @@
 </head>
 <body>
 
+<div id="findbox"></div>
+<div id="mapid" ></div>
 
-<div id="M" >
-    <iframe id="inlineFrameExample0"
-        title="Inline Frame Example0"
-    src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D2">
-    </iframe>
-    <iframe id="inlineFrameExample1"
-        title="Inline Frame Example0"
-    src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D3">
-    </iframe>
-    <iframe id="inlineFrameExample2"
-        title="Inline Frame Example0"
-    src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D4">
-    </iframe>
-</div>
-<!-- https://www.urlencoder.org/ -->
+
 
 </body>
 
@@ -60,13 +47,13 @@ var db = false;</script>
 
 <script type="text/javascript" src="./js/quartiers-prioritaires.js"></script>
 <script type="text/javascript" src="./js/quartiers-marseille.js"></script>
-<script type="text/javascript" src="./js/ecoles-marseille.js"></script>
+<script type="text/javascript" src="./js/ecoles-marseille-pk.js"></script>
 <script type="text/javascript" src="./js/legend.js"></script>
 <script type="text/javascript" src="./js/cookie.js"></script>
 
 <script type="text/javascript" src="./js/data/quartiers-prioritaires.csv.js"></script>
 <script type="text/javascript" src="./js/data/quartiers-marseille.geojson.js"></script>
-<script type="text/javascript" src="./js/data/ecoles-marseille-audit.json.js"></script>
+<script type="text/javascript" src="./js/data/ecoles-marseille-audit-pk.json.js"></script>
 
 <script type="text/javascript" src="./js/class/mapBuilder.js"></script>
 
