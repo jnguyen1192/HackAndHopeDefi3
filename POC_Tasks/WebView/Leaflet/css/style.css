@@ -72,6 +72,22 @@ body {
 .info .item.active { background:#f8f8f8; }
 .info .item:last-child { border-bottom:none; }
 */
+
+.leaflet-popup-previous-button {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    padding: 4px 4px 0 0;
+    border: none;
+    text-align: center;
+    width: 18px;
+    height: 14px;
+    font: 16px/14px Tahoma, Verdana, sans-serif;
+    color: #c3c3c3;
+    text-decoration: none;
+    font-weight: bold;
+    background: transparent;
+}
 .leaflet-popup-content-wrapper {
 }
 
@@ -110,8 +126,8 @@ body {
     overflow-y: hidden;
     width: 100%;
     overflow-x: auto;
-    padding-inline-start: 0px;
     display: -webkit-inline-box;
+    padding-inline-start: 0px;
     white-space: nowrap;
     position: relative;
     /*top: -14px;
@@ -281,3 +297,4 @@ body {
     left: -100vw;
     /* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */
 }
+

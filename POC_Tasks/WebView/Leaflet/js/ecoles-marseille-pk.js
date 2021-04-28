@@ -83,7 +83,7 @@ function processJsonData(jsonData, markersLayer) {
         if(point[1].pk !== undefined) {
             //console.log(point[1].pk.toString())
             //console.log(point[1].pk)
-            popup = '<iframe id="inlineFrameExample0" class="iframes" style="width: 100%; height: 100%;" title="Inline Frame Example0" src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D' + point[1].pk.toString() + '"></iframe>';
+            popup = '<a class="leaflet-popup-previous-button" title="Retour" href="#" onclick="previousIframe()">&lt;</a><iframe id="inlineFrameExample0" class="iframes" style="padding-top: 5%; width: 100%; height: 95%;border-width: 0px;" title="Inline Frame Example0" src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D' + point[1].pk.toString() + '"></iframe>';
 
             //console.log(popup)
             /* 4) Marker with popup added on map */
@@ -112,4 +112,8 @@ function getJsonFromDB() {
     xmlhttp.send(null);
 
     return donnees;
+}
+
+function previousIframe() {
+    $("#inlineFrameExample0").attr('src', window.history.back());
 }

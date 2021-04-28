@@ -1,14 +1,10 @@
 
 window.onload = function() {
-console.log("hola");
-        console.log(frames);
-        console.log(frames.length);
     for(var i = 0; i < frames.length;i = i + 1) {
         let link = document.createElement("link");
         link.href = "../css/test_iframe.css";
         link.rel = "stylesheet";
         link.type = "text/css";
-        console.log(frames[i]);
         [i].framesdocument.head.appendChild(link); // 0 is an index of your iframe
     }
 

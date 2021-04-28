@@ -10,8 +10,10 @@ Date;Fonctionnalité
 ?/04/2021;Refactor button
 ?/04/2021;Refactor tab
 ?/04/2021;Interface to custom icon/color/background online
-?/04/2021;Replace phpgenerator font by local image
-?/04/2021;audit file link behavior corrected on iframe on map
+28/04/2021;Previous button for Iframe
+27/04/2021;Phpgenerator font added on iframe
+27/04/2021;CSI directory added
+26/04/2021;Overflow corrected on iframe on map
 25/04/2021;tab link behavior corrected on iframe on map
 25/04/2021;iframe css added on map
 24/04/2021;html iframe added on map
