@@ -1602,10 +1602,7 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
 }
-.row {
-  margin-left: -10px;
-  margin-right: -8px;
-}
+
 .col-xs-1,
 .col-sm-1,
 .col-md-1,
@@ -4108,9 +4105,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
+width: auto;
   border-bottom: 1px solid #dddddd;
 overflow-y: hidden;
-width: 100%;
 overflow-x: auto;
 display: -webkit-inline-box;
 }
@@ -11416,9 +11413,6 @@ table.pgui-cascading-editor tr td .select2-container {
 .form-add-another-record {
   margin-top: 20px;
 }
-.form-tabs-container {
-  margin: 0 5px 20px 5px;
-}
 .signature-pad {
   height: auto;
   position: relative;
@@ -14287,10 +14281,7 @@ pre code {
   padding-left: 15px;
   padding-right: 15px;
 }
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
+
 .col-xs-1,
 .col-sm-1,
 .col-md-1,
@@ -24092,9 +24083,6 @@ table.pgui-cascading-editor tr td .select2-container {
 .form-add-another-record {
   margin-top: 20px;
 }
-.form-tabs-container {
-  margin: 0 5px 20px 5px;
-}
 .signature-pad {
   height: auto;
   position: relative;
@@ -25364,4 +25352,7 @@ thead .details .link-icon {
 }
 .filter-builder-condition-actions a:hover {
   border: none;
+}
+.tab-content{
+    padding-top: 15px;
 }
