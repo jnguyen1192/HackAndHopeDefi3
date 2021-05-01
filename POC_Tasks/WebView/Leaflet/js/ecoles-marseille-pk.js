@@ -1,4 +1,4 @@
-function processJsonData(jsonData, markersLayer) {
+function processJsonData(jsonData, markersLayer, nb_marker=null) {
     /*  1) Icone declaration
         2) Data form creation
         3) Html content popup creation
@@ -39,6 +39,10 @@ function processJsonData(jsonData, markersLayer) {
     var aiIcon;
     /* 2) Data form creation */
     // On boucle sur les données (ES8)
+
+    if (nb_marker != null) {
+        jsonData.points = [jsonData.points[0]]
+    }
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
@@ -84,6 +88,7 @@ function processJsonData(jsonData, markersLayer) {
             //console.log(point[1].pk.toString())
             //console.log(point[1].pk)
             // TODO use a file called popup.html to get the code and customize it
+            // TODO https://dev.nos-ecoles.fr/demande_intervention.php?operation=insert
             popup = '<a class="leaflet-popup-previous-button" title="Retour" href="#" onclick="previousIframe()">&lt;</a><iframe id="inlineFrameExample0" class="iframes" style="padding-top: 2%; width: 100%; height: 98%;border-width: 0px;" title="Inline Frame Example0" src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D' + point[1].pk.toString() + '"></iframe>';
 
             //console.log(popup)

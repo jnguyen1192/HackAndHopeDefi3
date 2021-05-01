@@ -16,7 +16,7 @@ if (typeof sectorsData !== 'undefined') {
 }
 
 // Ecoles Marseille
-processJsonData(donnees, mp.markersLayer); // mp.markersLayer est la couche où ajouter les marqueurs
+processJsonData(donnees, mp.markersLayer, nbMarker); // mp.markersLayer est la couche où ajouter les marqueurs
 delete donnees;
 
 // Iframe

@@ -1,114 +1,63 @@
-<!--
-    TODO Add one element as a popup to test CSS
-    -->
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Quick Start - Leaflet</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/css/tabby.css">
+<head>
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0leaflet-search.css">
-            -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/tabby/11.2.0/js/tabby.min.js"></script>
-            -->
-        <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.9/dist/leaflet-search.src.min.js"></script>
-        <!--
-            <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
-            <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-            -->
-        <link type="text/css" rel="stylesheet" href="./css/style.css" />
-        <link type="text/css" rel="stylesheet" href="./css/Control.Loading.css" />
-    </head>
-    <body>
-        <div id="mapid" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;">
-            <div class="leaflet-pane leaflet-popup-pane" style="z-index: 0">
-                <div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(461px, 366px, 0px); bottom: -7px; left: -315px;">
-                    <div class="leaflet-popup-content-wrapper">
-                        <div class="leaflet-popup-content" style="width: 301px;">
-                            <ul class="tabs-link">
-                                <li class="tab-link"> <a href="#tab-1"><span>Généralités</span></a></li>
-                                <li class="tab-link"> <a href="#tab-2"><span>Parents d'élèves</span></a></li>
-                                <li class="tab-link"> <a href="#tab-3"><span>Elu Secteur</span></a></li>
-                                <li class="tab-link"> <a href="#tab-4"><span>Elu Municipal</span></a></li>
-                                <li class="tab-link"> <a href="#tab-5"><span>Audit</span></a></li>
-                                <li class="tab-link"> <a href="#tab-6"><span>Informations complémentaires</span></a></li>
-                            </ul>
-                            <div class="tabs">
-                                <div class="tab" id="tab-1">
-                                    <div class="content">
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Obtenir plus d'informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Ajouter des informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Contacter</button>
-                                        <p>Adresse, Code Postal, Ville:Ecole maternelle La Baume, 13009</p>
-                                        <p>Téléphone:</p>
-                                        <p>Effectif:&lt;100</p>
-                                        <p>OCCE ?:</p>
-                                        <p>Quartier:4</p>
-                                    </div>
-                                </div>
-                                <div class="tab" id="tab-2">
-                                    <div class="content">
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Obtenir plus d'informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Ajouter des informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Contacter</button>
-                                        <p>APE / Représentants:</p>
-                                        <p>Affiliation:</p>
-                                        <p>Contact:</p>
-                                    </div>
-                                </div>
-                                <div class="tab" id="tab-3">
-                                    <div class="content">
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Obtenir plus d'informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Ajouter des informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Contacter</button>
-                                        <p>Ecoles:</p>
-                                        <p>Bâtis:</p>
-                                        <p>Quartier:</p>
-                                    </div>
-                                </div>
-                                <div class="tab" id="tab-4">
-                                    <div class="content">
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Obtenir plus d'informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Ajouter des informations</button>
-                                        <button type="button" onClick="javascript:window.open('http://www.facebook.com', '_blank');" formtarget="_blank">Contacter</button>
-                                        <p>Ecoles:</p>
-                                        <p>Périscolaire:</p>
-                                        <p>Bâti:</p>
-                                    </div>
-                                </div>
-                                <div class="tab" id="tab-5">
-                                    <div class="content">
-                                        <p>Liens:<a href="google.fr">l</a><a href="google.fr">i</a><a href="google.fr">e</a><a href="google.fr">n</a><a href="google.fr">s</a></p>
-                                    </div>
-                                </div>
-                                <div class="tab" id="tab-6">
-                                    <div class="content">
-                                        <p>Circonscription:</p>
-                                        <p>IEN:</p>
-                                        <p>DASEN:</p>
-                                        <p>DDEN:</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="leaflet-popup-tip-container">
-                        <div class="leaflet-popup-tip"></div>
-                    </div>
-                    <a class="leaflet-popup-close-button" href="#close">×</a>
-                </div>
-            </div>
-        </div>
-    </body>
+    <title>Nos écoles - Carte des écoles</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.9/src/leaflet-search.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+
+    <link type="text/css" rel="stylesheet" href="./css/style.css" />
+    <link type="text/css" rel="stylesheet" href="./css/Control.Loading.css" />
+
+
+
+
+
+</head>
+<body>
+
+<div id="findbox"></div>
+<div id="mapid" ></div>
+
+
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.9/dist/leaflet-search.src.min.js"></script>
+
+<script>var page = "index.html";
+var db = false;
+var nbMarker=1;</script>
+
+<script type="text/javascript" src="./js/lib/Control.Loading.js"></script>
+<script type="text/javascript" src="./js/lib/leaflet.edgebuffer.js"></script>
+<script type="text/javascript" src="./js/lib/cookiechoices.js"></script>
+
+<script type="text/javascript" src="./js/quartiers-prioritaires.js"></script>
+<script type="text/javascript" src="./js/quartiers-marseille.js"></script>
+<script type="text/javascript" src="./js/ecoles-marseille-pk.js"></script>
+<script type="text/javascript" src="./js/legend.js"></script>
+<script type="text/javascript" src="./js/cookie.js"></script>
+
+<script type="text/javascript" src="./js/data/quartiers-prioritaires.csv.js"></script>
+<script type="text/javascript" src="./js/data/quartiers-marseille.geojson.js"></script>
+<script type="text/javascript" src="./js/data/ecoles-marseille-audit-pk.json.js"></script>
+
+<script type="text/javascript" src="./js/class/mapBuilder.js"></script>
+
+<script type="text/javascript" src="./js/main.js"></script>
+<script type="text/javascript" src="./js/test_iframe.js"></script>
 </html>
