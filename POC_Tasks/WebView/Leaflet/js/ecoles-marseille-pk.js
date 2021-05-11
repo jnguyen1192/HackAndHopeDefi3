@@ -43,6 +43,10 @@ function processJsonData(jsonData, markersLayer, nb_marker=null) {
     if (nb_marker != null) {
         jsonData.points = [jsonData.points[0]]
     }
+    // Config files for popup
+    var configDict = getContfigTxt();
+    var popupHTML = getPopupHTML();
+            console.log(configDict);
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
@@ -96,12 +100,12 @@ fetch(fileUrl)
    .then( t => console.log(t) )
    */
             //console.log(getPopupHTML());
-
             //popup = '<a class="leaflet-popup-previous-button" title="Retour" href="#" onclick="previousIframe()">&lt;</a><iframe id="inlineFrameExample0" class="iframes" style="padding-top: 2%; width: 100%; height: 98%;border-width: 0px;" title="Inline Frame Example0" src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D' + point[1].pk.toString() + '"></iframe>';
-            var link = "https://dev.nos-ecoles.fr/nos_ecoles.php?operation=view&pk0="; // TODO get link from a config file
-            popup = getPopupHTML().replace("{ecole_pk}",point[1].pk.toString()).replace("{link}", encodeURIComponent(link));
-            console.log(popup);
-            //console.log(popup)
+            var link = configDict["link"];//"https://dev.nos-ecoles.fr/nos_ecoles.php?operation=view&pk0="; // TODO get link from a config file
+
+            popup = popupHTML.replace("{ecole_pk}",point[1].pk.toString()).replace("{link}", encodeURIComponent(link));
+            //console.log(popup);
+
             /* 4) Marker with popup added on map */
             var marker = L.marker(new L.latLng([point[1].ecole_lat, point[1].ecole_long]), config)
                 .bindTooltip(point[1].ecole_appellation) // Ajout d'une infobulle au marqueur
@@ -146,6 +150,32 @@ function getPopupHTML() {
     xmlhttp.send(null);
 
     return donnees;
+}
+function getContfigTxt() {
+    var donnees;
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+        // La transaction est terminée ?
+        if(xmlhttp.readyState == 4){
+            // Si la transaction est un succès
+            if(xmlhttp.status == 200){
+                // On traite les données reçues
+                donnees = xmlhttp.responseText
+            }
+        }
+    }
+    xmlhttp.open("GET", "config.txt", false); // False pour avoir un comportement synchrone
+    xmlhttp.send(null);
+
+    var mydict = {};
+    var lines = donnees.split('\n');
+    for(var i = 0;i < lines.length;i++){
+    //code here using lines[i] which will give you each line
+        var firstequalpos = lines[i].indexOf("=");
+        mydict[lines[i].slice(0, firstequalpos)]=lines[i].slice(firstequalpos+1)
+    }
+    //console.log(mydict);
+    return mydict;
 }
 
 

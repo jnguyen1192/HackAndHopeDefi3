@@ -11,7 +11,11 @@ Date;Fonctionnalité
 ?/0?/2021;Refactor tab
 ?/0?/2021;Interface to custom icon/color/background online
 ?/?/2021;Button form on iframe
-?/?/2021;Extract link into a config file
+11/05/2021;Extract link and popup html into a config file
+10/05/2021;Extract parameter from config.txt file
+09/05/2021;config.txt read
+08/05/2021;index.html corrected
+07/05/2021;config.txt file added
 06/05/2021;Dynamic link in Iframe
 05/05/2021;Get popup.html content in Iframe
 04/05/2021;Get popup.html content in JS
