@@ -20,7 +20,7 @@ echo '<link href="../css/test_iframe.css" rel="stylesheet" type="text/css">';
 echo $domElemsToRemove;
 echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-console.log($(".row"));
+//console.log($(".row"));
 $(".row").contents().find("li a").each(function() {
             $(this).on("click", function() {
                 $(".row").contents().find("li a").each(function() {

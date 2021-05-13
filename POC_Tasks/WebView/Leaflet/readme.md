@@ -8,3 +8,6 @@ js/data/ecoles-marseille-audit.json.js: copier ce fichier et le renommer ecoles-
 css/test_iframe.css: changer le style de l'iframe
 
 test_popup.html: tester rapidement le rendu de l'iframe
+
+#Utiliser la base de données
+index.html: mettre "db = true" au lieu de "db = false";

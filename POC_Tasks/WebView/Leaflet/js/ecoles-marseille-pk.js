@@ -46,7 +46,7 @@ function processJsonData(jsonData, markersLayer, nb_marker=null) {
     // Config files for popup
     var configDict = getContfigTxt();
     var popupHTML = getPopupHTML();
-            console.log(configDict);
+            //console.log(configDict);
     Object.entries(jsonData.points).forEach(point => {
         // Ici j'ai une seule agence
         // On crée un marqueur pour l'agence
@@ -128,7 +128,7 @@ function getJsonFromDB() {
             }
         }
     }
-    xmlhttp.open("GET", "php/acces.php", false); // False pour avoir un comportement synchrone
+    xmlhttp.open("GET", "php/acces_iframe.php", false); // False pour avoir un comportement synchrone
     xmlhttp.send(null);
 
     return donnees;
