@@ -11,3 +11,6 @@ test_popup.html: tester rapidement le rendu de l'iframe
 
 #Utiliser la base de données
 index.html: mettre "db = true" au lieu de "db = false";
+
+#Modifier l'affichage des marqueurs
+ecoles-marseille-pk.js: modifier le contenu de Object.entries(jsonData.points).forEach(point => {})
