@@ -1,6 +1,7 @@
 
 <?php
 include 'credentials.php';
+include 'config.php';
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -11,8 +12,6 @@ try{
     echo "Erreur de connexion : " . $exception->getMessage();
 }
 
-$sql = "SELECT * FROM v_1";
-
 // On prépare la requête
 $query = $db->prepare($sql);
 
@@ -20,7 +19,7 @@ $query = $db->prepare($sql);
 $query->execute();
 
 while($row = $query->fetch(PDO::FETCH_ASSOC)){
-    extract($row);
+    /*extract($row);
 
     $point = [
         "ecole_RNE" => $ecole_RNE,
@@ -32,9 +31,9 @@ while($row = $query->fetch(PDO::FETCH_ASSOC)){
 		"CRITERE3" => $CRITERE3,
 		"CRITERE4" => $CRITERE4,
 		"CRITERE5" => $CRITERE5,
-    ];
+    ];*/
 
-    $tableauPoints['points'][] = $point;
+    $tableauPoints['points'][] = extract_into_point($row);
 }
 
 /*

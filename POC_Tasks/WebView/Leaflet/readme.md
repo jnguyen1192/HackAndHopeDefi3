@@ -14,3 +14,10 @@ index.html: mettre "db = true" au lieu de "db = false";
 
 #Modifier l'affichage des marqueurs
 ecoles-marseille-pk.js: modifier le contenu de Object.entries(jsonData.points).forEach(point => {})
+
+#Modifier la requête
+php/config.php: modifier la variable $sql
+
+#Modifier les données des marqueurs en fonction de la requête
+php/config.php: modifier la fonction extract_into_point_iframe()
+
