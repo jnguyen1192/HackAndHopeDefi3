@@ -21,3 +21,10 @@ php/config.php: modifier la variable $sql
 #Modifier les données des marqueurs en fonction de la requête
 php/config.php: modifier la fonction extract_into_point_iframe()
 
+#Modifier la légende
+js/legend.js: modifier la fonction createLegend()
+
+#Modifier les paramêtres de la carte (fond, zoom, ...)
+js/class/mapBuilder.js: modifier la fonction create() de la classe MapBuilder
+
+
