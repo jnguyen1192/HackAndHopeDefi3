@@ -7,10 +7,13 @@ Date;Fonctionnalité
 ?/?/?;Readme for developer
 ?/?/?;Readme for end user
 ?/?/?;Max/Min zoom
+?/?/?;Add default location and zoom on config.txt
 ?/0?/2021;Refactor button
 ?/0?/2021;Refactor tab
 ?/0?/2021;Interface to custom icon/color/background online
-?/?/2021;Button form on iframe
+?/05/2021;Readme to modify popup
+?/05/2021;Button form autocompleted on popup
+18/05/2021;Button form on popup
 17/05/2021;Readme to modify map
 16/05/2021;Readme to modify legend
 14/05/2021;Readme to modify query and point

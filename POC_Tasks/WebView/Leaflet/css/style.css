@@ -72,6 +72,18 @@ body {
 .info .item.active { background:#f8f8f8; }
 .info .item:last-child { border-bottom:none; }
 */
+.leaflet-popup-demande-amelioration-button {
+    top: 0;
+    float:left;
+}
+.leaflet-popup-demande-intervention-button {
+    top: 0;
+    float:left;
+}
+.leaflet-popup-demande-sst-button {
+    top: 0;
+    float:left;
+}
 
 .leaflet-popup-previous-button {
     position: absolute;
