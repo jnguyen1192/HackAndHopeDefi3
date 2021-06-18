@@ -72,16 +72,6 @@ body {
 .info .item.active { background:#f8f8f8; }
 .info .item:last-child { border-bottom:none; }
 */
-a[class^="leaflet-popup-demande-"] {
-    top: 0;
-    padding-right: 5px;
-    background-color: #e7e7e7;
-    color: #222222;
-    line-height: 1.4;
-    border: 1px solid transparent;
-    border-radius: 0 0 0 0;
-    text-decoration: none;
-}
 
 .leaflet-popup-previous-button {
     position: absolute;

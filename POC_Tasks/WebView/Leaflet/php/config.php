@@ -23,6 +23,7 @@ function extract_into_point_iframe($row, $i) {
     // extract a row into a point
     extract($row);
     return [
+        "ecole_RNE" => $ecole_RNE,
         "ecole_lat" => $ecole_lat,
         "ecole_long" => $ecole_long,
         "ecole_appellation" => $ecole_appellation,

@@ -103,7 +103,7 @@ fetch(fileUrl)
             //popup = '<a class="leaflet-popup-previous-button" title="Retour" href="#" onclick="previousIframe()">&lt;</a><iframe id="inlineFrameExample0" class="iframes" style="padding-top: 2%; width: 100%; height: 98%;border-width: 0px;" title="Inline Frame Example0" src="./php/test_iframe.php?url=https%3A%2F%2Fdev.nos-ecoles.fr%2Fnos_ecoles.php%3Foperation%3Dview%26pk0%3D' + point[1].pk.toString() + '"></iframe>';
             var link = configDict["link"];//"https://dev.nos-ecoles.fr/nos_ecoles.php?operation=view&pk0="; // TODO get link from a config file
 
-            popup = popupHTML.replace("{ecole_pk}",point[1].pk.toString()).replace("{link}", encodeURIComponent(link));
+            popup = popupHTML.replaceAll("{ecole_pk}",point[1].pk.toString()).replace("{link}", encodeURIComponent(link)).replace("{ecole_rne}", point[1].ecole_RNE);
             //console.log(popup);
 
             /* 4) Marker with popup added on map */
