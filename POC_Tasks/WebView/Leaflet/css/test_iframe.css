@@ -25372,3 +25372,14 @@ a[class^="leaflet-popup-demande-"]:hover,
  a[class^="leaflet-popup-demande-"]:focus{
   background-color: #eeeeee;
 }
+
+/* Nos ecoles font */
+/* Font */
+@font-face {
+  font-family: nosEcolesFont;
+  src: url("../assets/fonts/FiraSans-Regular.ttf");
+}
+
+div, input, a, body {
+  font-family: nosEcolesFont !important;
+}

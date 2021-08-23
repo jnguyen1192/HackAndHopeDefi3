@@ -17,10 +17,15 @@ body {
 }
 
 #logo {
-    height: 55px;
-    width: 55px;
-    margin: 10px 20px 10px 20px;
-    display: inline-block;
+    position: absolute;
+    background: url("../assets/img/nos-ecoles-logo-fullColour-cmyk-1200.png") no-repeat;
+    z-index: 401;
+    opacity: 1;
+    width: 250px;
+    background-size: 250px 250px !important;
+    height: 250px;
+    bottom: 20px;
+    left: 20px;
 }
 
 .navbar-default .navbar-nav li a {
@@ -197,12 +202,15 @@ body {
 }
 /* Map */
 #mapid {
-    height: 90%;
+    height: 100%;
     width: 100%;
 }
 
 /* Search */
-
+.leaflet-control-search .search-button {
+    background: url("../assets/img/search.png") no-repeat!important;
+    background-size: 28px 28px !important;
+}
 /*
 #findbox {
     z-index:5000;
@@ -298,3 +306,12 @@ body {
     /* Note, you may want to position the checkbox over top the label and set the opacity to zero instead. It can be better for accessibilty on some touch devices for discoverability. */
 }
 
+/* Font */
+@font-face {
+    font-family: nosEcolesFont;
+    src: url("../assets/fonts/FiraSans-Regular.ttf");
+}
+
+div, input, a, body {
+    font-family: nosEcolesFont !important;
+}

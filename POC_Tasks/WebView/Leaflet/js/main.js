@@ -1,6 +1,6 @@
 // Creation du cookie
-checkCookie();
-console.log(getCookie("username"));
+//checkCookie();
+//console.log(getCookie("username"));
 
 // Creation de la carte
 let mp = new MapBuilder("mapid", "findbox"); // mapid and findbox are the id of map div and searchbox div
