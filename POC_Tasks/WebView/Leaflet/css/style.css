@@ -24,7 +24,7 @@ body {
     width: 250px;
     background-size: 250px auto !important;
     height: 200px;
-    bottom: 20px;
+    bottom: 120px;
     left: 20px;
 }
 
@@ -202,7 +202,7 @@ body {
 }
 /* Map */
 #mapid {
-    height: 100%;
+    height: calc(100% - 100px);
     width: 100%;
 }
 
